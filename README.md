@@ -1,16 +1,64 @@
-# school_trip_app
+## 협업 규칙 (Collaboration Guidelines)
 
-Daejeon Daeshin High School Math Trip App
+### 1. **Branch 관리**
 
-## Getting Started
+- **main**: 배포 가능한 상태의 코드만 머지합니다. 직접적으로 main 브랜치에 push하는 것을 금지합니다.
+- **dev**: 개발 진행 중인 최신 기능을 머지하는 브랜치입니다. 모든 기능 추가와 버그 수정을 위해 이 브랜치에서 작업합니다.
+- **개인 브랜치**: 각 개발자는 자신의 브랜치에서 기능을 개발합니다. 브랜치 이름은 다음과 같이 작성합니다:
+  - `feature/기능명`: 새로운 기능 개발 시
+  - `bugfix/버그명`: 버그 수정 시
+  - 예시: `feature/offline-map`, `bugfix/location-error`
 
-This project is a starting point for a Flutter application.
+### 2. **Pull Request (PR)**
 
-A few resources to get you started if this is your first Flutter project:
+- PR 생성 시, 충분한 설명과 관련 이슈 번호를 포함합니다.
+- 다른 팀원의 리뷰 없이 **main** 또는 **dev** 브랜치에 머지하지 않습니다.
+- PR 제목 예시:
+  - `[Feature] 꿀팁 기능 추가`
+  - `[Bugfix] 내 위치 오류 수정`
+- PR 본문에 작업 내용, 테스트 여부, 예상되는 변화 등을 명시합니다.
+- **한 명 이상의 리뷰어**가 승인한 후에만 PR을 머지합니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 3. **커밋 메시지 규칙**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 커밋 메시지는 영어 또는 한국어로 간결하고 명확하게 작성합니다.
+- **형식**: `[작업 타입] 작업 내용`
+  - `feat`: 새로운 기능 추가
+  - `fix`: 버그 수정
+  - `docs`: 문서 수정
+  - `style`: 코드 포맷팅, 세미콜론 누락 등
+  - `refactor`: 코드 리팩토링
+  - `test`: 테스트 코드 추가/수정
+  - `chore`: 기타 변경 사항
+- 예시:
+  - `[feat] 일본어 기본 회화 기능 추가`
+  - `[fix] Papago API 연결 오류 해결`
+
+### 4. **코드 스타일**
+
+- **코딩 스타일 가이드**를 준수합니다. Dart 코드의 경우 [Effective Dart](https://dart.dev/guides/language/effective-dart) 스타일을 따릅니다.
+- 모든 커밋 전 **코드 린트(lint)**와 **포매팅(formatting)**을 적용합니다.
+- `flutter analyze`와 `flutter format`을 통해 코드가 일관되도록 유지합니다.
+
+### 5. **이슈 관리**
+
+- 새로운 작업은 GitHub **Issues**로 관리하며, 작업 시작 전에 이슈를 생성합니다.
+- 각 이슈에는 담당자를 지정하고, 작업이 완료되면 해당 이슈를 닫습니다.
+- 이슈 제목 형식: `[카테고리] 작업 내용`
+  - 예시: `[Feature] 일본어 기본 회화 기능 추가`, `[Bug] 환율 계산기 오류`
+
+### 6. **의사소통**
+
+- GitHub Issues, PR, 또는 Discord을 통해 **원활한 커뮤니케이션**을 유지합니다.
+- 모든 중요한 결정사항은 GitHub에 기록하고, Discord에서 논의한 내용도 이슈에 적절히 반영합니다.
+
+### 7. **테스트**
+
+- 새로운 기능을 추가하거나 버그를 수정할 때는 반드시 **테스트**를 진행하고, `test/` 폴더에 테스트 코드를 작성합니다.
+- 코드 리뷰 전, 각자 기능의 테스트를 완료한 상태에서 PR을 요청합니다.
+
+### 8. **리뷰**
+
+- 코드를 리뷰할 때는 가독성, 성능, 유지보수성, 버그 가능성 등을 고려하여 리뷰합니다.
+- 리뷰어는 개선 사항을 제안하고, 설명이 필요한 부분에 대해 적극적으로 의견을 남깁니다.
+- 코드 리뷰는 1일 이내에 완료하는 것을 원칙으로 하며, 최대한 신속히 피드백을 제공합니다.
