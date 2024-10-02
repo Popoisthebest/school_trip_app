@@ -184,3 +184,180 @@
 2. **배포 준비 완료**:
    - main 브랜치로 머지된 코드가 문제없이 작동한다면, 배포 준비가 완료됩니다.
    - 배포가 완료된 후에도 발생할 수 있는 문제를 모니터링하고, 필요한 경우 긴급 수정을 진행합니다.
+
+Dart 및 Flutter 기반의 앱을 개발할 때, 일관된 코딩 스타일을 유지하고 효율적인 코드를 작성하는 것은 매우 중요합니다. 이는 코드의 가독성을 높이고, 유지 보수를 쉽게 하며, 버그를 줄이는 데 큰 도움이 됩니다. 아래에는 **Dart & Flutter 코딩 규칙**을 정리해 드리겠습니다.
+
+## 1. **일반적인 Dart 코딩 규칙**
+
+### 1.1. **네이밍 컨벤션**
+
+- **클래스명 및 enum명**: `PascalCase`를 사용합니다.
+  - 예: `class UserProfile`, `enum UserRole`
+- **변수명, 함수명**: `camelCase`를 사용합니다.
+  - 예: `var userProfile`, `void fetchUserData()`
+- **상수**: 상수는 `camelCase`를 사용하되, 클래스 밖에서 선언된 상수는 `const` 키워드를 사용하고 대문자와 밑줄(`UPPER_SNAKE_CASE`)을 사용합니다.
+  - 예: `const int MAX_USER_COUNT = 1000;`
+
+### 1.2. **주석**
+
+- **단일 라인 주석**: `//`를 사용합니다.
+  - 예: `// This is a single line comment`
+- **블록 주석**: 여러 줄 주석은 `/* */`을 사용합니다.
+  - 예:
+    ```dart
+    /*
+     * This is a multi-line comment.
+     * Useful for providing more context.
+     */
+    ```
+
+### 1.3. **세미콜론 및 콤마**
+
+- **세미콜론**: 모든 명령문 끝에 반드시 세미콜론(`;`)을 붙입니다.
+- **마지막 콤마**: Dart는 리스트, 맵, 함수 인수 등에서 마지막 항목 뒤에 콤마를 허용합니다. 이를 사용하면 코드 수정 시 편리합니다.
+  - 예:
+    ```dart
+    List<String> fruits = [
+      'apple',
+      'banana',
+      'orange', // 마지막 콤마 허용
+    ];
+    ```
+
+## 2. **Flutter 관련 코딩 규칙**
+
+### 2.1. **위젯 계층 구조 최적화**
+
+- **중복된 위젯 계층 방지**: 불필요한 중첩을 피하고, 가능한 한 위젯 계층을 간결하게 유지합니다. 중복된 레이아웃 위젯을 방지하여 성능을 최적화합니다.
+  - 안 좋은 예:
+    ```dart
+    Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        margin: EdgeInsets.all(8.0), // 불필요한 중복
+        child: Text('Hello World'),
+      ),
+    );
+    ```
+  - 좋은 예:
+    ```dart
+    Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text('Hello World'),
+    );
+    ```
+
+### 2.2. **빌드 메서드의 단순화**
+
+- **빌드 메서드가 너무 길어지지 않도록**: `build` 메서드 내에서 위젯이 복잡하거나 길어지면, 이를 **별도의 메서드** 또는 **별도의 위젯**으로 분리하여 관리합니다.
+
+  - 예:
+
+    ```dart
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: Text('Profile')),
+        body: Column(
+          children: [
+            _buildProfileHeader(),
+            _buildProfileDetails(),
+          ],
+        ),
+      );
+    }
+
+    Widget _buildProfileHeader() {
+      return Text('Header');
+    }
+
+    Widget _buildProfileDetails() {
+      return Text('Details');
+    }
+    ```
+
+### 2.3. **상태 관리**
+
+- **StatefulWidget과 StatelessWidget의 사용 구분**: 상태가 변하지 않는 UI는 `StatelessWidget`을 사용하고, 상태 변화가 필요한 경우 `StatefulWidget`을 사용합니다.
+  - 예: 사용자가 상호작용하여 UI가 변경되지 않는 경우, `StatelessWidget`을 사용하는 것이 성능에 더 효율적입니다.
+
+### 2.4. **const 사용**
+
+- **const** 키워드를 적극적으로 사용하여 불변(immutable) 위젯을 생성합니다. 불변 위젯은 Flutter의 성능을 최적화하는 데 중요한 역할을 합니다.
+  - 예:
+    ```dart
+    const Text('Hello, World');
+    ```
+
+### 2.5. **null 안전성 (Null Safety)**
+
+- Dart는 **null-safety**를 지원하므로, 가능하면 변수에 nullable 타입(`?`)을 명시하고, null 값을 처리할 수 있도록 합니다.
+  - 예:
+    ```dart
+    String? userName; // null 가능
+    ```
+
+## 3. **클래스 및 함수 관련 규칙**
+
+### 3.1. **클래스 설계**
+
+- **싱글턴 패턴**: 글로벌 상태 관리가 필요한 클래스는 싱글턴 패턴으로 구현할 수 있습니다.
+  - 예:
+    ```dart
+    class MySingleton {
+      static final MySingleton _instance = MySingleton._internal();
+      factory MySingleton() {
+        return _instance;
+      }
+      MySingleton._internal();
+    }
+    ```
+
+### 3.2. **함수**
+
+- **짧은 함수**는 화살표 함수(arrow function)를 사용해 간결하게 작성할 수 있습니다.
+
+  - 예:
+    ```dart
+    int add(int a, int b) => a + b;
+    ```
+
+- **매개변수와 인수의 명확성**: 함수를 설계할 때 매개변수는 의미가 명확해야 하며, 가능하면 **이름 있는 매개변수(named parameters)**를 사용하여 호출할 때 가독성을 높입니다.
+
+  - 예:
+
+    ```dart
+    void createUser({required String name, required int age}) {
+      // ...
+    }
+
+    createUser(name: 'John', age: 30);
+    ```
+
+## 4. **패키지 및 라이브러리 사용 규칙**
+
+### 4.1. **의존성 관리**
+
+- 프로젝트에서 사용하지 않는 **불필요한 패키지**를 `pubspec.yaml` 파일에서 제거하여 의존성을 최소화합니다.
+- 가능하면 **가벼운 패키지**를 선택하고, 대형 패키지 사용을 피하는 것이 좋습니다. 성능과 앱 크기에 영향을 줄 수 있기 때문입니다.
+
+### 4.2. **비동기 프로그래밍**
+
+- **async/await** 키워드를 사용하여 비동기 프로그래밍을 처리합니다. 비동기 함수의 반환값은 반드시 `Future` 타입으로 정의합니다.
+  - 예:
+    ```dart
+    Future<void> fetchData() async {
+      await Future.delayed(Duration(seconds: 2));
+      print('Data fetched');
+    }
+    ```
+
+## 5. **기타 권장 사항**
+
+### 5.1. **DRY 원칙 (Don't Repeat Yourself)**
+
+- 중복 코드를 줄이고, 재사용 가능한 위젯이나 함수로 분리하여 관리합니다. 예를 들어, 같은 UI 요소가 여러 곳에서 사용된다면 별도의 위젯으로 만들어 재사용합니다.
+
+### 5.2. **KISS 원칙 (Keep It Simple, Stupid)**
+
+- 코드는 간결하고 명확하게 작성하며, 복잡한 로직은 단순화합니다. 너무 복잡한 로직은 유지 보수에 어려움을 주므로, 가능하면 단순한 구조로 설계합니다.
