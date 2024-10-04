@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class TripSchduleScreen extends StatelessWidget {
+  const TripSchduleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('홈'),
+      child: Text('여행일정'),
     );
   }
 }
