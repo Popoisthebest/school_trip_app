@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_trip_app/screens/main_screen.dart';
 import 'package:school_trip_app/screens/splash_screen.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class SchoolTripApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SplashScreen(),
+      home: MainScreen(),
     );
   }
 }
