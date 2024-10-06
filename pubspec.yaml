@@ -15,7 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   connectivity_plus: ^3.0.6
   flutter_svg: ^2.0.10+1
-  webview_flutter: ^4.9.0
+  google_maps_flutter: ^2.9.0
 
 dev_dependencies:
   flutter_test:

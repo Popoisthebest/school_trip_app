@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GoogleTripMapScreen extends StatefulWidget {
   const GoogleTripMapScreen({super.key});
@@ -9,27 +9,41 @@ class GoogleTripMapScreen extends StatefulWidget {
 }
 
 class _GoogleTripMapScreenState extends State<GoogleTripMapScreen> {
-  final controller = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..setNavigationDelegate(
-      NavigationDelegate(
-        onProgress: (int progress) {
-          // Update loading bar.
-        },
-        onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
-        onHttpError: (HttpResponseError error) {},
-        onWebResourceError: (WebResourceError error) {},
-        onNavigationRequest: (NavigationRequest request) {
-          return NavigationDecision.navigate; // 모든 요청을 허용
-        },
-      ),
-    )
-    ..loadRequest(Uri.parse(
-        'https://www.google.com/maps/d/edit?mid=1Sbbzb_Wm6y5E1lT0b3VW82IECy55l_4&usp=sharing'));
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(34.6937249, 135.5022535);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return WebViewWidget(controller: controller);
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(
+        target: _center,
+        zoom: 11.0,
+      ),
+      markers: {
+        Marker(
+          markerId: const MarkerId("오사카시"),
+          position: const LatLng(34.6937249, 135.5022535),
+          infoWindow: InfoWindow(
+            title: "오사카시",
+            snippet: "우리가 갈 곳",
+            onTap: () {},
+          ), // InfoWindow
+        ),
+        Marker(
+          markerId: const MarkerId("몰루"),
+          position: const LatLng(34.6937249, 137.5022535),
+          infoWindow: InfoWindow(
+            title: "오사카시",
+            snippet: "우리가 갈 곳",
+            onTap: () {},
+          ), // InfoWindow
+        ),
+      },
+    );
   }
 }
