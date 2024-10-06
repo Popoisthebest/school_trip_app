@@ -5,6 +5,7 @@ import 'package:school_trip_app/screens/main_screen.dart';
 import 'package:school_trip_app/screens/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const SchoolTripApp());
 }
 
