@@ -14,6 +14,8 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   connectivity_plus: ^3.0.6
+  flutter_svg: ^2.0.10+1
+  webview_flutter: ^4.9.0
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +28,23 @@ flutter:
 
   assets:
     - assets/logo/
+    - assets/app_bar_icons/
+    - assets/background_imgaes/
+
+  fonts:
+    - family: CookieRunOTF
+      fonts:
+        - asset: assets/fonts/CookieRun Black.ttf
+          weight: 900 # Black font weight
+        - asset: assets/fonts/CookieRun Bold.ttf
+          weight: 700 # Bold font weight
+        - asset: assets/fonts/CookieRun Regular.ttf
+          weight: 400 # Regular font weight
+    - family: Ownglyph okticon
+      fonts:
+        - asset: assets/fonts/okticon_bold.ttf
+          weight: 700
+        - asset: assets/fonts/okticon_light.ttf
+          weight: 300
+        - asset: assets/fonts/okticon_regular.ttf
+          weight: 400
