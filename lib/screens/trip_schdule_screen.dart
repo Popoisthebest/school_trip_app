@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/screens/component/common_layout.dart';
 
 class TripSchduleScreen extends StatelessWidget {
   const TripSchduleScreen({super.key});

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:school_trip_app/screens/component/common_layout.dart';
 import 'package:school_trip_app/widgets/area_grid_view.dart';
 
 class MainScreen extends StatefulWidget {

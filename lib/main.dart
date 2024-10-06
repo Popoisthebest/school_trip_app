@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:school_trip_app/screens/google_trip_map_screen.dart';
-import 'package:school_trip_app/screens/main_screen.dart';
+
 import 'package:school_trip_app/screens/splash_screen.dart';
 
 void main() {

@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screen.dart';
 import 'package:school_trip_app/screens/trip_schdule_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screen.dart';
@@ -17,13 +19,60 @@ class CommonLayout extends StatefulWidget {
 }
 
 class _CommonLayoutState extends State<CommonLayout> {
-  bool isToggle = true;
+  bool isToggle = true; // 초기 토글 상태 (true: 온라인 모드, false: 오프라인 모드)
+  bool isManualOffline = false; // 수동 오프라인 모드 상태
   late int _selectedIndex;
+
+  final Connectivity _connectivity = Connectivity(); // 패키지 인스턴스 생성
+  late StreamSubscription<ConnectivityResult> _subscription;
+  Timer? _timer; // 네트워크 상태를 주기적으로 확인할 타이머
 
   @override
   void initState() {
     super.initState();
+
     _selectedIndex = widget.currentIndex;
+
+    // 네트워크 상태를 구독하고 상태에 따라 토글 상태를 변경
+    _subscription = _connectivity.onConnectivityChanged.listen((result) {
+      if (!isManualOffline) {
+        // 수동 오프라인 모드가 아닐 때만 상태 업데이트
+        setState(() {
+          if (result == ConnectivityResult.mobile ||
+              result == ConnectivityResult.wifi) {
+            isToggle = true; // 네트워크 연결됨
+          } else {
+            isToggle = false; // 네트워크 연결 끊김
+          }
+          print(result.toString());
+        });
+      }
+    });
+
+    // 주기적으로 네트워크 상태를 확인하는 타이머 설정
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
+      if (!isManualOffline) {
+        // 수동 모드가 아닐 때만 주기적으로 네트워크 상태 확인
+        var connectivityResult = await _connectivity.checkConnectivity();
+        setState(() {
+          if (connectivityResult == ConnectivityResult.mobile ||
+              connectivityResult == ConnectivityResult.wifi) {
+            isToggle = true; // 네트워크 연결됨
+          } else {
+            isToggle = false; // 네트워크 연결 끊김
+          }
+          print(
+              "Checked connectivity manually: ${connectivityResult.toString()}");
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel(); // 네트워크 구독 해제
+    _timer?.cancel(); // 타이머 해제
+    super.dispose();
   }
 
   // 각 탭에 해당하는 화면 리스트
@@ -100,6 +149,21 @@ class _CommonLayoutState extends State<CommonLayout> {
     );
   }
 
+  // 토글 버튼을 눌렀을 때 수동 모드로 오프라인 전환 또는 온라인 복귀 처리
+  void _toggleManualMode() {
+    setState(() {
+      if (isManualOffline) {
+        // 수동 오프라인 모드에서 다시 온라인 모드로 전환할 때
+        isManualOffline = false;
+        isToggle = true; // 버튼을 누르면 일단 true로 상태 변경
+      } else {
+        // 수동으로 오프라인 모드로 전환할 때
+        isManualOffline = true;
+        isToggle = false; // 네트워크 감지를 멈추고 수동으로 오프라인 모드 설정
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -140,11 +204,7 @@ class _CommonLayoutState extends State<CommonLayout> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       highlightColor: Colors.transparent,
-                      onPressed: () {
-                        setState(() {
-                          isToggle = !isToggle;
-                        });
-                      },
+                      onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
                       icon: Image.asset(
                         isToggle
                             ? 'assets/app_bar_icons/toggle_on_icon.png'
