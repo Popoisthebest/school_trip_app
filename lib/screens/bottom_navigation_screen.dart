@@ -94,12 +94,12 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               children: [
                 _selectedIndex == selectedIndex
                     ? Image.asset(
-                        '/bottom_nav_bar_icons/${assetName}_active_icon.png',
+                        'assets/bottom_nav_bar_icons/${assetName}_active_icon.png',
                         height: 20,
                         width: 20,
                       )
                     : Image.asset(
-                        '/bottom_nav_bar_icons/${assetName}_icon.png',
+                        'assets/bottom_nav_bar_icons/${assetName}_icon.png',
                         height: 20,
                         width: 20,
                       ),

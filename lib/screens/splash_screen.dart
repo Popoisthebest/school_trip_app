@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:school_trip_app/screens/bottom_navigation_screen.dart';
 import 'package:school_trip_app/screens/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const MainScreen(),
+              const BottomNavigationScreen(),
           // 화면 전환 시 FadeTransition을 사용하여 부드러운 페이드 애니메이션 효과를 적용
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
