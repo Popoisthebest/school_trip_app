@@ -10,6 +10,9 @@ class TripSchduleScreen extends StatefulWidget {
 
 class _TripSchduleScreenState extends State<TripSchduleScreen> {
   late GoogleMapController _mapController;
+  ScrollController _scrollController =
+      ScrollController(); // ScrollController 추가
+  double _maxSheetSize = 0.8; // DraggableScrollableSheet의 최대 크기
 
   final List<LatLng> _locations = [
     const LatLng(34.6937249, 135.5022535), // 오사카
@@ -24,17 +27,64 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
     const LatLng(35.5494, 139.7798), // 하네다 국제공항
   ];
 
+  final List<String> _locationNames = [
+    "오사카",
+    "아키하바라",
+    "도쿄 타워",
+    "디즈니랜드",
+    "아사쿠사 신사",
+    "도쿄 스카이트리",
+    "시부야 스크램블",
+    "우에노 공원",
+    "롯폰기 힐즈",
+    "하네다 국제공항",
+  ];
+
   // 지도의 초기 위치
   final LatLng _initialPosition =
       const LatLng(35.6996473, 139.7713703); // 아키하바라로 설정
+
+  // 마커 설정 (각 위치에 이름을 마커의 infoWindow에 표시)
+  Set<Marker> _createMarkers() {
+    return _locations.asMap().entries.map((entry) {
+      int index = entry.key;
+      LatLng location = entry.value;
+
+      return Marker(
+        markerId: MarkerId('location_$index'),
+        position: location,
+        infoWindow: InfoWindow(
+          title: _locationNames[index], // 위치 이름을 infoWindow에 표시
+        ),
+      );
+    }).toSet();
+  }
 
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
   }
 
-  // 지도 위치를 해당 버튼의 장소로 이동
-  void _moveCamera(LatLng target) {
-    _mapController.animateCamera(CameraUpdate.newLatLng(target));
+  // 지도 위치를 해당 버튼의 장소로 이동하면서 줌을 조정하고, 시트의 최대 크기 변경 및 스크롤 맨 위로 이동
+  void _moveCameraAndMinimizeSheet(LatLng target, double zoom) {
+    _mapController.animateCamera(CameraUpdate.newLatLngZoom(target, zoom));
+
+    // maxChildSize를 잠시 0.1로 변경한 후 다시 원래 값으로 복구
+    setState(() {
+      _maxSheetSize = 0.1; // 시트를 최소 크기로 줄임
+    });
+
+    // 스크롤을 맨 위로 이동
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        _maxSheetSize = 0.8; // 다시 원래 크기로 복구
+      });
+    });
   }
 
   @override
@@ -83,23 +133,22 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
                 target: _initialPosition, // 초기 위치는 아키하바라로 설정
                 zoom: 11.0, // 줌 레벨
               ),
-              markers: const {
-                // 추후에 추가할 수 있습니다.
-              },
+              markers: _createMarkers(), // 마커 추가
             ),
             // DraggableScrollableSheet 추가
             DraggableScrollableSheet(
-              initialChildSize: 0.2, // 시트가 처음 나타날 때 차지하는 크기 비율
+              initialChildSize: 0.1, // 시트의 초기 크기
               minChildSize: 0.1, // 최소 크기 비율
-              maxChildSize: 0.8, // 최대 크기 비율
+              maxChildSize: _maxSheetSize, // 상태에 따른 최대 크기
               builder:
                   (BuildContext context, ScrollController scrollController) {
+                _scrollController = scrollController; // 외부 ScrollController에 연결
                 return Container(
                   decoration: const BoxDecoration(
                     color: Colors.white,
                   ),
                   child: CustomScrollView(
-                    controller: scrollController, // 스크롤 컨트롤러 추가
+                    controller: _scrollController, // 스크롤 컨트롤러 추가
                     slivers: [
                       SliverToBoxAdapter(
                         child: Center(
@@ -166,14 +215,14 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
     );
   }
 
-  // 장소 카드 - 각 장소의 좌표를 받아서 누르면 해당 좌표로 지도를 이동
+  // 장소 카드 - 각 장소의 좌표를 받아서 누르면 해당 좌표로 지도를 이동하면서 줌 조정 및 시트 최대 크기 조정
   Widget buildPlaceCard(BuildContext context, String title, String description,
       String distance, LatLng location) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: InkWell(
         onTap: () {
-          _moveCamera(location); // 장소를 누르면 해당 좌표로 이동
+          _moveCameraAndMinimizeSheet(location, 14.0); // 줌과 함께 이동 및 시트 최대 크기 조정
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
