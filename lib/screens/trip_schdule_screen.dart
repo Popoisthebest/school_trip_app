@@ -137,8 +137,8 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
             ),
             // DraggableScrollableSheet 추가
             DraggableScrollableSheet(
-              initialChildSize: 0.1, // 시트의 초기 크기
-              minChildSize: 0.1, // 최소 크기 비율
+              initialChildSize: 0.05, // 시트의 초기 크기
+              minChildSize: 0.05, // 최소 크기 비율
               maxChildSize: _maxSheetSize, // 상태에 따른 최대 크기
               builder:
                   (BuildContext context, ScrollController scrollController) {
@@ -227,16 +227,13 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Column(
+            Stack(
               children: [
-                CircleAvatar(
-                  radius: 10,
-                  child: Text('1'),
-                ),
-                VerticalDivider(
-                  color: Colors.green,
-                  thickness: 2,
-                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xffEEEEEE),
+                  ),
+                )
               ],
             ),
             const SizedBox(width: 16),
@@ -281,15 +278,54 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
 // Day 구분 섹션
 Widget buildDaySection(BuildContext context, String day) {
   return Padding(
-    padding: const EdgeInsets.all(16.0),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
     child: Row(
       children: [
-        Text(
-          day,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: const Color(0xff4D9E8A),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
+            child: Text(
+              day,
+              style: const TextStyle(
+                fontFamily: "Ownglyph okticon",
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Color(0xff1a1a1a),
+                height: 16 / 12,
+              ),
+            ),
+          ),
         ),
         const Spacer(),
-        const Icon(Icons.filter_list),
+        Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color(0xff4D9E8A),
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.fromLTRB(6, 2, 6, 2),
+              child: Text(
+                '1반',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF1A1A1A),
+                  fontSize: 12,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w400,
+                  height: 0,
+                ),
+              ),
+            )),
       ],
     ),
   );
