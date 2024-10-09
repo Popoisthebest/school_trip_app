@@ -33,6 +33,7 @@ flutter:
     - assets/bottom_nav_bar_icons/
     - assets/travel_screen_icons/
     - assets/store_map_images/
+    - assets/icons/kakao.svg
 
   fonts:
     - family: CookieRunOTF
