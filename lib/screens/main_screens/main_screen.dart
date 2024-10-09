@@ -24,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "도쿄여행",
+                      "도쿄여행!",
                       style: TextStyle(
                         fontFamily: "Ownglyph okticon",
                         fontSize: 14,
