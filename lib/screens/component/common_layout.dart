@@ -90,20 +90,26 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 100,
+      height: 70,
       child: SafeArea(
         child: Container(
           color: Colors.white,
           child: Column(
             children: [
+              Container(
+                height: 1,
+                color: const Color(0xff4D9E8A),
+              ),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('여행일정', 'map', 1),
-                    _buildBottomNavigationItems('여행도구', 'tool', 2),
+                    _buildBottomNavigationItems('검색', 'search', 1),
+                    _buildBottomNavigationItems('여행일정', 'map', 2),
+                    _buildBottomNavigationItems('여행장소', 'place', 3),
+                    _buildBottomNavigationItems('여행도구', 'tool', 4),
                   ],
                 ),
               ),
@@ -132,6 +138,9 @@ class _CommonLayoutState extends State<CommonLayout> {
                   : 'assets/bottom_nav_bar_icons/${assetName}_icon.png',
               height: 20,
               width: 20,
+            ),
+            const SizedBox(
+              height: 4,
             ),
             Text(
               name,
