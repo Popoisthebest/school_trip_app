@@ -90,20 +90,26 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 100,
+      height: 70,
       child: SafeArea(
         child: Container(
           color: Colors.white,
           child: Column(
             children: [
+              Container(
+                height: 1,
+                color: const Color(0xff4D9E8A),
+              ),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('여행일정', 'map', 1),
-                    _buildBottomNavigationItems('여행도구', 'tool', 2),
+                    _buildBottomNavigationItems('검색', 'search', 1),
+                    _buildBottomNavigationItems('여행일정', 'map', 2),
+                    _buildBottomNavigationItems('여행장소', 'place', 3),
+                    _buildBottomNavigationItems('여행도구', 'tool', 4),
                   ],
                 ),
               ),
@@ -132,6 +138,9 @@ class _CommonLayoutState extends State<CommonLayout> {
                   : 'assets/bottom_nav_bar_icons/${assetName}_icon.png',
               height: 20,
               width: 20,
+            ),
+            const SizedBox(
+              height: 4,
             ),
             Text(
               name,
@@ -164,60 +173,69 @@ class _CommonLayoutState extends State<CommonLayout> {
     });
   }
 
+  // AppBar를 특정 페이지에서만 적용
+  PreferredSizeWidget? _buildAppBar() {
+    if (_selectedIndex == 0 || _selectedIndex == 2) {
+      // 홈 또는 여행 도구 페이지에서만 AppBar 적용
+      return AppBar(
+        backgroundColor: const Color(0xFF4D9E8A),
+        flexibleSpace: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Row(
+                children: [
+                  Image.asset('assets/logo/dashin_LOGO.png'),
+                  const SizedBox(width: 8),
+                  const Text(
+                    'MyDaeShinTrip',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                      height: 1.2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 9.0),
+              child: Row(
+                children: [
+                  SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
+                  const SizedBox(width: 13),
+                  SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
+                  const SizedBox(width: 3),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    highlightColor: Colors.transparent,
+                    onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
+                    icon: Image.asset(
+                      isToggle
+                          ? 'assets/app_bar_icons/toggle_on_icon.png'
+                          : 'assets/app_bar_icons/toggle_off_icon.png',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    return null; // 나머지 페이지에서는 AppBar 없음
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF4D9E8A),
-          flexibleSpace: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Image.asset('assets/logo/dashin_LOGO.png'),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'MyDaeShinTrip',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 9.0),
-                child: Row(
-                  children: [
-                    SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
-                    const SizedBox(width: 13),
-                    SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                    const SizedBox(width: 3),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      highlightColor: Colors.transparent,
-                      onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                      icon: Image.asset(
-                        isToggle
-                            ? 'assets/app_bar_icons/toggle_on_icon.png'
-                            : 'assets/app_bar_icons/toggle_off_icon.png',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: _buildBottomNavigationBar(),
+        appBar: _buildAppBar(), // AppBar를 조건부로 적용
+        bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
         body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
       ),
     );
