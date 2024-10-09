@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:school_trip_app/screens/loading_screens/splash_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/app_bar_test.dart';
 
 void main() {
   runApp(const SchoolTripApp());

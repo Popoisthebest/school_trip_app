@@ -96,30 +96,28 @@ class _CommonLayoutState extends State<CommonLayout> {
   Widget _buildBottomNavigationBar() {
     return SizedBox(
       height: 70,
-      child: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                height: 1,
-                color: const Color(0xff4D9E8A),
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: 1,
+              color: const Color(0xff4D9E8A),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  _buildBottomNavigationItems('홈', 'home', 0),
+                  _buildBottomNavigationItems('검색', 'search', 1),
+                  _buildBottomNavigationItems('여행일정', 'map', 2),
+                  _buildBottomNavigationItems('여행장소', 'place', 3),
+                  _buildBottomNavigationItems('여행도구', 'tool', 4),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('검색', 'search', 1),
-                    _buildBottomNavigationItems('여행일정', 'map', 2),
-                    _buildBottomNavigationItems('여행장소', 'place', 3),
-                    _buildBottomNavigationItems('여행도구', 'tool', 4),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -179,12 +177,16 @@ class _CommonLayoutState extends State<CommonLayout> {
   }
 
   // AppBar를 특정 페이지에서만 적용
-  PreferredSizeWidget? _buildAppBar() {
+  Widget _buildCustomAppBar() {
     if (_selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 4) {
-      // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
-      return AppBar(
-        backgroundColor: const Color(0xFF4D9E8A),
-        flexibleSpace: Row(
+      // 홈 또는 검색 또는 여행 도구 페이지에서만 상단바 적용
+      return Container(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).padding.top, // 상태 표시줄 높이 반영
+        ),
+        color: const Color(0xFF4D9E8A),
+        height: 80, // AppBar의 높이
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
@@ -232,17 +234,21 @@ class _CommonLayoutState extends State<CommonLayout> {
         ),
       );
     }
-    return null; // 나머지 페이지에서는 AppBar 없음
+    return const SizedBox.shrink(); // 다른 페이지에서는 빈 상단바
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildAppBar(), // AppBar를 조건부로 적용
-        bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
-        body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
+    return Scaffold(
+      body: Column(
+        children: [
+          _buildCustomAppBar(), // 커스텀 AppBar
+          Expanded(
+            child: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
+          ),
+        ],
       ),
+      bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
     );
   }
 }
