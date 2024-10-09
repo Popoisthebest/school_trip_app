@@ -52,7 +52,7 @@ class TravelLocation extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '도쿄',
+                          '아키하바라',
                           style: TextStyle(
                             color: Color(0xFF1A1A1A),
                             fontSize: 24,
@@ -192,7 +192,6 @@ class TravelLocation extends StatelessWidget {
                               top: 10,
                               right: 10,
                               child: Container(
-                                width: 42,
                                 height: 23,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
@@ -296,13 +295,13 @@ class TravelLocation extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  children: [
-                    const Row(
-                      children: [
-                        Text(
+              Column(
+                children: [
+                  const Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: Text(
                           '주요 매장',
                           style: TextStyle(
                             fontSize: 20,
@@ -311,49 +310,42 @@ class TravelLocation extends StatelessWidget {
                             color: Color(0xFF1A1A1A),
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Column(
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Row(
                         children: [
-                          Row(
-                            children: [
-                              ImportantStoreCard(
-                                stimagePath:
-                                    'assets/background_imgaes/store_image.png',
-                                stname: "매장1",
-                                stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명',
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ImportantStoreCard(
-                                  stimagePath:
-                                      'assets/background_imgaes/store_image.png',
-                                  stname: '매장2',
-                                  stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명'),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ImportantStoreCard(
-                                  stimagePath:
-                                      'assets/background_imgaes/store_image.png',
-                                  stname: '매장3',
-                                  stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명'),
-                            ],
+                          ImportantStoreCard(
+                            stimagePath:
+                                'assets/background_imgaes/store_image.png',
+                            stname: "매장1",
+                            stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명',
                           ),
+                          ImportantStoreCard(
+                              stimagePath:
+                                  'assets/background_imgaes/store_image.png',
+                              stname: '매장2',
+                              stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명'),
+                          ImportantStoreCard(
+                              stimagePath:
+                                  'assets/background_imgaes/store_image.png',
+                              stname: '매장3',
+                              stintroduce: '간단한설명간단한설명간단한설명간단한설명간단한설명'),
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 24,
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  )
+                ],
               ),
               Container(
                 height: 30,
@@ -584,18 +576,18 @@ class TravelLocation extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
+                    const Row(
                       children: [
                         Flexible(
-                          child: Text(
-                            "전철로 아키하바라에 오게되면 가장 먼저 보게되는 풍경. 아키바는 역규모가 크다보니,출구도 여러개인데요, 전기거리 개찰구(電気街改札口)로 나오시면 됩니다... 더보기",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF1A1A1A).withOpacity(0.75),
-                            ),
+                            child: Text(
+                          "전철로 아키하바라에 오게되면 가장 먼저 보게되는 풍경. 아키바는 역규모가 크다보니,출구도 여러개인데요, 전기거리 개찰구(電気街改札口)로 나오시면 됩니다... 더보기",
+                          style: TextStyle(
+                            fontFamily: "Ownglyph okticon",
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
                           ),
-                        ),
+                          textAlign: TextAlign.left,
+                        )),
                       ],
                     ),
                     const SizedBox(
@@ -676,13 +668,16 @@ class ImportantStoreCard extends StatelessWidget {
         border: Border(
             bottom:
                 BorderSide(color: Colors.white.withOpacity(0.75), width: 0.8))),
-    child: Text("장소보기",
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Ownglyph okticon',
-          color: Colors.white.withOpacity(0.75),
-        )),
+    child: Padding(
+      padding: const EdgeInsets.only(bottom: 9.0),
+      child: Text("장소보기",
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Ownglyph okticon',
+            color: Colors.white.withOpacity(0.75),
+          )),
+    ),
   );
 
   ImportantStoreCard({
@@ -694,66 +689,68 @@ class ImportantStoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      height: 265,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color(0xff71b1a1)),
-      child: Column(
-        children: [
-          Image.asset(
-            stimagePath,
-            width: 300,
-            height: 150,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      stname,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        fontFamily: 'Ownglyph okticon',
-                      ),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        stintroduce,
-                        style: TextStyle(
-                          fontSize: 14,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: Container(
+        width: 300,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff4D9E8A)),
+        child: Column(
+          children: [
+            Image.asset(
+              stimagePath,
+              width: 300,
+              height: 150,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        stname,
+                        style: const TextStyle(
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white.withOpacity(0.75),
+                          color: Colors.white,
                           fontFamily: 'Ownglyph okticon',
                         ),
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    seestore,
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          stintroduce,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white.withOpacity(0.75),
+                            fontFamily: 'Ownglyph okticon',
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      seestore,
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
