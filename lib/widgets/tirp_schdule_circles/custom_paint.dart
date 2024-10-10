@@ -6,19 +6,16 @@ Widget ArrowCustomPaint(String distance) {
     alignment: Alignment.center,
     children: [
       SvgPicture.asset('assets/trip_schdule_icons/arrow_icon.svg'),
-      Positioned(
-        left: 6,
-        child: Text(
-          distance,
-          style: const TextStyle(
-            fontFamily: "Ownglyph okticon",
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Color(0xff000000),
-            height: 16 / 12,
-          ),
-          textAlign: TextAlign.left,
+      Text(
+        distance,
+        style: const TextStyle(
+          fontFamily: "Ownglyph okticon",
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff000000),
+          height: 16 / 12,
         ),
+        textAlign: TextAlign.left,
       )
     ],
   );

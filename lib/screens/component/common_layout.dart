@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screen.dart';
-import 'package:school_trip_app/screens/trip_schdule_screen.dart';
+import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screen.dart';
 
 class CommonLayout extends StatefulWidget {
@@ -78,7 +78,7 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const TripSchduleScreen(),
+    const NewTripSchdulScreen(),
     const TripToolScreen(),
   ];
 

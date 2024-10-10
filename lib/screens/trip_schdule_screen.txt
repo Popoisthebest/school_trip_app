@@ -18,9 +18,7 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
   ScrollController _scrollController =
       ScrollController(); // ScrollController 추가
   double _maxSheetSize = 0.8; // DraggableScrollableSheet의 최대 크기
-
-  final ClassDropDownMenu classDropDownMenu =
-      const ClassDropDownMenu(); // ClassDropDownMenu 생성자 생성
+  String _selectedClass = '1반'; // 선택된 반
 
   final List<LatLng> _locations = [
     const LatLng(34.6937249, 135.5022535), // 오사카
@@ -178,42 +176,18 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 22),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              child: Column(
                                 children: [
-                                  buildDaySection(
-                                    context,
-                                    1,
-                                    "Day 1",
-                                    "6.4km",
-                                    "15.0km",
-                                    false,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      buildClassDroDownMenu(
-                                        true,
-                                      ),
-                                      const SizedBox(
-                                        height: 21,
-                                      ),
-                                      buildCardSection(
-                                        "아",
-                                        "으",
-                                        "이",
-                                        "1",
-                                        "2",
-                                        "3",
-                                        () {},
-                                        () {},
-                                        () {},
-                                        false,
-                                      ),
+                                      buildDayShow("Day 1"),
+                                      buildClassDroDownMenu(true),
                                     ],
                                   ),
+                                  const SizedBox(height: 20),
+                                  // 추가 UI 요소들
                                 ],
                               ),
                             ),
@@ -224,143 +198,47 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-//
-Widget buildCardSection(
-  String title1,
-  String title2,
-  String title3,
-  String discription1,
-  String discription2,
-  String discription3,
-  Function onTap1,
-  Function onTap2,
-  Function onTap3,
-  bool isTwo,
-) {
-  return isTwo
-      ? Column(
-          children: [
-            SchduleCard(title1, discription1, onTap1),
-            SchduleCard(title2, discription2, onTap2),
-          ],
-        )
-      : Column(
-          children: [
-            SchduleCard(title1, discription1, onTap1),
-            SchduleCard(title2, discription2, onTap2),
-            SchduleCard(title3, discription3, onTap3),
-          ],
-        );
-}
+  Widget buildClassDroDownMenu(bool isClassSelection) {
+    return isClassSelection
+        ? ClassDropDownMenu(
+            onSelected: (value) {
+              setState(() {
+                _selectedClass = value; // 선택된 값을 상태로 설정하여 UI 갱신
+              });
+            },
+          )
+        : Container();
+  }
 
-Widget buildClassDroDownMenu(
-  bool isClassSelection,
-) {
-  return isClassSelection ? const ClassDropDownMenu() : Container();
-}
-
-// Day 구분 섹션
-Widget buildDaySection(
-  BuildContext context,
-  int num,
-  String day,
-  String distance1,
-  String distance2,
-  bool isTwo,
-) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff4D9E8A),
-                width: 2,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
-              child: Text(
-                day,
-                style: const TextStyle(
-                  fontFamily: "Ownglyph okticon",
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff1a1a1a),
-                  height: 16 / 12,
-                ),
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned(
-                    top: -1,
-                    child: Container(
-                      width: 2,
-                      height: 218,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffEEEEEE),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      isTwo
-                          ? Column(
-                              children: [
-                                const SizedBox(height: 17.5),
-                                BlueCircle(),
-                                const SizedBox(height: 9.5),
-                                NumCircle(num),
-                                const SizedBox(height: 13),
-                                ArrowCustomPaint(distance1),
-                                const SizedBox(height: 13),
-                                NumCircle(num + 1),
-                                const SizedBox(height: 13),
-                                ArrowCustomPaint(distance2),
-                              ],
-                            )
-                          : Column(
-                              children: [
-                                const SizedBox(height: 17.5),
-                                BlueCircle(),
-                                const SizedBox(height: 9.5),
-                                NumCircle(num),
-                                const SizedBox(height: 13),
-                                ArrowCustomPaint(distance1),
-                                const SizedBox(height: 13),
-                                NumCircle(num + 1),
-                                const SizedBox(height: 13),
-                                ArrowCustomPaint(distance2),
-                                const SizedBox(height: 13),
-                                NumCircle(num + 2),
-                              ],
-                            )
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+  Widget buildDayShow(String day) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: const Color(0xff4D9E8A),
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(5),
       ),
-    ],
-  );
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
+        child: Text(
+          day,
+          style: const TextStyle(
+            fontFamily: "Ownglyph okticon",
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+            color: Color(0xff1a1a1a),
+            height: 16 / 12,
+          ),
+        ),
+      ),
+    );
+  }
 }
