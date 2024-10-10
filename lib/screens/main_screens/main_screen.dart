@@ -14,22 +14,22 @@ class _MainScreenState extends State<MainScreen> {
     {
       "title": "오다이바",
       "description": "바다와 어우러진 야경이 아름다운 필수 관광지!",
-      "image": "assets/images/odiba.png" // 이미지 경로는 프로젝트 내에 맞게 설정
+      "image": "assets/main_screen_images/odiba.png" // 이미지 경로는 프로젝트 내에 맞게 설정
     },
     {
       "title": "아키하바라",
       "description": "게임과 재패니메이션 메니아들의 성지!",
-      "image": "assets/images/akihabara.png"
+      "image": "assets/main_screen_images/akihabara.png"
     },
     {
       "title": "디즈니랜드",
       "description": "잊지 못할 추억을 선사하는 도쿄 디즈니랜드!",
-      "image": "assets/images/disneyland.png"
+      "image": "assets/main_screen_images/disneyland.png"
     },
     {
       "title": "아사쿠사",
       "description": "일본의 전통이 담긴, 전통이 살아숨쉬는 곳!",
-      "image": "assets/images/asakusa.png"
+      "image": "assets/main_screen_images/asakusa.png"
     }
   ];
 
@@ -43,11 +43,11 @@ class _MainScreenState extends State<MainScreen> {
           Container(
             color: const Color(0xff4D9E8A),
             width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 20, bottom: 20),
+            child: const Padding(
+              padding: EdgeInsets.only(left: 20.0, top: 20, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "도쿄여행",
                     style: TextStyle(
@@ -230,8 +230,8 @@ class _MainScreenState extends State<MainScreen> {
 
                   // 여행 전 체크리스트 섹션
                   const SizedBox(height: 16), // 간격 추가
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: ChecklistSection(),
                   ),
 
@@ -262,22 +262,38 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         const SizedBox(height: 16),
                         // 시부야 항목 (이곳에서 템플릿 형식으로 추가 가능)
-                        Top3Card(
+                        const Top3Card(
                           title: "아름다운 밤의 도시 시부야!",
-                          description: "밤의 도시 시부야에는 맛난 먹거리들과 신나게\n즐길 놀거리가 가득하답니다~",
+                          description:
+                              "밤의 도시 시부야에는 맛난 먹거리들과 신나게\n즐길 놀거리가 가득하답니다~",
                           location: "시부야 / 도쿄 /",
                           rating: 5, // 별 5개
-                          tags: ["#많이 찾는 장소", "#도쿄 시부야", "#이쁜 사진 맛집", "#시부야 숨겨진 명소", "#여행스타그램"],
-                          image: 'assets/images/shibuya.png', // 이미지 경로 예시
+                          tags: [
+                            "#많이 찾는 장소",
+                            "#도쿄 시부야",
+                            "#이쁜 사진 맛집",
+                            "#시부야 숨겨진 명소",
+                            "#여행스타그램"
+                          ],
+                          image:
+                              'assets/main_screen_images/shibuya.png', // 이미지 경로 예시
                         ),
                         const SizedBox(height: 16),
-                        Top3Card(
+                        const Top3Card(
                           title: "노을지는 도쿄 타워의 야경!",
-                          description: "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
+                          description:
+                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
                           location: "미나토구 / 도쿄 /",
                           rating: 5, // 별 5개
-                          tags: ["#많이 찾는 장소", "#도쿄", "#뷰맛집", "#숨겨진 명소", "#여행스타그램"],
-                          image: 'assets/images/tokyotower.png', // 이미지 경로 예시
+                          tags: [
+                            "#많이 찾는 장소",
+                            "#도쿄",
+                            "#뷰맛집",
+                            "#숨겨진 명소",
+                            "#여행스타그램"
+                          ],
+                          image:
+                              'assets/main_screen_images/tokyotower.png', // 이미지 경로 예시
                         ),
                         const SizedBox(height: 16),
                         // 더 추가 가능: Top3Card 추가 가능
@@ -304,14 +320,14 @@ class Top3Card extends StatelessWidget {
   final String image;
 
   const Top3Card({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.location,
     required this.rating,
     required this.tags,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -324,8 +340,9 @@ class Top3Card extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 상단 이미지
-          Image.asset(image, fit: BoxFit.cover, height: 250, width: double.infinity), 
-          
+          Image.asset(image,
+              fit: BoxFit.cover, height: 250, width: double.infinity),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -342,7 +359,7 @@ class Top3Card extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                
+
                 // 설명
                 Text(
                   description,
@@ -354,7 +371,7 @@ class Top3Card extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                
+
                 // 위치 정보 및 별점
                 Row(
                   children: [
@@ -371,16 +388,18 @@ class Top3Card extends StatelessWidget {
                     // 별 아이콘
                     Row(
                       children: List.generate(rating, (index) {
-                        return const Icon(Icons.star, color: Colors.amber, size: 20); // 별 아이콘 크기 증가
+                        return const Icon(Icons.star,
+                            color: Colors.amber, size: 20); // 별 아이콘 크기 증가
                       }),
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
-                
+
                 // 해시태그 (하나의 큰 박스로 포함)
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 12.0),
                   decoration: BoxDecoration(
                     color: const Color(0xFF557C6F), // 해시태그 박스 배경색
                     borderRadius: BorderRadius.circular(12),
@@ -404,8 +423,6 @@ class Top3Card extends StatelessWidget {
   }
 }
 
-
-
 // 장소 박스 위젯
 class PlaceBox extends StatelessWidget {
   final String title;
@@ -413,11 +430,11 @@ class PlaceBox extends StatelessWidget {
   final String image;
 
   const PlaceBox({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -477,16 +494,16 @@ class InfoTemplate extends StatelessWidget {
   final List<String> details;
 
   const InfoTemplate({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.details,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 17, left: 13, bottom: 11, right: 12),
       decoration: BoxDecoration(
         color: const Color(0xFF71B1A1),
         borderRadius: BorderRadius.circular(12),
@@ -527,9 +544,9 @@ class InfoTemplate extends StatelessWidget {
             onTap: () {
               // 자세히 버튼 기능 추가 예정
             },
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.end, // 오른쪽 정렬
-              children: const [
+              children: [
                 Text(
                   "자세히",
                   style: TextStyle(
@@ -540,7 +557,8 @@ class InfoTemplate extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 4),
-                Icon(Icons.arrow_forward, color: Color(0xFFDBECE8)), // 아이콘 색상 변경
+                Icon(Icons.arrow_forward,
+                    color: Color(0xFFDBECE8)), // 아이콘 색상 변경
               ],
             ),
           ),
@@ -550,11 +568,10 @@ class InfoTemplate extends StatelessWidget {
   }
 }
 
-
 // 여행 전 체크리스트 위젯
 
 class ChecklistSection extends StatefulWidget {
-  const ChecklistSection({Key? key}) : super(key: key);
+  const ChecklistSection({super.key});
 
   @override
   _ChecklistSectionState createState() => _ChecklistSectionState();
@@ -580,145 +597,160 @@ class _ChecklistSectionState extends State<ChecklistSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: const Color(0xFF71B1A1),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.check_box, color: Colors.white),
-              const SizedBox(width: 8),
-              const Text(
-                '여행 전 체크리스트',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Ownglyph okticon',
+      child: Padding(
+        padding: const EdgeInsets.only(top: 17, left: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Row(
+              children: [
+                Icon(
+                  Icons.check_box,
                   color: Colors.white,
+                  size: 20,
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-
-          // 체크리스트 아이템들 (세로로 나열, 컬럼 구조)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // 첫 번째 열
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: checklistItems.keys
-                      .take(checklistItems.length ~/ 2)
-                      .map((String key) {
-                    return Row(
-                      children: [
-                        Checkbox(
-                          value: checklistItems[key],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              checklistItems[key] = value ?? false;
-                            });
-                          },
-                          activeColor: Colors.white,
-                          checkColor: const Color(0xFF71B1A1), // 체크 표시 색상
-                          side: const BorderSide(
-                            color: Color(0xFFDBECE8), // 보더 색상
-                          ),
-                        ),
-                        Text(
-                          key,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Ownglyph okticon',
-                            color: Color(0xFFDBECE8), // 글자 색상 변경
-                          ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ),
-              const SizedBox(width: 20), // 열 간격
-              // 두 번째 열
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: checklistItems.keys
-                      .skip(checklistItems.length ~/ 2)
-                      .map((String key) {
-                    return Row(
-                      children: [
-                        Checkbox(
-                          value: checklistItems[key],
-                          onChanged: (bool? value) {
-                            setState(() {
-                              checklistItems[key] = value ?? false;
-                            });
-                          },
-                          activeColor: Colors.white,
-                          checkColor: const Color(0xFF71B1A1), // 체크 표시 색상
-                          side: const BorderSide(
-                            color: Color(0xFFDBECE8), // 보더 색상
-                          ),
-                        ),
-                        Text(
-                          key,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Ownglyph okticon',
-                            color: Color(0xFFDBECE8), // 글자 색상 변경
-                          ),
-                        ),
-                      ],
-                    );
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16), // 간격을 추가하여 여백 확보
-
-          // 자세히 버튼
-          GestureDetector(
-            onTap: () {
-              // 자세히 기능 추가 예정
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end, // 오른쪽 정렬
-              children: const [
+                SizedBox(width: 10),
                 Text(
-                  "자세히",
+                  '여행 전 체크리스트',
                   style: TextStyle(
-                    color: Color(0xFFDBECE8), // 글자 색상 변경
-                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                     fontFamily: 'Ownglyph okticon',
-                    fontSize: 14,
+                    color: Colors.white,
                   ),
                 ),
-                SizedBox(width: 4),
-                Icon(Icons.arrow_forward, color: Color(0xFFDBECE8)), // 아이콘 색상 변경
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+
+            // 체크리스트 아이템들 (세로로 나열, 컬럼 구조)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // 첫 번째 열
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: checklistItems.keys
+                        .take(checklistItems.length ~/ 2)
+                        .map((String key) {
+                      return Row(
+                        children: [
+                          SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: Checkbox(
+                              value: checklistItems[key],
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  checklistItems[key] = value ?? false;
+                                });
+                              },
+                              activeColor: Colors.white,
+                              checkColor: const Color(0xFF71B1A1), // 체크 표시 색상
+                              side: const BorderSide(
+                                color: Color(0xFFDBECE8), // 보더 색상
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            key,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Ownglyph okticon',
+                              color: Color(0xFFDBECE8), // 글자 색상 변경
+                            ),
+                          ),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ),
+                const SizedBox(width: 20), // 열 간격
+                // 두 번째 열
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: checklistItems.keys
+                        .skip(checklistItems.length ~/ 2)
+                        .map((String key) {
+                      return Row(
+                        children: [
+                          SizedBox(
+                            width: 16,
+                            height: 26,
+                            child: Checkbox(
+                              value: checklistItems[key],
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  checklistItems[key] = value ?? false;
+                                });
+                              },
+                              activeColor: Colors.white,
+                              checkColor: const Color(0xFF71B1A1), // 체크 표시 색상
+                              side: const BorderSide(
+                                color: Color(0xFFDBECE8), // 보더 색상
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            key,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Ownglyph okticon',
+                              color: Color(0xFFDBECE8), // 글자 색상 변경
+                            ),
+                          ),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16), // 간격을 추가하여 여백 확보
+
+            // 자세히 버튼
+            GestureDetector(
+              onTap: () {
+                // 자세히 기능 추가 예정
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.end, // 오른쪽 정렬
+                children: [
+                  Text(
+                    "자세히",
+                    style: TextStyle(
+                      color: Color(0xFFDBECE8), // 글자 색상 변경
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Ownglyph okticon',
+                      fontSize: 14,
+                    ),
+                  ),
+                  SizedBox(width: 4),
+                  Icon(Icons.arrow_forward,
+                      color: Color(0xFFDBECE8)), // 아이콘 색상 변경
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-
-
 // 긴급 연락처 위젯 (이전 코드에서 유지)
 class EmergencyContacts extends StatelessWidget {
-  const EmergencyContacts({Key? key}) : super(key: key);
+  const EmergencyContacts({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -730,9 +762,9 @@ class EmergencyContacts extends StatelessWidget {
           Container(
             width: double.infinity, // 화면 너비에 맞게 설정, 고정된 여백 유지
             padding: const EdgeInsets.all(20.0), // 내부 패딩 설정
-            decoration: BoxDecoration(
-              color: const Color(0xFF4D9E8A), // 비상연락망 배경 색상
-              borderRadius: const BorderRadius.only(
+            decoration: const BoxDecoration(
+              color: Color(0xFF4D9E8A), // 비상연락망 배경 색상
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
               ), // 위쪽 둥근 테두리만 설정
@@ -744,7 +776,8 @@ class EmergencyContacts extends StatelessWidget {
                   children: [
                     // SOS + 긴급연락망
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0), // 크기 조정
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 12.0), // 크기 조정
                       decoration: BoxDecoration(
                         color: const Color(0xFFFF5F5F), // SOS 빨간 배경색
                         borderRadius: BorderRadius.circular(25),
@@ -787,7 +820,8 @@ class EmergencyContacts extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 5),
-                          const Icon(Icons.arrow_forward, color: Color(0xFFDBECE8)), // 화살표
+                          const Icon(Icons.arrow_forward,
+                              color: Color(0xFFDBECE8)), // 화살표
                           const SizedBox(width: 5),
                           SvgPicture.asset(
                             'assets/icons/kakao.svg', // 카카오톡 아이콘 경로 설정
@@ -901,9 +935,9 @@ class EmergencyContacts extends StatelessWidget {
                   bottomRight: Radius.circular(20),
                 ), // 아래쪽 둥근 테두리만 설정
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     "더보기",
                     style: TextStyle(
