@@ -263,10 +263,10 @@ class _MainScreenState extends State<MainScreen> {
                         const SizedBox(height: 16),
                         // 시부야 항목 (이곳에서 템플릿 형식으로 추가 가능)
                         const Top3Card(
-                          title: "아름다운 밤의 도시 시부야!",
+                          title: "다양한 애니메이션 관련 제품을\n만날 수 있는 아키하바라!",
                           description:
-                              "밤의 도시 시부야에는 맛난 먹거리들과 신나게\n즐길 놀거리가 가득하답니다~",
-                          location: "시부야 / 도쿄 /",
+                              "우리 학생들이 눈 돌아갈 만한 요소가 많이 있습니다\n주머니를 많이 털리지 않을까 걱정도 되는 장소입니다~",
+                          location: "아키하바라 / 도쿄 /",
                           rating: 5, // 별 5개
                           tags: [
                             "#많이 찾는 장소",
@@ -276,15 +276,15 @@ class _MainScreenState extends State<MainScreen> {
                             "#여행스타그램"
                           ],
                           image:
-                              'assets/main_screen_images/shibuya.png', // 이미지 경로 예시
+                              'assets/main_screen_images/akihabara.png', // 이미지 경로 예시
                         ),
                         const SizedBox(height: 16),
                         const Top3Card(
-                          title: "노을지는 도쿄 타워의 야경!",
+                          title: "월트 디즈니가 창조한\n동화 속 세상 디즈니랜드!",
                           description:
                               "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
-                          location: "미나토구 / 도쿄 /",
-                          rating: 5, // 별 5개
+                          location: "디즈니랜드 / 도쿄 /",
+                          rating: 4, // 별 5개
                           tags: [
                             "#많이 찾는 장소",
                             "#도쿄",
@@ -293,9 +293,25 @@ class _MainScreenState extends State<MainScreen> {
                             "#여행스타그램"
                           ],
                           image:
-                              'assets/main_screen_images/tokyotower.png', // 이미지 경로 예시
+                              'assets/main_screen_images/disneyland.png', // 이미지 경로 예시
                         ),
                         const SizedBox(height: 16),
+                        const Top3Card(
+                          title: "일본 전통 문화가 살아 숨쉬는\n아사쿠사 센소시!",
+                          description:
+                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
+                          location: "아사쿠사 센소시 / 도쿄 /",
+                          rating: 4, // 별 5개
+                          tags: [
+                            "#많이 찾는 장소",
+                            "#도쿄",
+                            "#뷰맛집",
+                            "#숨겨진 명소",
+                            "#여행스타그램"
+                          ],
+                          image:
+                              'assets/main_screen_images/asakusa.png', // 이미지 경로 예시
+                        ),
                         // 더 추가 가능: Top3Card 추가 가능
                       ],
                     ),
@@ -642,7 +658,7 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                         children: [
                           SizedBox(
                             width: 16,
-                            height: 16,
+                            height: 26,
                             child: Checkbox(
                               value: checklistItems[key],
                               onChanged: (bool? value) {
