@@ -86,6 +86,32 @@ class PlaceScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Map Placeholder
+            Positioned(
+              left: 0,
+              top: 220,
+              right: 0,
+              bottom: 0, // 카드가 올라갈 수 있는 공간을 확보
+              child: Container(
+                alignment: Alignment.center,
+                color: Colors.grey[300], // 지도 자리 표시
+                child: const Text('Map'), // 지도가 위치할 자리
+              ),
+            ),
+            // Horizontally scrollable detailed info cards
+            Positioned(
+              left: 0,
+              bottom: 0,
+              right: 0,
+              height: 100, // 상세 정보 카드 높이 설정
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5, // 예제 데이터 개수
+                itemBuilder: (context, index) {
+                  return _buildDetailCard();
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -95,7 +121,7 @@ class PlaceScreen extends StatelessWidget {
   // Helper function to build category buttons
   Widget _buildCategoryButton(String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14), // 패딩 조정으로 텍스트와 박스의 크기 맞춤
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -108,11 +134,48 @@ class PlaceScreen extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.black,
-            fontSize: 13, // 텍스트 크기 증가
+            fontSize: 13,
             fontWeight: FontWeight.w400,
             fontFamily: 'Ownglyph okticon',
           ),
         ),
+      ),
+    );
+  }
+
+  // Helper function to build detail cards
+  Widget _buildDetailCard() {
+    return Container(
+      width: 200, // 카드 너비 설정
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Color(0xFF4D9E8A), width: 2),
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: Image.network(
+              "https://via.placeholder.com/200x50",
+              fit: BoxFit.cover,
+            ),
+          ),
+          Text(
+            'Place Name',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'Short description',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+            ),
+          ),
+        ],
       ),
     );
   }
