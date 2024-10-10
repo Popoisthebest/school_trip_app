@@ -37,7 +37,7 @@ class _ClassDropDownMenuState extends State<ClassDropDownMenu> {
   void _createOverlay() {
     _overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
-        width: 54,
+        width: 74,
         child: CompositedTransformFollower(
           link: _layerLink,
           showWhenUnlinked: false,
@@ -88,18 +88,19 @@ class _ClassDropDownMenuState extends State<ClassDropDownMenu> {
       },
       child: Padding(
         padding: value == "1반"
-            ? const EdgeInsets.only(top: 5, left: 10)
+            ? const EdgeInsets.only(top: 7.5, left: 13)
             : value == "10반"
-                ? const EdgeInsets.only(bottom: 5, left: 10, top: 5)
-                : const EdgeInsets.only(top: 5, left: 10),
+                ? const EdgeInsets.only(bottom: 7.5, left: 13, top: 7)
+                : const EdgeInsets.only(top: 7, left: 13),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               value,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Color(0xFF1A1A1A),
-                fontSize: 12,
+                fontSize: 18,
                 fontFamily: 'Ownglyph okticon',
                 fontWeight: FontWeight.w400,
                 height: 0,
@@ -139,21 +140,20 @@ class _ClassDropDownMenuState extends State<ClassDropDownMenu> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 3, 0, 1),
-                    child: Text(
-                      _selectedValue,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Color(0xFF1A1A1A),
-                        fontSize: 12,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w400,
-                        height: 0,
-                      ),
-                    ),
-                  ),
+                      padding: const EdgeInsets.fromLTRB(8, 3, 0, 1),
+                      child: Text(
+                        _selectedValue,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Color(0xFF1A1A1A),
+                          fontSize: 18,
+                          fontFamily: 'Ownglyph okticon',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
+                      )),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 3, 5, 3),
+                    padding: const EdgeInsets.fromLTRB(7, 3, 5, 3),
                     child: SvgPicture.asset(
                         'assets/trip_schdule_icons/arrow_drop_down.svg'),
                   ),

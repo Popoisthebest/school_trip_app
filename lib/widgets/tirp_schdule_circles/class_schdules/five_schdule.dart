@@ -13,7 +13,9 @@ class FiveTripSchdule extends StatelessWidget {
         title: '인천국제공항',
         description: '세계적 공항 · 첨단 시설 · 쇼핑 명소',
         distance: '1250km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () {
+          print('clicked');
+        },
       ),
       ScheduleItem(
         title: '나리타국제공항',

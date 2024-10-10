@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_drop_down_menu.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_circles/custom_paint.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_circles/day_show.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_circles/num_circle.dart';
@@ -66,7 +65,9 @@ Widget TripScheduleList(
                         child: SchduleCard(
                           schedule.title,
                           schedule.description,
-                          schedule.onTap,
+                          onTap: () {
+                            schedule.onTap();
+                          },
                         ),
                       ),
                     ],

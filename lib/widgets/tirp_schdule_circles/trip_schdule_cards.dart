@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget SchduleCard(String title, String discription, Function onTap) {
+Widget SchduleCard(String title, String description,
+    {required Function() onTap}) {
   return GestureDetector(
-    onTap: () {
-      onTap;
-    },
+    onTap: onTap, // 카드 클릭 시 호출될 함수
     child: Container(
       height: 60,
       decoration: ShapeDecoration(
@@ -37,7 +36,7 @@ Widget SchduleCard(String title, String discription, Function onTap) {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  discription,
+                  description,
                   style: const TextStyle(
                     color: Color(0xBF1A1A1A),
                     fontSize: 12,
