@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/blue_circle.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/class_drop_down_menu.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/custom_paint.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/num_circle.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/trip_schdule_cards.dart';
 
 class TripSchduleScreen extends StatefulWidget {
   const TripSchduleScreen({super.key});
@@ -13,6 +18,9 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
   ScrollController _scrollController =
       ScrollController(); // ScrollController 추가
   double _maxSheetSize = 0.8; // DraggableScrollableSheet의 최대 크기
+
+  final ClassDropDownMenu classDropDownMenu =
+      const ClassDropDownMenu(); // ClassDropDownMenu 생성자 생성
 
   final List<LatLng> _locations = [
     const LatLng(34.6937249, 135.5022535), // 오사카
@@ -167,40 +175,48 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
                       SliverList(
                         delegate: SliverChildListDelegate(
                           [
-                            buildDaySection(context, "Day 1"),
-                            buildPlaceCard(
-                                context,
-                                "아키하바라 전자거리",
-                                "관광 명소 · 전자상가 · 만화 · 애니메이션",
-                                "15.6km",
-                                _locations[1]),
-                            buildPlaceCard(
-                                context,
-                                "도쿄 타워",
-                                "전망대 · 랜드마크 · 사진 · 도쿄 야경",
-                                "6.1km",
-                                _locations[2]),
-                            buildPlaceCard(
-                                context,
-                                "디즈니랜드",
-                                "놀이공원 · 어트랙션 · 디즈니 · 유아체험존",
-                                "19.8km",
-                                _locations[3]),
-                            buildDaySection(context, "Day 2"),
-                            buildPlaceCard(context, "아사쿠사 신사",
-                                "전통 건축물 · 유서 깊은 랜드마크", "15km", _locations[4]),
-                            buildPlaceCard(context, "도쿄 스카이트리",
-                                "전망대 · 랜드마크 · 도쿄 야경", "18km", _locations[5]),
-                            buildPlaceCard(context, "시부야 스크램블",
-                                "인기 관광지 · 쇼핑몰 · 상점가", "12km", _locations[6]),
-                            buildDaySection(context, "Day 3"),
-                            buildPlaceCard(context, "우에노 공원", "문화 명소 · 공원 · 역사",
-                                "4.5km", _locations[7]),
-                            buildPlaceCard(context, "롯폰기 힐즈", "랜드마크 · 고급 상점가",
-                                "25.2km", _locations[8]),
-                            buildDaySection(context, "Day 4"),
-                            buildPlaceCard(context, "하네다 국제공항", "국제 공항 · 면세점",
-                                "18.7km", _locations[9]),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 22),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  buildDaySection(
+                                    context,
+                                    1,
+                                    "Day 1",
+                                    "6.4km",
+                                    "15.0km",
+                                    false,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      buildClassDroDownMenu(
+                                        true,
+                                      ),
+                                      const SizedBox(
+                                        height: 21,
+                                      ),
+                                      buildCardSection(
+                                        "아",
+                                        "으",
+                                        "이",
+                                        "1",
+                                        "2",
+                                        "3",
+                                        () {},
+                                        () {},
+                                        () {},
+                                        false,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -214,97 +230,59 @@ class _TripSchduleScreenState extends State<TripSchduleScreen> {
       ),
     );
   }
+}
 
-  // 장소 카드 - 각 장소의 좌표를 받아서 누르면 해당 좌표로 지도를 이동하면서 줌 조정 및 시트 최대 크기 조정
-  Widget buildPlaceCard(BuildContext context, String title, String description,
-      String distance, LatLng location) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: InkWell(
-        onTap: () {
-          _moveCameraAndMinimizeSheet(location, 14.0); // 줌과 함께 이동 및 시트 최대 크기 조정
-        },
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+//
+Widget buildCardSection(
+  String title1,
+  String title2,
+  String title3,
+  String discription1,
+  String discription2,
+  String discription3,
+  Function onTap1,
+  Function onTap2,
+  Function onTap3,
+  bool isTwo,
+) {
+  return isTwo
+      ? Column(
           children: [
-            Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Color(0xffEEEEEE),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: const BorderSide(color: Colors.green),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(description),
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(distance),
-                          const Icon(Icons.directions_walk),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            SchduleCard(title1, discription1, onTap1),
+            SchduleCard(title2, discription2, onTap2),
           ],
-        ),
-      ),
-    );
-  }
+        )
+      : Column(
+          children: [
+            SchduleCard(title1, discription1, onTap1),
+            SchduleCard(title2, discription2, onTap2),
+            SchduleCard(title3, discription3, onTap3),
+          ],
+        );
+}
+
+Widget buildClassDroDownMenu(
+  bool isClassSelection,
+) {
+  return isClassSelection ? const ClassDropDownMenu() : Container();
 }
 
 // Day 구분 섹션
-Widget buildDaySection(BuildContext context, String day) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-    child: Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: const Color(0xff4D9E8A),
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
-            child: Text(
-              day,
-              style: const TextStyle(
-                fontFamily: "Ownglyph okticon",
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: Color(0xff1a1a1a),
-                height: 16 / 12,
-              ),
-            ),
-          ),
-        ),
-        const Spacer(),
-        Container(
+Widget buildDaySection(
+  BuildContext context,
+  int num,
+  String day,
+  String distance1,
+  String distance2,
+  bool isTwo,
+) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
             decoration: BoxDecoration(
               border: Border.all(
                 color: const Color(0xff4D9E8A),
@@ -312,21 +290,77 @@ Widget buildDaySection(BuildContext context, String day) {
               ),
               borderRadius: BorderRadius.circular(5),
             ),
-            child: const Padding(
-              padding: EdgeInsets.fromLTRB(6, 2, 6, 2),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(6, 2, 6, 2),
               child: Text(
-                '1반',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF1A1A1A),
+                day,
+                style: const TextStyle(
+                  fontFamily: "Ownglyph okticon",
                   fontSize: 12,
-                  fontFamily: 'Ownglyph okticon',
                   fontWeight: FontWeight.w400,
-                  height: 0,
+                  color: Color(0xff1a1a1a),
+                  height: 16 / 12,
                 ),
               ),
-            )),
-      ],
-    ),
+            ),
+          ),
+          Row(
+            children: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    top: -1,
+                    child: Container(
+                      width: 2,
+                      height: 218,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffEEEEEE),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      isTwo
+                          ? Column(
+                              children: [
+                                const SizedBox(height: 17.5),
+                                BlueCircle(),
+                                const SizedBox(height: 9.5),
+                                NumCircle(num),
+                                const SizedBox(height: 13),
+                                ArrowCustomPaint(distance1),
+                                const SizedBox(height: 13),
+                                NumCircle(num + 1),
+                                const SizedBox(height: 13),
+                                ArrowCustomPaint(distance2),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                const SizedBox(height: 17.5),
+                                BlueCircle(),
+                                const SizedBox(height: 9.5),
+                                NumCircle(num),
+                                const SizedBox(height: 13),
+                                ArrowCustomPaint(distance1),
+                                const SizedBox(height: 13),
+                                NumCircle(num + 1),
+                                const SizedBox(height: 13),
+                                ArrowCustomPaint(distance2),
+                                const SizedBox(height: 13),
+                                NumCircle(num + 2),
+                              ],
+                            )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
   );
 }
