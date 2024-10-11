@@ -6,6 +6,7 @@ import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/four
 import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/one_three_nine_schdule.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/seven_eight_schdule.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/two_and_ten_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_circles/map_lines/trip_schdule_route.dart';
 
 class NewTripSchdulScreen extends StatefulWidget {
   const NewTripSchdulScreen({super.key});
@@ -19,32 +20,55 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
   ScrollController _scrollController = ScrollController();
 
   String _selectedClass = '1반';
+  List<LatLng> _locations = [];
+  List<String> _locationNames = [];
+  Set<Polyline> _polylines = {};
 
-  final List<LatLng> _locations = [
-    const LatLng(34.6937249, 135.5022535),
-    const LatLng(35.6996473, 139.7713703),
-    const LatLng(35.6585805, 139.7454329),
-    const LatLng(35.6328964, 139.8803949),
-    const LatLng(35.7147654, 139.7966556),
-    const LatLng(35.7100627, 139.8107004),
-    const LatLng(35.6594945, 139.7005536),
-    const LatLng(35.7122857, 139.7741098),
-    const LatLng(35.6605, 139.7292),
-    const LatLng(35.5494, 139.7798),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _updateLocationsAndPolylines(_selectedClass);
+  }
 
-  final List<String> _locationNames = [
-    "오사카",
-    "아키하바라",
-    "도쿄 타워",
-    "디즈니랜드",
-    "아사쿠사 신사",
-    "도쿄 스카이트리",
-    "시부야 스크램블",
-    "우에노 공원",
-    "롯폰기 힐즈",
-    "하네다 국제공항",
-  ];
+  void _updateLocationsAndPolylines(String selectedClass) {
+    setState(() {
+      _locations = TripScheduleRoutes.getRouteForClass(selectedClass);
+      _locationNames =
+          TripScheduleRoutes.getLocationNamesForClass(selectedClass);
+      _setPolylines(_locations);
+    });
+  }
+
+  void _setPolylines(List<LatLng> location) {
+    setState(() {
+      _polylines = {
+        Polyline(
+          polylineId: const PolylineId('route'),
+          points: location,
+          color: Colors.blue,
+          width: 5,
+        )
+      };
+    });
+  }
+
+  void _onClassSelected(String selectedClass) {
+    _selectedClass = selectedClass;
+    _updateLocationsAndPolylines(selectedClass); // 반 선택 시 경로 업데이트
+  }
+
+  // final List<LatLng> _locations = [
+  //   const LatLng(34.6937249, 135.5022535),
+  //   const LatLng(35.6996473, 139.7713703),
+  //   const LatLng(35.6585805, 139.7454329),
+  //   const LatLng(35.6328964, 139.8803949),
+  //   const LatLng(35.7147654, 139.7966556),
+  //   const LatLng(35.7100627, 139.8107004),
+  //   const LatLng(35.6594945, 139.7005536),
+  //   const LatLng(35.7122857, 139.7741098),
+  //   const LatLng(35.6605, 139.7292),
+  //   const LatLng(35.5494, 139.7798),
+  // ];
 
   final LatLng _initialPosition = const LatLng(35.6996473, 139.7713703);
 
@@ -67,32 +91,11 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
     _mapController = controller;
   }
 
-  // 선택된 반에 따라 적절한 스케줄 위젯을 반환하는 함수
-  Widget _getScheduleWidget() {
-    switch (_selectedClass) {
-      case '2반':
-      case '10반':
-        return TwoAndTenSchdule(onClassSelected: _updateSelectedClass);
-      case '1반':
-      case '3반':
-      case '9반':
-        return OneThreeNineSchdule(onClassSelected: _updateSelectedClass);
-      case '7반':
-      case '8반':
-        return SevenEightSchdule(onClassSelected: _updateSelectedClass);
-      case '4반':
-      case '6반':
-        return FourSixSchdule(onClassSelected: _updateSelectedClass);
-      default:
-        return FiveTripSchdule(onClassSelected: _updateSelectedClass);
-    }
-  }
-
-  void _updateSelectedClass(String selectedClass) {
-    setState(() {
-      _selectedClass = selectedClass; // 선택된 반 업데이트
-    });
-  }
+  // void _updateSelectedClass(String selectedClass) {
+  //   setState(() {
+  //     _selectedClass = selectedClass; // 선택된 반 업데이트
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +140,11 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
               target: _initialPosition,
               zoom: 11.0,
             ),
+            onMapCreated: (controller) {
+              _mapController = controller;
+            },
             markers: _createMarkers(),
+            polylines: _polylines,
           ),
           DraggableScrollableSheet(
             initialChildSize: 0.05,
@@ -177,7 +184,7 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
                                 Positioned(
                                   right: 0,
                                   child: ClassDropDownMenu(
-                                    onClassSelected: _updateSelectedClass,
+                                    onClassSelected: _onClassSelected,
                                   ),
                                 ),
                                 _getScheduleWidget()
@@ -195,5 +202,26 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
         ],
       ),
     );
+  }
+
+  // 선택된 반에 따라 적절한 스케줄 위젯을 반환하는 함수
+  Widget _getScheduleWidget() {
+    switch (_selectedClass) {
+      case '2반':
+      case '10반':
+        return TwoAndTenSchdule(onClassSelected: _onClassSelected);
+      case '1반':
+      case '3반':
+      case '9반':
+        return OneThreeNineSchdule(onClassSelected: _onClassSelected);
+      case '7반':
+      case '8반':
+        return SevenEightSchdule(onClassSelected: _onClassSelected);
+      case '4반':
+      case '6반':
+        return FourSixSchdule(onClassSelected: _onClassSelected);
+      default:
+        return FiveTripSchdule(onClassSelected: _onClassSelected);
+    }
   }
 }
