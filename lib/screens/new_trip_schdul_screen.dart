@@ -34,11 +34,12 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
       _locations = TripScheduleRoutes.getRouteForClass(selectedClass);
       _locationNames =
           TripScheduleRoutes.getLocationNamesForClass(selectedClass);
+      _selectedClass = selectedClass;
     });
   }
 
   void _onClassSelected(String selectedClass) {
-    _selectedClass = selectedClass;
+    _updateLocations(selectedClass);
   }
 
   final LatLng _initialPosition = const LatLng(35.6996473, 139.7713703);
@@ -74,8 +75,9 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xff4D9E8A),
         flexibleSpace: const Padding(
-          padding: EdgeInsets.only(left: 59.0, top: 5),
+          padding: EdgeInsets.only(left: 29.0, bottom: 10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
