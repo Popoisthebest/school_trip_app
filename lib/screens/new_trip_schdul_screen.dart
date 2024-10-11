@@ -159,7 +159,7 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
                                     onClassSelected: _onClassSelected,
                                   ),
                                 ),
-                                _getScheduleWidget()
+                                _getScheduleWidget(),
                               ],
                             ), // 선택된 반에 따른 스케줄 표시
                           ),

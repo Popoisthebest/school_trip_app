@@ -177,6 +177,9 @@ class TwoAndTenSchdule extends StatelessWidget {
           false, // 드롭다운 메뉴 표시 여부
           onClassSelected: onClassSelected,
         ),
+        const SizedBox(
+          height: 30,
+        ),
       ],
     );
   }

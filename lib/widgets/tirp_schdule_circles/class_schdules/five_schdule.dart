@@ -179,6 +179,9 @@ class FiveTripSchdule extends StatelessWidget {
           false,
           onClassSelected: onClassSelected,
         ),
+        const SizedBox(
+          height: 30,
+        ),
       ],
     );
   }
