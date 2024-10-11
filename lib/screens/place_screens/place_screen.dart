@@ -20,7 +20,9 @@ class PlaceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width; // 화면의 전체 너비를 계산합니다.
-    final cardWidth = screenWidth * 0.9; // 카드의 너비를 화면 너비의 90%로 설정합니다.
+    final screenHeight = MediaQuery.of(context).size.height; // 화면의 전체 높이를 계산합니다.
+    final cardWidth = screenWidth * 0.91; // 카드의 너비를 화면 너비의 91%로 설정합니다.
+    final cardHeight = screenHeight * 0.33; // 카드의 높이를 화면 높이의 33%로 설정합니다.
     final List<PlaceDetail> placeDetails = [
       PlaceDetail(
         name: '디즈니랜드',
@@ -29,9 +31,9 @@ class PlaceScreen extends StatelessWidget {
         navigationText: '길안내',
       ),
       PlaceDetail(
-        name: '디즈니랜드',
-        description: '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
-        rating: 5.0,
+        name: '유니버설 스튜디오',
+        description: '유니버설 스튜디오 일본은 세계적으로 유명한 테마 파크로, 역동적인 어트랙션과 엔터테인먼트가 가득합니다.',
+        rating: 4.8,
         navigationText: '길안내',
       ),
       // 추가 장소 정보를 여기에 추가할 수 있습니다.
@@ -88,7 +90,7 @@ class PlaceScreen extends StatelessWidget {
             Positioned(
               left: 10,
               top: 160,
-              right: 10,
+              right: 0,
               child: SizedBox(
                 height: 40,
                 child: ListView(
@@ -126,7 +128,7 @@ class PlaceScreen extends StatelessWidget {
               left: 0,
               bottom: 0,
               right: 0,
-              height: 180,
+              height: cardHeight,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: placeDetails.length,
