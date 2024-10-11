@@ -29,7 +29,9 @@ flutter:
   assets:
     - assets/logo/
     - assets/app_bar_icons/
-    - assets/background_imgaes/
+    - assets/app_bar_icons/travel_icons/
+    - assets/travel_background_imgaes/
+    - assets/travel_background_imgaes/store_images/
     - assets/bottom_nav_bar_icons/
     - assets/travel_screen_icons/
     - assets/store_map_images/
