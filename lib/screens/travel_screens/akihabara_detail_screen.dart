@@ -51,8 +51,8 @@ List<Map<String, dynamic>> storeList = [
   // 필요한 만큼 매장 정보를 추가할 수 있습니다.
 ];
 
-class TravelLocation extends StatelessWidget {
-  const TravelLocation({super.key});
+class AkihabaraDetailScreen extends StatelessWidget {
+  const AkihabaraDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

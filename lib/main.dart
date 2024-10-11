@@ -20,7 +20,7 @@ class _SchoolTripAppState extends State<SchoolTripApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TravelLocation(),
+        body: AkihabaraDetailScreen(),
       ),
     );
   }
