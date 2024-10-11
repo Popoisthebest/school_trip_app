@@ -420,58 +420,47 @@ class TravelLocation extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 173,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: const Color(0xff4d9e8a)),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '현지에서 물어보기',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Ownglyph okticon',
-                                      color: Color(0xff4d9e8a),
-                                    ),
-                                  ),
-                                ],
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: const Color(0xff4d9e8a)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                '현지에서 물어보기',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Ownglyph okticon',
+                                  color: Color(0xff4d9e8a),
+                                ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              width: 173,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: const Color(0xff4d9e8a),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '길찾기',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Ownglyph okticon',
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                        const SizedBox(width: 9),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff4d9e8a),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                '길찾기',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Ownglyph okticon',
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ],
+                          ),
                         )
                       ],
                     ),
