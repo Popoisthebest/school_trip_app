@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
               const CommonLayout(
-            currentIndex: 0,
+            currentIndex: 3,
           ),
           // 화면 전환 시 FadeTransition을 사용하여 부드러운 페이드 애니메이션 효과를 적용
           transitionsBuilder: (context, animation, secondaryAnimation, child) {

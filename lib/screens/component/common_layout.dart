@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
+import 'package:school_trip_app/screens/place_screens/place_screen.dart';
+import 'package:school_trip_app/screens/trip_schdule_screens/trip_schdule_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
 import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
 
@@ -106,10 +108,9 @@ class _CommonLayoutState extends State<CommonLayout> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('검색', 'search', 1),
-                    _buildBottomNavigationItems('여행일정', 'map', 2),
-                    _buildBottomNavigationItems('여행장소', 'place', 3),
-                    _buildBottomNavigationItems('여행도구', 'tool', 4),
+                    _buildBottomNavigationItems('여행일정', 'map', 1),
+                    _buildBottomNavigationItems('여행장소', 'place', 2),
+                    _buildBottomNavigationItems('여행도구', 'tool', 3),
                   ],
                 ),
               ),
@@ -175,7 +176,7 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   // AppBar를 특정 페이지에서만 적용
   PreferredSizeWidget? _buildAppBar() {
-    if (_selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 4) {
+    if (_selectedIndex == 0 || _selectedIndex == 1) {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),
