@@ -13,22 +13,22 @@ class _MainScreenState extends State<MainScreen> {
   final List<Map<String, String>> places = [
     {
       "title": "오다이바",
-      "description": "바다와 어우러진 야경이 아름다운 필수 관광지!",
+      "description": "바다와 어우러진 야경이\n아름다운 필수 관광지!",
       "image": "assets/main_screen_images/odiba.png" // 이미지 경로는 프로젝트 내에 맞게 설정
     },
     {
       "title": "아키하바라",
-      "description": "게임과 재패니메이션 메니아들의 성지!",
+      "description": "게임과 재패니메이션\n메니아들의 성지!",
       "image": "assets/main_screen_images/akihabara.png"
     },
     {
       "title": "디즈니랜드",
-      "description": "잊지 못할 추억을 선사하는 도쿄 디즈니랜드!",
+      "description": "잊지 못할 추억을 선사하는\n도쿄 디즈니랜드!",
       "image": "assets/main_screen_images/disneyland.png"
     },
     {
       "title": "아사쿠사",
-      "description": "일본의 전통이 담긴, 전통이 살아숨쉬는 곳!",
+      "description": "일본의 전통이 담긴,\n전통이 살아숨쉬는 곳!",
       "image": "assets/main_screen_images/asakusa.png"
     }
   ];
@@ -206,23 +206,23 @@ class _MainScreenState extends State<MainScreen> {
                       children: const [
                         InfoTemplate(
                           title: '긴급사항',
-                          icon: Icons.warning_amber_rounded,
-                          details: ['- 대한민국 영사관', '- 긴급연락망'],
+                          icon: 'assets/icons/warning.svg',
+                          details: ['수학여행관련 긴급사항을 확인해보세요!'],
                         ),
                         InfoTemplate(
                           title: '안전수칙',
-                          icon: Icons.security,
-                          details: ['- 호텔비상구', '- 소화기, 완강기 사용법'],
+                          icon: 'assets/icons/security.svg',
+                          details: ['수학여행관련 안전수칙을 알아보세요!'],
                         ),
                         InfoTemplate(
                           title: '유의사항',
-                          icon: Icons.info_outline,
-                          details: ['- 시간 엄수', '팀장들 연락 확인 필수'],
+                          icon: 'assets/icons/info.svg',
+                          details: ['수학여행관련 유의사항을 알아보세요!'],
                         ),
                         InfoTemplate(
                           title: '숙소',
-                          icon: Icons.hotel,
-                          details: ['- 반별 방번호', '- 룸메이트'],
+                          icon: 'assets/icons/hotel.svg',
+                          details: ['반별로 배정된 룸메이트와 비상대피로를 확인해보세요!'],
                         ),
                       ],
                     ),
@@ -488,7 +488,7 @@ class PlaceBox extends StatelessWidget {
               Text(
                 description,
                 style: const TextStyle(
-                  color:  Color.fromRGBO(255, 255, 255, 0.75),
+                  color: Color.fromRGBO(255, 255, 255, 0.75),
                   fontSize: 14, // 요청하신 대로 설정
                   fontWeight: FontWeight.w700,
                   fontFamily: "Ownglyph okticon",
@@ -505,7 +505,7 @@ class PlaceBox extends StatelessWidget {
 // 템플릿용 리스트 위젯
 class InfoTemplate extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final String icon;
   final List<String> details;
 
   const InfoTemplate({
@@ -528,12 +528,16 @@ class InfoTemplate extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(icon, color: Colors.white),
+              SvgPicture.asset(
+                icon,
+                width: 20, // 너비 설정
+                height: 20, // 높이 설정
+              ),
               const SizedBox(width: 8),
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Ownglyph okticon',
                   color: Colors.white,
@@ -547,7 +551,7 @@ class InfoTemplate extends StatelessWidget {
             Text(
               detail,
               style: const TextStyle(
-                fontSize: 14, // 다른 폰트와 동일하게 유지
+                fontSize: 12, // 다른 폰트와 동일하게 유지
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Ownglyph okticon',
                 color: Color(0xFFDBECE8), // 글자 색상 변경
@@ -568,12 +572,12 @@ class InfoTemplate extends StatelessWidget {
                     color: Color(0xFFDBECE8), // 글자 색상 변경
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Ownglyph okticon',
-                    fontSize: 14,
+                    fontSize: 12,
                   ),
                 ),
                 SizedBox(width: 4),
-                Icon(Icons.arrow_forward,
-                    color: Color(0xFFDBECE8)), // 아이콘 색상 변경
+                Icon(Icons.arrow_forward_ios,
+                    color: Color(0xFFDBECE8),size: 16,), // 아이콘 색상 변경
               ],
             ),
           ),
@@ -770,13 +774,14 @@ class EmergencyContacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10), // 왼쪽, 오른쪽 여백 고정
+      padding: const EdgeInsets.symmetric(
+          horizontal: 10.0, vertical: 10), // 왼쪽, 오른쪽 여백 고정
       child: Column(
         children: [
           // 비상 연락망 박스
           Container(
             width: double.infinity, // 화면 너비에 맞게 설정, 고정된 여백 유지
-             // 내부 패딩 설정
+            // 내부 패딩 설정
             decoration: const BoxDecoration(
               color: Color(0xFF4D9E8A), // 비상연락망 배경 색상
               borderRadius: BorderRadius.only(
@@ -785,71 +790,73 @@ class EmergencyContacts extends StatelessWidget {
               ), // 위쪽 둥근 테두리만 설정
             ),
             child: Column(
-
               children: [
-                Padding(padding: EdgeInsets.all(12.0),
-                child: Row(
-                  
-                  children: [
-                    // SOS + 긴급연락망
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 4.0, horizontal: 8.0), // 크기 조정
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFF5F5F), // SOS 빨간 배경색
-                        borderRadius: BorderRadius.circular(25),
+                Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Row(
+                    children: [
+                      // SOS + 긴급연락망
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4.0, horizontal: 8.0), // 크기 조정
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFF5F5F), // SOS 빨간 배경색
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: const Text(
+                          "SOS",
+                          style: TextStyle(
+                            fontSize: 16, // 텍스트 크기 조정
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Ownglyph okticon',
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
-                      child: const Text(
-                        "SOS",
+                      const SizedBox(width: 8), // SOS와 긴급연락망 사이의 간격
+                      const Text(
+                        "긴급연락망",
                         style: TextStyle(
-                          fontSize: 16, // 텍스트 크기 조정
+                          fontSize: 18, // 텍스트 크기 조정
                           fontWeight: FontWeight.w700,
                           fontFamily: 'Ownglyph okticon',
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 8), // SOS와 긴급연락망 사이의 간격
-                    const Text(
-                      "긴급연락망",
-                      style: TextStyle(
-                        fontSize: 18, // 텍스트 크기 조정
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'Ownglyph okticon',
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Spacer(), // 오픈채팅방 위치를 오른쪽으로 밀기 위해 Spacer 사용
-                    // 오픈채팅방 바로가기 + 카카오톡 아이콘
-                    GestureDetector(
-                      onTap: () {
-                        // 오픈채팅방 바로가기 기능 (추후 구현)
-                      },
-                      child: Row(
-                        children: [
-                          const Text(
-                            "오픈채팅방 바로가기",
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Ownglyph okticon',
-                              color: Color(0xFFDBECE8), // 색상 변경
+                      const Spacer(), // 오픈채팅방 위치를 오른쪽으로 밀기 위해 Spacer 사용
+                      // 오픈채팅방 바로가기 + 카카오톡 아이콘
+                      GestureDetector(
+                        onTap: () {
+                          // 오픈채팅방 바로가기 기능 (추후 구현)
+                        },
+                        child: Row(
+                          children: [
+                            const Text(
+                              "오픈채팅방 바로가기",
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Ownglyph okticon',
+                                color: Color(0xFFDBECE8), // 색상 변경
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 5),
-                          const Icon(Icons.arrow_forward,
-                              color: Color(0xFFDBECE8)), // 화살표
-                          const SizedBox(width: 5),
-                          SvgPicture.asset(
-                            'assets/icons/kakao.svg', // 카카오톡 아이콘 경로 설정
-                            height: 20,
-                            width: 20,
-                          ),
-                        ],
+                            const SizedBox(width: 5),
+                            const Icon(Icons.arrow_forward,
+                                color: Color(0xFFDBECE8)), // 화살표
+                            const SizedBox(width: 5),
+                            Image.asset(
+                              'assets/main_screen_images/kakaotalk.png', // 카카오톡 아이콘 경로 설정
+                              height: 30,
+                              width: 30,
+                            ),
+                            const SizedBox(width: 17),
+
+                          ],
+                          
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                 ),
                 // 첫 번째 줄: SOS + 긴급 연락망 + 오픈채팅방 바로가기
                 const SizedBox(height: 12), // 줄 간격
@@ -858,6 +865,7 @@ class EmergencyContacts extends StatelessWidget {
                 Row(
                   children: [
                     // 오세철T
+                    const SizedBox(width: 13),
                     const Icon(Icons.phone, color: Colors.white),
                     const SizedBox(width: 10),
                     const Text(
@@ -870,12 +878,11 @@ class EmergencyContacts extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    
+
                     GestureDetector(
                       onTap: () {
                         // 오세철T에게 전화 기능 (추후 구현)
                       },
-                      
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 4.0, horizontal: 7.0),
@@ -894,13 +901,15 @@ class EmergencyContacts extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(width: 6),
                   ],
                 ),
-                const SizedBox(height: 13), // 줄 간격
+                const SizedBox(height: 7), // 줄 간격
 
                 // 문가람T 연락처
                 Row(
                   children: [
+                    const SizedBox(width: 12),
                     const Icon(Icons.phone, color: Colors.white),
                     const SizedBox(width: 10),
                     const Text(
@@ -935,8 +944,10 @@ class EmergencyContacts extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(width: 6),
                   ],
                 ),
+                const SizedBox(height: 17),
               ],
             ),
           ),
@@ -969,7 +980,7 @@ class EmergencyContacts extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 4),
-                  Icon(Icons.arrow_forward, color: Colors.white),
+                  Icon(Icons.keyboard_arrow_down, color: Colors.white),
                 ],
               ),
             ),

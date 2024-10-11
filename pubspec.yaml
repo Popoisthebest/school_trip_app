@@ -34,7 +34,7 @@ flutter:
     - assets/travel_screen_icons/
     - assets/store_map_images/
     - assets/main_screen_images/
-    - assets/icons/kakao.svg
+    - assets/icons/
 
   fonts:
     - family: CookieRunOTF
