@@ -22,53 +22,24 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
   String _selectedClass = '1반';
   List<LatLng> _locations = [];
   List<String> _locationNames = [];
-  Set<Polyline> _polylines = {};
 
   @override
   void initState() {
     super.initState();
-    _updateLocationsAndPolylines(_selectedClass);
+    _updateLocations(_selectedClass);
   }
 
-  void _updateLocationsAndPolylines(String selectedClass) {
+  void _updateLocations(String selectedClass) {
     setState(() {
       _locations = TripScheduleRoutes.getRouteForClass(selectedClass);
       _locationNames =
           TripScheduleRoutes.getLocationNamesForClass(selectedClass);
-      _setPolylines(_locations);
-    });
-  }
-
-  void _setPolylines(List<LatLng> location) {
-    setState(() {
-      _polylines = {
-        Polyline(
-          polylineId: const PolylineId('route'),
-          points: location,
-          color: Colors.blue,
-          width: 5,
-        )
-      };
     });
   }
 
   void _onClassSelected(String selectedClass) {
     _selectedClass = selectedClass;
-    _updateLocationsAndPolylines(selectedClass); // 반 선택 시 경로 업데이트
   }
-
-  // final List<LatLng> _locations = [
-  //   const LatLng(34.6937249, 135.5022535),
-  //   const LatLng(35.6996473, 139.7713703),
-  //   const LatLng(35.6585805, 139.7454329),
-  //   const LatLng(35.6328964, 139.8803949),
-  //   const LatLng(35.7147654, 139.7966556),
-  //   const LatLng(35.7100627, 139.8107004),
-  //   const LatLng(35.6594945, 139.7005536),
-  //   const LatLng(35.7122857, 139.7741098),
-  //   const LatLng(35.6605, 139.7292),
-  //   const LatLng(35.5494, 139.7798),
-  // ];
 
   final LatLng _initialPosition = const LatLng(35.6996473, 139.7713703);
 
@@ -144,7 +115,6 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
               _mapController = controller;
             },
             markers: _createMarkers(),
-            polylines: _polylines,
           ),
           DraggableScrollableSheet(
             initialChildSize: 0.05,
