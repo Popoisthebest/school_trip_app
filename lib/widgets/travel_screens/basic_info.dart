@@ -43,7 +43,7 @@ Widget BasicInfo(String location, howToGo) {
                   width: 8,
                 ),
                 SvgPicture.asset(
-                    'assets/travel_screen_icons/crosshair_icons.svg'),
+                    'assets/travel_detail_icons/crosshair_icons.svg'),
                 const SizedBox(
                   width: 10,
                 ),

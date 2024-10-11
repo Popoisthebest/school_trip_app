@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget StarAndHeart(String rate, people) {
+Widget StarAndHeart(String rate, int rateCount, String people) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 10),
     child: Container(
@@ -17,16 +17,14 @@ Widget StarAndHeart(String rate, people) {
             padding: const EdgeInsets.only(left: 22.0),
             child: Row(
               children: [
-                SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_star_icons.svg'),
-                SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_star_icons.svg'),
-                SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_star_icons.svg'),
-                SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_star_icons.svg'),
-                SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_star_icons.svg'),
+                // 별 개수를 동적으로 표시하기 위해 rateCount 매개변수를 사용합니다.
+                for (int i = 0; i < 5; i++)
+                  if (i < rateCount)
+                    SvgPicture.asset(
+                        'assets/travel_detail_icons/filled_star_icons.svg')
+                  else
+                    SvgPicture.asset(
+                        'assets/travel_detail_icons/mdi_star-outline.svg'),
                 const SizedBox(
                   width: 11.5,
                 ),
@@ -47,7 +45,7 @@ Widget StarAndHeart(String rate, people) {
             child: Row(
               children: [
                 SvgPicture.asset(
-                    'assets/travel_screen_icons/filled_heart_icons.svg'),
+                    'assets/travel_detail_icons/filled_heart_icons.svg'),
                 const SizedBox(width: 10),
                 Text(
                   people,
