@@ -107,66 +107,66 @@ class _MainScreenState extends State<MainScreen> {
               child: Column(
                 children: [
                   // 검색창
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      cursorColor: Colors.black, // 커서 색상을 검은색으로 설정
-                      decoration: InputDecoration(
-                        hintText: '검색어를 입력해주세요.',
-                        hintStyle: const TextStyle(
-                          color: Colors.black, // 힌트 텍스트 색상 설정
-                          fontFamily: 'Ownglyph okticon', // 요청하신 폰트 패밀리 유지
-                          fontSize: 16, // 폰트 크기 설정
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 12.0, horizontal: 16.0),
-                        suffixIcon: IconButton(
-                          icon: const Icon(
-                            Icons.search,
-                            color: Color(0xFF4D9E8A), // 검색 아이콘 색상 설정
-                          ),
-                          onPressed: () {
-                            // 검색 아이콘을 눌렀을 때 실행될 함수
-                          },
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24), // 둥근 테두리 설정
-                          borderSide: const BorderSide(
-                            color: Color(0xFF4D9E8A), // 테두리 색상 설정
-                            width: 2.0,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(24), // 비활성화 상태일 때 둥근 테두리
-                          borderSide: const BorderSide(
-                            color: Color(0xFF4D9E8A), // 테두리 색상 유지
-                            width: 2.0,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(24), // 포커스 상태일 때 둥근 테두리
-                          borderSide: const BorderSide(
-                            color: Color(0xFF4D9E8A), // 포커스 상태에서도 테두리 색상 유지
-                            width: 2.0,
-                          ),
-                        ),
-                        filled: true, // 배경색 채우기
-                        fillColor: Colors.white, // 배경색 설정 (누를 때 색 변경 방지)
-                        hoverColor: Colors.transparent, // hover 상태에서도 배경색 변경 방지
-                      ),
-                      style: const TextStyle(
-                        fontFamily: 'Ownglyph okticon', // 입력 텍스트의 폰트 패밀리 유지
-                        fontSize: 16,
-                        color: Colors.black, // 입력 텍스트 색상
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: TextField(
+                  //     cursorColor: Colors.black, // 커서 색상을 검은색으로 설정
+                  //     decoration: InputDecoration(
+                  //       hintText: '검색어를 입력해주세요.',
+                  //       hintStyle: const TextStyle(
+                  //         color: Colors.black, // 힌트 텍스트 색상 설정
+                  //         fontFamily: 'Ownglyph okticon', // 요청하신 폰트 패밀리 유지
+                  //         fontSize: 16, // 폰트 크기 설정
+                  //       ),
+                  //       contentPadding: const EdgeInsets.symmetric(
+                  //           vertical: 12.0, horizontal: 16.0),
+                  //       suffixIcon: IconButton(
+                  //         icon: const Icon(
+                  //           Icons.search,
+                  //           color: Color(0xFF4D9E8A), // 검색 아이콘 색상 설정
+                  //         ),
+                  //         onPressed: () {
+                  //           // 검색 아이콘을 눌렀을 때 실행될 함수
+                  //         },
+                  //       ),
+                  //       border: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(24), // 둥근 테두리 설정
+                  //         borderSide: const BorderSide(
+                  //           color: Color(0xFF4D9E8A), // 테두리 색상 설정
+                  //           width: 2.0,
+                  //         ),
+                  //       ),
+                  //       enabledBorder: OutlineInputBorder(
+                  //         borderRadius:
+                  //             BorderRadius.circular(24), // 비활성화 상태일 때 둥근 테두리
+                  //         borderSide: const BorderSide(
+                  //           color: Color(0xFF4D9E8A), // 테두리 색상 유지
+                  //           width: 2.0,
+                  //         ),
+                  //       ),
+                  //       focusedBorder: OutlineInputBorder(
+                  //         borderRadius:
+                  //             BorderRadius.circular(24), // 포커스 상태일 때 둥근 테두리
+                  //         borderSide: const BorderSide(
+                  //           color: Color(0xFF4D9E8A), // 포커스 상태에서도 테두리 색상 유지
+                  //           width: 2.0,
+                  //         ),
+                  //       ),
+                  //       filled: true, // 배경색 채우기
+                  //       fillColor: Colors.white, // 배경색 설정 (누를 때 색 변경 방지)
+                  //       hoverColor: Colors.transparent, // hover 상태에서도 배경색 변경 방지
+                  //     ),
+                  //     style: const TextStyle(
+                  //       fontFamily: 'Ownglyph okticon', // 입력 텍스트의 폰트 패밀리 유지
+                  //       fontSize: 16,
+                  //       color: Colors.black, // 입력 텍스트 색상
+                  //     ),
+                  //   ),
+                  // ),
 
                   // 네 개의 박스가 포함된 GridView
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: GridView.builder(
                       shrinkWrap: true, // SingleChildScrollView와 함께 사용 시 필수
                       physics:
@@ -174,8 +174,8 @@ class _MainScreenState extends State<MainScreen> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // 한 줄에 2개의 열
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
                         childAspectRatio: 1.0, // 박스의 비율 설정
                       ),
                       itemCount: places.length,
@@ -467,7 +467,7 @@ class PlaceBox extends StatelessWidget {
           ),
         ),
         child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.black.withOpacity(0.5),
@@ -484,12 +484,11 @@ class PlaceBox extends StatelessWidget {
                   fontFamily: "Ownglyph okticon",
                 ),
               ),
-              const SizedBox(height: 8), // 제목과 설명 사이의 간격
               // 설명 텍스트
               Text(
                 description,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color:  Color.fromRGBO(255, 255, 255, 0.75),
                   fontSize: 14, // 요청하신 대로 설정
                   fontWeight: FontWeight.w700,
                   fontFamily: "Ownglyph okticon",
@@ -771,13 +770,13 @@ class EmergencyContacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0), // 왼쪽, 오른쪽 여백 고정
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10), // 왼쪽, 오른쪽 여백 고정
       child: Column(
         children: [
           // 비상 연락망 박스
           Container(
             width: double.infinity, // 화면 너비에 맞게 설정, 고정된 여백 유지
-            padding: const EdgeInsets.all(20.0), // 내부 패딩 설정
+             // 내부 패딩 설정
             decoration: const BoxDecoration(
               color: Color(0xFF4D9E8A), // 비상연락망 배경 색상
               borderRadius: BorderRadius.only(
@@ -786,14 +785,16 @@ class EmergencyContacts extends StatelessWidget {
               ), // 위쪽 둥근 테두리만 설정
             ),
             child: Column(
+
               children: [
-                // 첫 번째 줄: SOS + 긴급 연락망 + 오픈채팅방 바로가기
-                Row(
+                Padding(padding: EdgeInsets.all(12.0),
+                child: Row(
+                  
                   children: [
                     // SOS + 긴급연락망
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 12.0), // 크기 조정
+                          vertical: 4.0, horizontal: 8.0), // 크기 조정
                       decoration: BoxDecoration(
                         color: const Color(0xFFFF5F5F), // SOS 빨간 배경색
                         borderRadius: BorderRadius.circular(25),
@@ -812,7 +813,7 @@ class EmergencyContacts extends StatelessWidget {
                     const Text(
                       "긴급연락망",
                       style: TextStyle(
-                        fontSize: 20, // 텍스트 크기 조정
+                        fontSize: 18, // 텍스트 크기 조정
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Ownglyph okticon',
                         color: Colors.white,
@@ -829,7 +830,7 @@ class EmergencyContacts extends StatelessWidget {
                           const Text(
                             "오픈채팅방 바로가기",
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               fontFamily: 'Ownglyph okticon',
                               color: Color(0xFFDBECE8), // 색상 변경
@@ -849,40 +850,44 @@ class EmergencyContacts extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16), // 줄 간격
+                ),
+                // 첫 번째 줄: SOS + 긴급 연락망 + 오픈채팅방 바로가기
+                const SizedBox(height: 12), // 줄 간격
 
                 // 두 번째 줄: 오세철T + 문가람T 연락처
                 Row(
                   children: [
                     // 오세철T
                     const Icon(Icons.phone, color: Colors.white),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 10),
                     const Text(
-                      "오세철T  010-1234-5678",
+                      "오세철 선생님(1학년 부장)",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Ownglyph okticon',
                         color: Color(0xFFDBECE8), // 선생님 이름과 전화번호 색상 변경
                       ),
                     ),
                     const Spacer(),
+                    
                     GestureDetector(
                       onTap: () {
                         // 오세철T에게 전화 기능 (추후 구현)
                       },
+                      
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 16.0),
+                            vertical: 4.0, horizontal: 7.0),
                         decoration: BoxDecoration(
                           color: const Color(0xFFFF5F5F), // 빨간색 배경
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: const Text(
-                          "오세철T에게 전화",
+                          "오세철 선생님에게 전화하기",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Ownglyph okticon',
                             color: Colors.white,
                           ),
@@ -891,17 +896,17 @@ class EmergencyContacts extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8), // 줄 간격
+                const SizedBox(height: 13), // 줄 간격
 
                 // 문가람T 연락처
                 Row(
                   children: [
                     const Icon(Icons.phone, color: Colors.white),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 10),
                     const Text(
-                      "문가람T  010-1234-5678",
+                      "문가람 선생님(1학년 총무)",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Ownglyph okticon',
                         color: Color(0xFFDBECE8), // 선생님 이름과 전화번호 색상 변경
@@ -914,16 +919,16 @@ class EmergencyContacts extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 16.0),
+                            vertical: 4.0, horizontal: 7.0),
                         decoration: BoxDecoration(
                           color: const Color(0xFFFF5F5F), // 빨간색 배경
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: const Text(
-                          "문가람T에게 전화",
+                          "문가람 선생님에게 전화하기",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Ownglyph okticon',
                             color: Colors.white,
                           ),
