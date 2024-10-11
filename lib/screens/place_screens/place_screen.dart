@@ -1,35 +1,64 @@
 import 'package:flutter/material.dart';
 
+class PlaceDetail {
+  final String name;
+  final String description;
+  final double rating;
+  final String navigationText;
+
+  PlaceDetail({
+    required this.name,
+    required this.description,
+    required this.rating,
+    required this.navigationText,
+  });
+}
+
 class PlaceScreen extends StatelessWidget {
   const PlaceScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width; // 화면의 전체 너비를 계산합니다.
+    final cardWidth = screenWidth * 0.9; // 카드의 너비를 화면 너비의 90%로 설정합니다.
+    final List<PlaceDetail> placeDetails = [
+      PlaceDetail(
+        name: '디즈니랜드',
+        description: '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
+        rating: 5.0,
+        navigationText: '길안내',
+      ),
+      PlaceDetail(
+        name: '디즈니랜드',
+        description: '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
+        rating: 5.0,
+        navigationText: '길안내',
+      ),
+      // 추가 장소 정보를 여기에 추가할 수 있습니다.
+    ];
+
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
-        height: double.infinity, // 부모 크기를 명확하게 설정
+        height: double.infinity,
         child: Stack(
           children: [
-            // Background Container
             Positioned.fill(
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xFF4D9E8A), // Greenish background color
+                  color: Color(0xFF4D9E8A),
                 ),
               ),
             ),
-            // 하단 보더만 적용, 텍스트 침범 방지
             Positioned(
               left: 0,
-              top: 140, // 텍스트와 겹치지 않도록 더 아래로 조정
+              top: 140,
               right: 0,
               child: Container(
-                height: 1, // 보더 두께 설정
-                color: const Color(0xFFE0E0E0), // 하단 보더 색상
+                height: 1,
+                color: const Color(0xFFE0E0E0),
               ),
             ),
-            // Title Text (도쿄 여행)
             Positioned(
               left: 29,
               top: 74,
@@ -37,35 +66,31 @@ class PlaceScreen extends StatelessWidget {
                 '도쿄 여행',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24, // 텍스트 크기 증가
+                  fontSize: 24,
                   fontFamily: 'Ownglyph okticon',
                   fontWeight: FontWeight.w700,
-                  height: 1.2,
                 ),
               ),
             ),
-            // Date Text (2024.10.22 ~ 10.25)
             Positioned(
               left: 29,
-              top: 105, // 여백을 더 늘려 보더와 텍스트 간격 유지
+              top: 105,
               child: Text(
                 '2024.10.22 ~ 10.25',
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.75),
-                  fontSize: 16, // 텍스트 크기 증가
+                  fontSize: 16,
                   fontFamily: 'Ownglyph okticon',
                   fontWeight: FontWeight.w400,
-                  height: 1.5,
                 ),
               ),
             ),
-            // Category Buttons (음식점, 공중화장실, 카페, 응급진료, 편의점, 은행, 가볼만한곳)
             Positioned(
               left: 10,
-              top: 160, // 버튼들을 더 아래로 조정해 텍스트와 겹치지 않게
+              top: 160,
               right: 10,
               child: SizedBox(
-                height: 40, // 박스 높이 증가
+                height: 40,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -86,29 +111,60 @@ class PlaceScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Map Placeholder
             Positioned(
               left: 0,
               top: 220,
               right: 0,
-              bottom: 0, // 카드가 올라갈 수 있는 공간을 확보
+              bottom: 0,
               child: Container(
                 alignment: Alignment.center,
-                color: Colors.grey[300], // 지도 자리 표시
-                child: const Text('Map'), // 지도가 위치할 자리
+                color: Colors.grey[300],
+                child: const Text('Map Placeholder'),
               ),
             ),
-            // Horizontally scrollable detailed info cards
             Positioned(
               left: 0,
               bottom: 0,
               right: 0,
-              height: 100, // 상세 정보 카드 높이 설정
+              height: 180,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5, // 예제 데이터 개수
+                itemCount: placeDetails.length,
+                padding: EdgeInsets.symmetric(horizontal: (screenWidth - cardWidth) / 2),
                 itemBuilder: (context, index) {
-                  return _buildDetailCard();
+                  return Container(
+                    width: cardWidth,
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Color(0xFF4D9E8A), width: 2),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            placeDetails[index].name,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Ownglyph okticon',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            placeDetails[index].description,
+                            style: const TextStyle(
+                              fontFamily: 'Ownglyph okticon',
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
@@ -118,7 +174,6 @@ class PlaceScreen extends StatelessWidget {
     );
   }
 
-  // Helper function to build category buttons
   Widget _buildCategoryButton(String label) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
@@ -139,43 +194,6 @@ class PlaceScreen extends StatelessWidget {
             fontFamily: 'Ownglyph okticon',
           ),
         ),
-      ),
-    );
-  }
-
-  // Helper function to build detail cards
-  Widget _buildDetailCard() {
-    return Container(
-      width: 200, // 카드 너비 설정
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Color(0xFF4D9E8A), width: 2),
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: Image.network(
-              "https://via.placeholder.com/200x50",
-              fit: BoxFit.cover,
-            ),
-          ),
-          Text(
-            'Place Name',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            'Short description',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-            ),
-          ),
-        ],
       ),
     );
   }
