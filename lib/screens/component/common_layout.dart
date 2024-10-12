@@ -81,9 +81,8 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const SearchScreen(),
     const TripSchduleScreen(),
-    const TravelLocation(),
+    const PlaceScreen(),
     const TripToolScreen(),
   ];
 
@@ -180,7 +179,7 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   // AppBar를 특정 페이지에서만 적용
   PreferredSizeWidget? _buildAppBar() {
-    if (_selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 4) {
+    if (_selectedIndex == 0) {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),

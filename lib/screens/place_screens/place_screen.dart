@@ -20,7 +20,7 @@ class PlaceDetail {
 }
 
 class PlaceScreen extends StatelessWidget {
-  const PlaceScreen({Key? key}) : super(key: key);
+  const PlaceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,76 +46,77 @@ class PlaceScreen extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: const Color(0xff4D9E8A),
       body: Column(
         children: [
-          // 상단 바
+          SafeArea(
+            child: Container(
+              width: double.infinity,
+              color: const Color(0xFF4D9E8A),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 29, top: 18),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '도쿄 여행',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Ownglyph okticon',
+                            fontWeight: FontWeight.w700,
+                            height: 1.0,
+                          ),
+                        ),
+                        Text(
+                          '2024.10.22 ~ 10.25',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontFamily: 'Ownglyph okticon',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 7),
           Container(
-            height: 172,
-            color: const Color(0xFF4D9E8A),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            width: MediaQuery.of(context).size.width,
+            height: 1.0,
+            color: Colors.white,
+          ),
+          const SizedBox(height: 14),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
               children: [
-                const SizedBox(height: 68),
-                const Padding(
-                  padding: EdgeInsets.only(left: 29),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '도쿄 여행',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'Ownglyph okticon',
-                          fontWeight: FontWeight.w700,
-                          height: 1.0,
-                        ),
-                      ),
-                      SizedBox(height: 0),
-                      Text(
-                        '2024.10.22 ~ 10.25',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontFamily: 'Ownglyph okticon',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 7),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 1.0,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 14),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('음식점'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('공중화장실'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('카페'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('응급진료'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('편의점'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('은행'),
-                      const SizedBox(width: 10),
-                      _buildCategoryButton('가볼만한곳'),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 14),
+                const SizedBox(width: 10),
+                _buildCategoryButton('음식점'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('공중화장실'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('카페'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('응급진료'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('편의점'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('은행'),
+                const SizedBox(width: 10),
+                _buildCategoryButton('가볼만한곳'),
               ],
             ),
           ),
+          const SizedBox(height: 14),
 
           // 중간 빨간색 박스와 하단 ListView를 분리하여 구성
           Expanded(
@@ -140,9 +141,9 @@ class PlaceScreen extends StatelessWidget {
                   right: 0,
                   child: Container(
                     height: 180,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.transparent,
-                      borderRadius: const BorderRadius.all(
+                      borderRadius: BorderRadius.all(
                         Radius.circular(20),
                       ),
                     ),
@@ -175,7 +176,7 @@ class PlaceScreen extends StatelessWidget {
                                 left: 0,
                                 top: 0,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(10),
                                       topLeft: Radius.circular(10)),
                                   child: Image.asset(
@@ -245,7 +246,7 @@ class PlaceScreen extends StatelessWidget {
                                 child: Container(
                                   width: 60,
                                   height: 180,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xFF4D9E8A),
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(10),
@@ -260,7 +261,7 @@ class PlaceScreen extends StatelessWidget {
                                       children: [
                                         Transform.rotate(
                                           angle: 135 * (3.14159 / 180),
-                                          child: Icon(
+                                          child: const Icon(
                                             Icons
                                                 .call_missed, // 사용하고 싶은 Flutter 아이콘
                                             size: 24, // 아이콘의 크기
@@ -269,7 +270,7 @@ class PlaceScreen extends StatelessWidget {
                                         ),
                                         Text(
                                           placeDetails[index].navigationText,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontFamily: 'Ownglyph okticon',
                                           ),
@@ -294,7 +295,7 @@ class PlaceScreen extends StatelessWidget {
 
   Widget _buildCategoryButton(String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
