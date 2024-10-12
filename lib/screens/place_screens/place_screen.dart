@@ -70,47 +70,39 @@ class _PlaceScreenState extends State<PlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff4D9E8A),
+      appBar: AppBar(
+        backgroundColor: const Color(0xff4D9E8A),
+        flexibleSpace: const Padding(
+          padding: EdgeInsets.only(left: 29.0, bottom: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '도쿄 여행',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w700,
+                  height: 1.0,
+                ),
+              ),
+              Text(
+                '2024.10.22 ~ 10.25',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Column(
         children: [
-          SafeArea(
-            child: Container(
-              width: double.infinity,
-              color: const Color(0xFF4D9E8A),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 29, top: 18),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '도쿄 여행',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: 'Ownglyph okticon',
-                            fontWeight: FontWeight.w700,
-                            height: 1.0,
-                          ),
-                        ),
-                        Text(
-                          '2024.10.22 ~ 10.25',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontFamily: 'Ownglyph okticon',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           const SizedBox(height: 7),
           Container(
             width: MediaQuery.of(context).size.width,
