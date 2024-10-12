@@ -24,11 +24,12 @@ Widget PlaceDiscription(String mainDis, image, subDis, detailDis) {
         const SizedBox(
           height: 20,
         ),
-        Image.asset(
-          'assets/travel_background_imgaes/${image}_image.png',
-          width: 355,
-          height: 220,
-          fit: BoxFit.contain,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.asset(
+            image,
+            fit: BoxFit.contain,
+          ),
         ),
         const SizedBox(
           height: 30,

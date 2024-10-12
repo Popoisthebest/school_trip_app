@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
 import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
-import 'package:school_trip_app/screens/place_screens/place_screen.dart';
+import 'package:school_trip_app/screens/search_screens/search_screen.dart';
+import 'package:school_trip_app/screens/trip_schdule_screens/trip_schdule_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
-import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
 
 class CommonLayout extends StatefulWidget {
   final int currentIndex;
@@ -80,8 +80,9 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
+    const SearchScreen(),
+    const TripSchduleScreen(),
     const NewTripSchdulScreen(),
-    const PlaceScreen(),
     const TripToolScreen(),
   ];
 
