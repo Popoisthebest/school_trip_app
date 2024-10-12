@@ -35,6 +35,7 @@ flutter:
     - assets/store_map_images/
     - assets/main_screen_images/
     - assets/icons/
+    - assets/icons/checklist.svg
 
   fonts:
     - family: CookieRunOTF

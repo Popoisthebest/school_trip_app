@@ -106,73 +106,15 @@ class _MainScreenState extends State<MainScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // 검색창
-                  // Padding(
-                  //   padding: const EdgeInsets.all(16.0),
-                  //   child: TextField(
-                  //     cursorColor: Colors.black, // 커서 색상을 검은색으로 설정
-                  //     decoration: InputDecoration(
-                  //       hintText: '검색어를 입력해주세요.',
-                  //       hintStyle: const TextStyle(
-                  //         color: Colors.black, // 힌트 텍스트 색상 설정
-                  //         fontFamily: 'Ownglyph okticon', // 요청하신 폰트 패밀리 유지
-                  //         fontSize: 16, // 폰트 크기 설정
-                  //       ),
-                  //       contentPadding: const EdgeInsets.symmetric(
-                  //           vertical: 12.0, horizontal: 16.0),
-                  //       suffixIcon: IconButton(
-                  //         icon: const Icon(
-                  //           Icons.search,
-                  //           color: Color(0xFF4D9E8A), // 검색 아이콘 색상 설정
-                  //         ),
-                  //         onPressed: () {
-                  //           // 검색 아이콘을 눌렀을 때 실행될 함수
-                  //         },
-                  //       ),
-                  //       border: OutlineInputBorder(
-                  //         borderRadius: BorderRadius.circular(24), // 둥근 테두리 설정
-                  //         borderSide: const BorderSide(
-                  //           color: Color(0xFF4D9E8A), // 테두리 색상 설정
-                  //           width: 2.0,
-                  //         ),
-                  //       ),
-                  //       enabledBorder: OutlineInputBorder(
-                  //         borderRadius:
-                  //             BorderRadius.circular(24), // 비활성화 상태일 때 둥근 테두리
-                  //         borderSide: const BorderSide(
-                  //           color: Color(0xFF4D9E8A), // 테두리 색상 유지
-                  //           width: 2.0,
-                  //         ),
-                  //       ),
-                  //       focusedBorder: OutlineInputBorder(
-                  //         borderRadius:
-                  //             BorderRadius.circular(24), // 포커스 상태일 때 둥근 테두리
-                  //         borderSide: const BorderSide(
-                  //           color: Color(0xFF4D9E8A), // 포커스 상태에서도 테두리 색상 유지
-                  //           width: 2.0,
-                  //         ),
-                  //       ),
-                  //       filled: true, // 배경색 채우기
-                  //       fillColor: Colors.white, // 배경색 설정 (누를 때 색 변경 방지)
-                  //       hoverColor: Colors.transparent, // hover 상태에서도 배경색 변경 방지
-                  //     ),
-                  //     style: const TextStyle(
-                  //       fontFamily: 'Ownglyph okticon', // 입력 텍스트의 폰트 패밀리 유지
-                  //       fontSize: 16,
-                  //       color: Colors.black, // 입력 텍스트 색상
-                  //     ),
-                  //   ),
-                  // ),
+                  // 검색창은 생략
 
                   // 네 개의 박스가 포함된 GridView
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: GridView.builder(
                       shrinkWrap: true, // SingleChildScrollView와 함께 사용 시 필수
-                      physics:
-                          const NeverScrollableScrollPhysics(), // ScrollView에서 스크롤 중복 방지
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      physics: const NeverScrollableScrollPhysics(), // ScrollView에서 스크롤 중복 방지
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // 한 줄에 2개의 열
                         mainAxisSpacing: 5,
                         crossAxisSpacing: 5,
@@ -228,13 +170,6 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
 
-                  // 여행 전 체크리스트 섹션
-                  const SizedBox(height: 16), // 간격 추가
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: ChecklistSection(),
-                  ),
-
                   // 세철T가 뽑은 TOP3 섹션 추가
                   const SizedBox(height: 16), // 간격 추가
                   Padding(
@@ -261,58 +196,34 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        // 시부야 항목 (이곳에서 템플릿 형식으로 추가 가능)
+
+                        // Top3Card 항목들
                         const Top3Card(
                           title: "다양한 애니메이션 관련 제품을\n만날 수 있는 아키하바라!",
-                          description:
-                              "우리 학생들이 눈 돌아갈 만한 요소가 많이 있습니다\n주머니를 많이 털리지 않을까 걱정도 되는 장소입니다~",
+                          description: "우리 학생들이 눈 돌아갈 만한 요소가 많이 있습니다\n주머니를 많이 털리지 않을까 걱정도 되는 장소입니다~",
                           location: "아키하바라 / 도쿄 /",
                           rating: 5, // 별 5개
-                          tags: [
-                            "#많이 찾는 장소",
-                            "#도쿄 시부야",
-                            "#이쁜 사진 맛집",
-                            "#시부야 숨겨진 명소",
-                            "#여행스타그램"
-                          ],
-                          image:
-                              'assets/main_screen_images/akihabara.png', // 이미지 경로 예시
+                          tags: ["#많이 찾는 장소", "#도쿄 아키하바라", "#Akihabara", "#피규어쇼핑", "#오타쿠성지"],
+                          image: 'assets/main_screen_images/akihabara.png',
                         ),
                         const SizedBox(height: 16),
                         const Top3Card(
                           title: "월트 디즈니가 창조한\n동화 속 세상 디즈니랜드!",
-                          description:
-                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
+                          description: "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
                           location: "디즈니랜드 / 도쿄 /",
-                          rating: 4, // 별 5개
-                          tags: [
-                            "#많이 찾는 장소",
-                            "#도쿄",
-                            "#뷰맛집",
-                            "#숨겨진 명소",
-                            "#여행스타그램"
-                          ],
-                          image:
-                              'assets/main_screen_images/disneyland.png', // 이미지 경로 예시
+                          rating: 4, // 별 4개
+                          tags: ["#디즈니", "#도쿄 디즈니랜드", "#TokyoDisneyland", "#디즈니 캐릭터", "#대규모 테마파크"],
+                          image: 'assets/main_screen_images/disneyland.png',
                         ),
                         const SizedBox(height: 16),
                         const Top3Card(
                           title: "일본 전통 문화가 살아 숨쉬는\n아사쿠사 센소시!",
-                          description:
-                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
+                          description: "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
                           location: "아사쿠사 센소시 / 도쿄 /",
-                          rating: 4, // 별 5개
-                          tags: [
-                            "#많이 찾는 장소",
-                            "#도쿄",
-                            "#뷰맛집",
-                            "#숨겨진 명소",
-                            "#여행스타그램"
-                          ],
-                          image:
-                              'assets/main_screen_images/asakusa.png', // 이미지 경로 예시
+                          rating: 4, // 별 4개
+                          tags: ["#많이 찾는 장소", "#아사쿠사", "#Asakusa", "#가장 오래된 사찰", "#일본전통사찰"],
+                          image: 'assets/main_screen_images/asakusa.png',
                         ),
-                        // 더 추가 가능: Top3Card 추가 가능
                       ],
                     ),
                   ),
@@ -356,11 +267,20 @@ class Top3Card extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // 상단 이미지
-          Image.asset(image,
-              fit: BoxFit.cover, height: 250, width: double.infinity),
-
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(12),
+              topLeft: Radius.circular(12)
+            ), // 둥근 테두리 적용
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover, // 이미지를 컨테이너 크기에 맞게 자르기
+              width: MediaQuery.of(context).size.width, // 화면 너비에 맞춤
+              height: 355,
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -386,7 +306,7 @@ class Top3Card extends StatelessWidget {
                     color: Color(0xFFDBECE8),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
 
                 // 위치 정보 및 별점
                 Row(
@@ -400,22 +320,34 @@ class Top3Card extends StatelessWidget {
                         color: Color(0xFFDBECE8),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    // 별 아이콘
+                    const SizedBox(width: 5),
+
+                    // 별 아이콘 표시 로직
                     Row(
-                      children: List.generate(rating, (index) {
-                        return const Icon(Icons.star,
-                            color: Colors.amber, size: 20); // 별 아이콘 크기 증가
+                      children: List.generate(5, (index) {
+                        if (index < rating) {
+                          return SvgPicture.asset(
+                            'assets/icons/filled_star.svg', // 꽉 찬 별 SVG 파일 경로
+                            width: 20,
+                            height: 20,
+                          );
+                        } else {
+                          return SvgPicture.asset(
+                            'assets/icons/empty_star.svg', // 빈 별 SVG 파일 경로
+                            width: 20,
+                            height: 20,
+                          );
+                        }
                       }),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 5),
 
                 // 해시태그 (하나의 큰 박스로 포함)
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 8.0, horizontal: 12.0),
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 6.0),
                   decoration: BoxDecoration(
                     color: const Color(0xFF557C6F), // 해시태그 박스 배경색
                     borderRadius: BorderRadius.circular(12),
@@ -438,6 +370,9 @@ class Top3Card extends StatelessWidget {
     );
   }
 }
+
+// EmergencyContacts와 PlaceBox, InfoTemplate 등 나머지 위젯들은 동일합니다.
+
 
 // 장소 박스 위젯
 class PlaceBox extends StatelessWidget {
@@ -518,7 +453,8 @@ class InfoTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 17, left: 13, bottom: 11, right: 12),
+      width: 190,
+      height: 120,
       decoration: BoxDecoration(
         color: const Color(0xFF71B1A1),
         borderRadius: BorderRadius.circular(12),
@@ -526,8 +462,11 @@ class InfoTemplate extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 14),
           Row(
             children: [
+                            const SizedBox(width: 15,),
+
               SvgPicture.asset(
                 icon,
                 width: 20, // 너비 설정
@@ -545,18 +484,25 @@ class InfoTemplate extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
+          
           // 세부 내용 리스트
+          
           for (var detail in details)
-            Text(
-              detail,
-              style: const TextStyle(
-                fontSize: 12, // 다른 폰트와 동일하게 유지
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Ownglyph okticon',
-                color: Color(0xFFDBECE8), // 글자 색상 변경
-              ),
-            ),
+          
+            Padding(
+  padding: EdgeInsets.only(left: 8.0, right: 8), // 왼쪽에 20픽셀 여백 추가
+  child: Text(
+    detail,
+    style: const TextStyle(
+      fontSize: 12, // 다른 폰트와 동일하게 유지
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Ownglyph okticon',
+      color: Color(0xFFDBECE8), // 글자 색상 변경
+    ),
+  ),
+),
+
           const Spacer(), // 내용을 위로 밀어 올리고, 자세히 버튼을 아래에 배치하기 위해 Spacer 사용
           // 자세히 버튼
           GestureDetector(
@@ -575,15 +521,23 @@ class InfoTemplate extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                SizedBox(width: 4),
+                SizedBox(width: 2),
                 Icon(Icons.arrow_forward_ios,
-                    color: Color(0xFFDBECE8),size: 16,), // 아이콘 색상 변경
+                    color: Color(0xFFDBECE8),size: 16,),
+                const SizedBox(width: 7, ),     // 아이콘 색상 변경
               ],
+              
             ),
+            
+            
           ),
+          SizedBox(height: 9)
+
         ],
       ),
+      
     );
+    
   }
 }
 
@@ -599,18 +553,16 @@ class ChecklistSection extends StatefulWidget {
 class _ChecklistSectionState extends State<ChecklistSection> {
   // 체크박스 상태를 관리할 리스트
   final Map<String, bool> checklistItems = {
-    '연합 환전': false,
-    '보조배터리': false,
-    '전기충격기': false,
-    '호신용품': false,
-    '방검복': false,
-    '소화기': false,
-    '핸드폰': false,
-    '애민정신': false,
-    '우국지정': false,
-    '선정후경': false,
-    '금강산도식후경': false,
-    '대정여지도': false,
+    '여권': false,
+    '신용카드': false,
+    '충전기': false,
+    '선글라스': false,
+    '여벌 옷': false,
+    '캐리어': false,
+    '현지화폐': false,
+    '모자': false,
+    '필기도구': false,
+    '세면도구': false,
   };
 
   @override
@@ -625,18 +577,18 @@ class _ChecklistSectionState extends State<ChecklistSection> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
-                Icon(
-                  Icons.check_box,
-                  color: Colors.white,
-                  size: 20,
+                SvgPicture.asset(
+                  'assets/icons/checklist.svg',
+                  width: 20,
+                  height: 20,
                 ),
                 SizedBox(width: 10),
                 Text(
                   '여행 전 체크리스트',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Ownglyph okticon',
                     color: Colors.white,
@@ -644,7 +596,7 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 15),
 
             // 체크리스트 아이템들 (세로로 나열, 컬럼 구조)
             Row(
@@ -660,7 +612,7 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                       return Row(
                         children: [
                           SizedBox(
-                            width: 16,
+                            width: 10,
                             height: 26,
                             child: Checkbox(
                               value: checklistItems[key],
@@ -676,22 +628,33 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 5),
-                          Text(
-                            key,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Ownglyph okticon',
-                              color: Color(0xFFDBECE8), // 글자 색상 변경
-                            ),
-                          ),
+                          const SizedBox(width: 20),
+                          LayoutBuilder(
+  builder: (context, constraints) {
+    return Container(
+      alignment: Alignment.center, // 텍스트 중앙 정렬
+      child: Text(
+        key,
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Ownglyph okticon',
+          color: Color(0xFFDBECE8), // 글자 색상
+        ),
+      ),
+    );
+  },
+)
+
+
                         ],
                       );
                     }).toList(),
                   ),
                 ),
-                const SizedBox(width: 20), // 열 간격
+                                          const SizedBox(width: 10),
+
+                // const SizedBox(width: 10), // 열 간격
                 // 두 번째 열
                 Expanded(
                   child: Column(
@@ -702,7 +665,7 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                       return Row(
                         children: [
                           SizedBox(
-                            width: 16,
+                            width: 1,
                             height: 26,
                             child: Checkbox(
                               value: checklistItems[key],
@@ -718,8 +681,11 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 5),
-                          Text(
+                          const SizedBox(width: 20),
+                          Align(
+                            alignment:  Alignment.center,
+                            child: 
+                            Text(
                             key,
                             style: const TextStyle(
                               fontSize: 14,
@@ -728,14 +694,36 @@ class _ChecklistSectionState extends State<ChecklistSection> {
                               color: Color(0xFFDBECE8), // 글자 색상 변경
                             ),
                           ),
+                          ),
+                          
+                          
                         ],
+                        
                       );
                     }).toList(),
+                    
                   ),
+
+                  
                 ),
+    
+            Padding(
+  padding: EdgeInsets.only(top: 16.0), // 위쪽에 20픽셀 간격 추가
+  child: Text(
+    '여행 전,\n빠진 물건이 없는지\n확인하세요!',
+    style: TextStyle(
+      fontFamily: 'Ownglyph okticon',
+      fontSize: 12,
+      color: Colors.white, // 텍스트 색상
+    ),
+  ),
+),
+
+                        SizedBox(width: 15), // 간격을 추가하여 여백 확보
+
               ],
             ),
-            const SizedBox(height: 16), // 간격을 추가하여 여백 확보
+            SizedBox(height: 16), // 간격을 추가하여 여백 확보
 
             // 자세히 버튼
             GestureDetector(
