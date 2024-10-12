@@ -233,12 +233,11 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildAppBar(), // AppBar를 조건부로 적용
-        bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
-        body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
-      ),
+    return Scaffold(
+      backgroundColor: const Color(0xFF4D9E8A),
+      appBar: _buildAppBar(), // AppBar를 조건부로 적용
+      bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
+      body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
     );
   }
 }
