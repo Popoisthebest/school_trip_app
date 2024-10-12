@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/tirp_schdule_list.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
-class FourSixSchdule extends StatelessWidget {
+class FiveTripSchdule extends StatelessWidget {
   final ValueChanged<String> onClassSelected;
 
-  const FourSixSchdule({super.key, required this.onClassSelected});
+  const FiveTripSchdule({super.key, required this.onClassSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,9 @@ class FourSixSchdule extends StatelessWidget {
         title: '인천국제공항',
         description: '세계적 공항 · 첨단 시설 · 쇼핑 명소',
         distance: '1250km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () {
+          print('clicked');
+        },
       ),
       ScheduleItem(
         title: '나리타국제공항',
@@ -22,10 +24,10 @@ class FourSixSchdule extends StatelessWidget {
         onTap: () => print('첫 번째 일정 클릭됨'),
       ),
       ScheduleItem(
-        title: '돈테이 나리타점',
+        title: '사브요 신주쿠점',
         description: '샤부샤부 뷔페 · 고기 무한리필',
-        distance: '15km',
-        onTap: () => print('네 번째 일정 클릭됨'),
+        distance: '1km',
+        onTap: () => print('두 번째 일정 클릭됨'),
       ),
       ScheduleItem(
         title: '아키하바라',

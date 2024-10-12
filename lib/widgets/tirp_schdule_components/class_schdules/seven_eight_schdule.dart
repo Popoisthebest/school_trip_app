@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/tirp_schdule_list.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
 class SevenEightSchdule extends StatelessWidget {
   final ValueChanged<String> onClassSelected;

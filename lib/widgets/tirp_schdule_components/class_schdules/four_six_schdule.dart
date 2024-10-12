@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/tirp_schdule_list.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
-class OneThreeNineSchdule extends StatelessWidget {
+class FourSixSchdule extends StatelessWidget {
   final ValueChanged<String> onClassSelected;
 
-  const OneThreeNineSchdule({super.key, required this.onClassSelected});
+  const FourSixSchdule({super.key, required this.onClassSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class OneThreeNineSchdule extends StatelessWidget {
         onTap: () => print('첫 번째 일정 클릭됨'),
       ),
       ScheduleItem(
-        title: '오다이바 오션뷔페',
-        description: '바다 전망 · 해산물 뷔페 · 테라스',
+        title: '돈테이 나리타점',
+        description: '샤부샤부 뷔페 · 고기 무한리필',
         distance: '15km',
         onTap: () => print('네 번째 일정 클릭됨'),
       ),
@@ -34,10 +34,10 @@ class OneThreeNineSchdule extends StatelessWidget {
         onTap: () => print('세 번째 일정 클릭됨'),
       ),
       ScheduleItem(
-        title: '사브요 신주쿠점',
-        description: '샤부샤부 뷔페 · 고기 무한리필',
-        distance: '1km',
-        onTap: () => print('두 번째 일정 클릭됨'),
+        title: '오다이바 오션뷔페',
+        description: '바다 전망 · 해산물 뷔페 · 테라스',
+        distance: '15km',
+        onTap: () => print('네 번째 일정 클릭됨'),
       ),
       ScheduleItem(
         title: '신주쿠 워싱턴 호텔',
@@ -80,27 +80,27 @@ class OneThreeNineSchdule extends StatelessWidget {
         onTap: () => print('첫 번째 일정 클릭됨'),
       ),
       ScheduleItem(
-        title: '오와쿠다니 계곡',
-        description: '유황 지대 · 활화산 · 검은 달걀',
-        distance: '9km',
-        onTap: () => print('두 번째 일정 클릭됨'),
-      ),
-      ScheduleItem(
-        title: '하코네 아시 호수 유람선',
-        description: '유람선 투어 · 후지산 전망 · 호수',
-        distance: '1km',
-        onTap: () => print('두 번째 일정 클릭됨'),
-      ),
-      ScheduleItem(
         title: '하코네 코한소',
         description: '온천 리조트 · 자연 속 휴식',
         distance: '1km',
         onTap: () => print('두 번째 일정 클릭됨'),
       ),
       ScheduleItem(
+        title: '하코네 아시 호수 유람선',
+        description: '유람선 투어 · 후지산 전망 · 호수',
+        distance: '9km',
+        onTap: () => print('두 번째 일정 클릭됨'),
+      ),
+      ScheduleItem(
+        title: '오와쿠다니 계곡',
+        description: '유황 지대 · 활화산 · 검은 달걀',
+        distance: '80km',
+        onTap: () => print('두 번째 일정 클릭됨'),
+      ),
+      ScheduleItem(
         title: '아사쿠사 센소지 & 나카미세',
         description: '전통 사원 · 기념품 쇼핑 · 먹거리',
-        distance: '80km',
+        distance: '25km',
         onTap: () => print('두 번째 일정 클릭됨'),
       ),
       ScheduleItem(
