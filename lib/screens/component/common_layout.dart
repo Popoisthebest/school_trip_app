@@ -110,10 +110,9 @@ class _CommonLayoutState extends State<CommonLayout> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('검색', 'search', 1),
-                    _buildBottomNavigationItems('여행일정', 'map', 2),
-                    _buildBottomNavigationItems('여행장소', 'place', 3),
-                    _buildBottomNavigationItems('여행도구', 'tool', 4),
+                    _buildBottomNavigationItems('여행일정', 'map', 1),
+                    _buildBottomNavigationItems('여행장소', 'place', 2),
+                    _buildBottomNavigationItems('여행도구', 'tool', 3),
                   ],
                 ),
               ),
