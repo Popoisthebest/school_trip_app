@@ -31,7 +31,7 @@ class PlaceScreen extends StatelessWidget {
       PlaceDetail(
         name: '아키하바라 전...',
         description:
-            '아키하바라 전자상가는 일본 도쿄에 위치한 전자제품과 애니메이션, 만화 관련 상품의 중심지로, 전 세계 오타구 문화의 성지로 불립니다.',
+            '아키하바라 전자상가는 일본 도쿄에 위치한 전자제품과 애니메이션, 만화 관련 상품의 중심지로, 전 세계 오타쿠 문화의 성지로 불립니다.',
         images: 'assets/place_screen_images/akiabara.png',
         starCount: 5, // 별 개수 설정
       ),
@@ -86,7 +86,6 @@ class PlaceScreen extends StatelessWidget {
             height: 1.0,
             color: Colors.white,
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 14.0),
             child: SingleChildScrollView(
@@ -107,12 +106,13 @@ class PlaceScreen extends StatelessWidget {
                   _buildCategoryButton('은행'),
                   const SizedBox(width: 10),
                   _buildCategoryButton('가볼만한곳'),
+                  const SizedBox(width: 10),
                 ],
               ),
             ),
           ),
 
-          // 중간 빨간색 박스와 하단 ListView를 분리하여 구성
+          // 중간 빨간색 박스와 하단 PageView를 분리하여 구성
           Expanded(
             child: Stack(
               children: [
@@ -130,26 +130,19 @@ class PlaceScreen extends StatelessWidget {
 
                 // 하단 고정된 컴포넌트 (180px 고정 높이)
                 Positioned(
-                  bottom: 5.5, // 하단에서 5px 위로 띄움
+                  bottom: 10, // 하단에서 5px 위로 띄움
                   left: 0,
                   right: 0,
-                  child: Container(
+                  child: SizedBox(
                     height: 180,
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                    ),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
+                    child: PageView.builder(
                       itemCount: placeDetails.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Container(
                             width: 343,
-                            height: 200,
+                            height: 180,
                             decoration: BoxDecoration(
                               color: const Color(0xFF4D9E8A),
                               borderRadius: BorderRadius.circular(10),
@@ -169,8 +162,7 @@ class PlaceScreen extends StatelessWidget {
                                     placeDetails[index].images,
                                     width: 120, // 이미지 넓이 설정
                                     height: 180, // 이미지 높이 설정
-                                    fit: BoxFit
-                                        .cover, // 이미지를 부모 컨테이너에 맞춰 왜곡 없이 채움
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Expanded(
@@ -207,7 +199,6 @@ class PlaceScreen extends StatelessWidget {
                                           ),
                                           Row(
                                             children: [
-                                              // 별 아이콘을 개수만큼 생성
                                               ...List.generate(
                                                 placeDetails[index].starCount,
                                                 (starIndex) => Padding(
@@ -215,13 +206,12 @@ class PlaceScreen extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           right: 0),
                                                   child: SvgPicture.asset(
-                                                    'assets/place_screen_images/star_icon.svg', // SVG 파일 경로
-                                                    width: 17, // 별 아이콘의 넓이
-                                                    height: 17, // 별 아이콘의 높이
+                                                    'assets/place_screen_images/star_icon.svg',
+                                                    width: 17,
+                                                    height: 17,
                                                   ),
                                                 ),
                                               ),
-                                              // 부족한 별 개수만큼 no_star_icon 추가
                                               ...List.generate(
                                                 5 -
                                                     placeDetails[index]
@@ -231,9 +221,9 @@ class PlaceScreen extends StatelessWidget {
                                                       const EdgeInsets.only(
                                                           right: 0),
                                                   child: SvgPicture.asset(
-                                                    'assets/place_screen_images/no_star_icon.svg', // no_star_icon SVG 파일 경로
-                                                    width: 17, // 빈 별 아이콘의 넓이
-                                                    height: 17, // 빈 별 아이콘의 높이
+                                                    'assets/place_screen_images/no_star_icon.svg',
+                                                    width: 17,
+                                                    height: 17,
                                                   ),
                                                 ),
                                               ),
@@ -255,25 +245,25 @@ class PlaceScreen extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 13.0),
                                   child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center, // 세로 가운데 정렬
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .center, // 가로 가운데 정렬
-                                      children: [
-                                        SvgPicture.asset(
-                                            'assets/place_screen_images/way_icon.svg'),
-                                        const SizedBox(height: 4.5),
-                                        const Text(
-                                          '길안내',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontFamily: 'Ownglyph okticon',
-                                            fontWeight: FontWeight.w400,
-                                            height: 0,
-                                          ),
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                          'assets/place_screen_images/way_icon.svg'),
+                                      const SizedBox(height: 4.5),
+                                      const Text(
+                                        '길안내',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontFamily: 'Ownglyph okticon',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0,
                                         ),
-                                      ]),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
