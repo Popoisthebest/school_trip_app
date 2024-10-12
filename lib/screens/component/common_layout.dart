@@ -182,51 +182,53 @@ class _CommonLayoutState extends State<CommonLayout> {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),
-        flexibleSpace: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Row(
-                children: [
-                  Image.asset('assets/logo/dashin_LOGO.png'),
-                  const SizedBox(width: 8),
-                  const Text(
-                    'MyDaeShinTrip',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      height: 1.2,
+        flexibleSpace: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Row(
+                  children: [
+                    Image.asset('assets/logo/dashin_LOGO.png'),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'MyDaeShinTrip',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        height: 1.2,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 9.0),
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
-                  const SizedBox(width: 13),
-                  SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                  const SizedBox(width: 3),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    highlightColor: Colors.transparent,
-                    onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                    icon: Image.asset(
-                      isToggle
-                          ? 'assets/app_bar_icons/toggle_on_icon.png'
-                          : 'assets/app_bar_icons/toggle_off_icon.png',
+              Padding(
+                padding: const EdgeInsets.only(right: 9.0),
+                child: Row(
+                  children: [
+                    SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
+                    const SizedBox(width: 13),
+                    SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
+                    const SizedBox(width: 3),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      highlightColor: Colors.transparent,
+                      onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
+                      icon: Image.asset(
+                        isToggle
+                            ? 'assets/app_bar_icons/toggle_on_icon.png'
+                            : 'assets/app_bar_icons/toggle_off_icon.png',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
@@ -235,12 +237,10 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildAppBar(), // AppBar를 조건부로 적용
-        bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
-        body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
-      ),
+    return Scaffold(
+      appBar: _buildAppBar(), // AppBar를 조건부로 적용
+      bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
+      body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
     );
   }
 }
