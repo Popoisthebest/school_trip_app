@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/custom_paint.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/day_show.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/num_circle.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/trip_schdule_cards.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/custom_paint.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/day_show.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/num_circle.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/trip_schdule_cards.dart';
 
 // Trip Schedule List 위젯
 Widget TripScheduleList(

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_drop_down_menu.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/five_schdule.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/four_six_schdule.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/one_three_nine_schdule.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/seven_eight_schdule.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/class_schdules/two_and_ten_schdule.dart';
-import 'package:school_trip_app/widgets/tirp_schdule_circles/map_lines/trip_schdule_route.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_drop_down_menu.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_schdules/five_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_schdules/four_six_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_schdules/one_three_nine_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_schdules/seven_eight_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/class_schdules/two_and_ten_schdule.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/map_component/map_component.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/map_lines/trip_schdule_route.dart';
 
 class NewTripSchdulScreen extends StatefulWidget {
   const NewTripSchdulScreen({super.key});
@@ -44,30 +45,9 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
 
   final LatLng _initialPosition = const LatLng(35.6996473, 139.7713703);
 
-  Set<Marker> _createMarkers() {
-    return _locations.asMap().entries.map((entry) {
-      int index = entry.key;
-      LatLng location = entry.value;
-
-      return Marker(
-        markerId: MarkerId('location_$index'),
-        position: location,
-        infoWindow: InfoWindow(
-          title: _locationNames[index],
-        ),
-      );
-    }).toSet();
-  }
-
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
   }
-
-  // void _updateSelectedClass(String selectedClass) {
-  //   setState(() {
-  //     _selectedClass = selectedClass; // 선택된 반 업데이트
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -108,15 +88,11 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
       ),
       body: Stack(
         children: [
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: _initialPosition,
-              zoom: 11.0,
-            ),
-            onMapCreated: (controller) {
-              _mapController = controller;
-            },
-            markers: _createMarkers(),
+          GoogleMapComponent(
+            initialPosition: _initialPosition,
+            locations: _locations,
+            locationNames: _locationNames,
+            onMapCreated: _onMapCreated,
           ),
           DraggableScrollableSheet(
             initialChildSize: 0.05,
@@ -151,7 +127,6 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 22),
                             child: Stack(
-                              // alignment: Alignment.centerRight,
                               children: [
                                 Positioned(
                                   right: 0,
@@ -161,7 +136,7 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
                                 ),
                                 _getScheduleWidget(),
                               ],
-                            ), // 선택된 반에 따른 스케줄 표시
+                            ),
                           ),
                         ],
                       ),
