@@ -92,30 +92,28 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 70,
-      child: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                height: 1,
-                color: const Color(0xff4D9E8A),
+      height: 90,
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: 1,
+              color: const Color(0xff4D9E8A),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  _buildBottomNavigationItems('홈', 'home', 0),
+                  _buildBottomNavigationItems('여행일정', 'map', 1),
+                  _buildBottomNavigationItems('여행장소', 'place', 2),
+                  _buildBottomNavigationItems('여행도구', 'tool', 3),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('여행일정', 'map', 1),
-                    _buildBottomNavigationItems('여행장소', 'place', 2),
-                    _buildBottomNavigationItems('여행도구', 'tool', 3),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -180,28 +178,27 @@ class _CommonLayoutState extends State<CommonLayout> {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),
-        flexibleSpace: SafeArea(
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 50.0, left: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Image.asset('assets/logo/dashin_LOGO.png'),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'MyDaeShinTrip',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                      ),
+              Row(
+                children: [
+                  Image.asset('assets/logo/dashin_LOGO.png'),
+                  const SizedBox(width: 8),
+                  const Text(
+                    'MyDaeShinTrip',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'CookieRunOTF',
+                      fontWeight: FontWeight.w400,
+                      height: 0,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 9.0),

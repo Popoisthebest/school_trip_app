@@ -24,27 +24,25 @@ class _MainScreenState extends State<MainScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "도쿄여행",
+                      '도쿄여행',
                       style: TextStyle(
-                        fontFamily: "Ownglyph okticon",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        height: 18 / 14,
+                        fontSize: 14,
+                        fontFamily: 'Ownglyph okticon',
+                        fontWeight: FontWeight.w400,
+                        height: 0,
                       ),
-                      textAlign: TextAlign.left,
                     ),
                     const SizedBox(height: 3),
                     const Text(
-                      "대전대신고 52회, 수학여행 D-DAY!",
+                      '대전대신고 52회, 수학여행 D-DAY!',
                       style: TextStyle(
-                        fontFamily: "Ownglyph okticon",
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        height: 26 / 20,
+                        fontSize: 20,
+                        fontFamily: 'Ownglyph okticon',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
                       ),
-                      textAlign: TextAlign.left,
                     ),
                     const SizedBox(height: 5),
                     Container(
