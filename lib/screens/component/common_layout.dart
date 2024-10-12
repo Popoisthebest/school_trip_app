@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
 import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
+import 'package:school_trip_app/screens/place_screens/place_screen.dart';
 import 'package:school_trip_app/screens/search_screens/search_screen.dart';
 import 'package:school_trip_app/screens/trip_schdule_screens/trip_schdule_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
@@ -80,8 +81,7 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const SearchScreen(),
-    const TripSchduleScreen(),
+    const PlaceScreen(),
     const NewTripSchdulScreen(),
     const TripToolScreen(),
   ];
@@ -94,30 +94,28 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 70,
-      child: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                height: 1,
-                color: const Color(0xff4D9E8A),
+      height: 90,
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: 1,
+              color: const Color(0xff4D9E8A),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  _buildBottomNavigationItems('홈', 'home', 0),
+                  _buildBottomNavigationItems('여행일정', 'map', 1),
+                  _buildBottomNavigationItems('여행장소', 'place', 2),
+                  _buildBottomNavigationItems('여행도구', 'tool', 3),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('여행일정', 'map', 1),
-                    _buildBottomNavigationItems('여행장소', 'place', 2),
-                    _buildBottomNavigationItems('여행도구', 'tool', 3),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
