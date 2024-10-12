@@ -21,7 +21,7 @@ class _SchoolTripAppState extends State<SchoolTripApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: NewTripSchdulScreen(),
+        body: SplashScreen(),
       ),
     );
   }

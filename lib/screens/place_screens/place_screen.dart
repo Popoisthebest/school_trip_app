@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/map_component/map_component.dart';
 
 class PlaceDetail {
   final String name;
@@ -15,28 +17,57 @@ class PlaceDetail {
   });
 }
 
-class PlaceScreen extends StatelessWidget {
+class PlaceScreen extends StatefulWidget {
   const PlaceScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<PlaceDetail> placeDetails = [
-      PlaceDetail(
-        name: '디즈니랜드',
-        description:
-            '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
-        images: 'assets/place_screen_images/disneyland.png',
-        starCount: 5, // 별 개수 설정
-      ),
-      PlaceDetail(
-        name: '아키하바라 전...',
-        description:
-            '아키하바라 전자상가는 일본 도쿄에 위치한 전자제품과 애니메이션, 만화 관련 상품의 중심지로, 전 세계 오타쿠 문화의 성지로 불립니다.',
-        images: 'assets/place_screen_images/akiabara.png',
-        starCount: 5, // 별 개수 설정
-      ),
-    ];
+  State<PlaceScreen> createState() => _PlaceScreenState();
+}
 
+class _PlaceScreenState extends State<PlaceScreen> {
+  late GoogleMapController _mapController;
+  final List<PlaceDetail> placeDetails = [
+    PlaceDetail(
+      name: '디즈니랜드',
+      description:
+          '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
+      images: 'assets/place_screen_images/disneyland.png',
+      starCount: 5, // 별 개수 설정
+    ),
+    PlaceDetail(
+      name: '아키하바라 전...',
+      description:
+          '아키하바라 전자상가는 일본 도쿄에 위치한 전자제품과 애니메이션, 만화 관련 상품의 중심지로, 전 세계 오타쿠 문화의 성지로 불립니다.',
+      images: 'assets/place_screen_images/akiabara.png',
+      starCount: 5, // 별 개수 설정
+    ),
+  ];
+
+  final LatLng initialPosition = const LatLng(35.6329, 139.8804); // 디즈니 랜드
+  final List<LatLng> locations = [
+    const LatLng(35.6329, 139.8804), // 디즈니 랜드
+    const LatLng(35.7023, 139.7745), // 아키하바라
+  ];
+  final List<String> locationNames = [
+    '디즈니랜드',
+    '아키하바라',
+  ];
+
+  void _onMapCreated(GoogleMapController controller) {
+    _mapController = controller;
+  }
+
+  void _moveToLocation(int index) {
+    _mapController.animateCamera(
+      CameraUpdate.newLatLng(locations[index]),
+    );
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _mapController.showMarkerInfoWindow(MarkerId('location_$index'));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff4D9E8A),
       body: Column(
@@ -112,31 +143,29 @@ class PlaceScreen extends StatelessWidget {
             ),
           ),
 
-          // 중간 빨간색 박스와 하단 PageView를 분리하여 구성
+          // 중간 빨간색 박스를 GoogleMapComponent로 대체
           Expanded(
             child: Stack(
               children: [
-                // 빨간색 박스
-                Positioned.fill(
-                  child: Container(
-                    color: const Color.fromARGB(255, 255, 0, 0),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Map Placeholder',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+                GoogleMapComponent(
+                  initialPosition: initialPosition,
+                  locations: locations,
+                  locationNames: locationNames,
+                  onMapCreated: _onMapCreated,
                 ),
 
                 // 하단 고정된 컴포넌트 (180px 고정 높이)
                 Positioned(
-                  bottom: 10, // 하단에서 5px 위로 띄움
+                  bottom: 10, // 하단에서 10px 위로 띄움
                   left: 0,
                   right: 0,
                   child: SizedBox(
                     height: 180,
                     child: PageView.builder(
                       itemCount: placeDetails.length,
+                      onPageChanged: (index) {
+                        _moveToLocation(index);
+                      },
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -304,11 +333,4 @@ class PlaceScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: PlaceScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
 }

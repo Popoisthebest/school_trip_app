@@ -20,13 +20,15 @@ class GoogleMapComponent extends StatefulWidget {
 }
 
 class _GoogleMapComponentState extends State<GoogleMapComponent> {
+  late GoogleMapController _controller;
+
   Set<Marker> _createMarkers() {
     return widget.locations.asMap().entries.map((entry) {
       int index = entry.key;
       LatLng location = entry.value;
 
       return Marker(
-        markerId: const MarkerId('location_\$index'),
+        markerId: MarkerId('location_$index'),
         position: location,
         infoWindow: InfoWindow(
           title: widget.locationNames[index],
@@ -39,10 +41,22 @@ class _GoogleMapComponentState extends State<GoogleMapComponent> {
   Widget build(BuildContext context) {
     return GoogleMap(
       initialCameraPosition: CameraPosition(
-        target: widget.initialPosition,
+        target: widget.locations.isNotEmpty
+            ? widget.locations[0]
+            : widget.initialPosition,
         zoom: 11.0,
       ),
-      onMapCreated: widget.onMapCreated,
+      onMapCreated: (controller) {
+        _controller = controller;
+        widget.onMapCreated(controller);
+
+        // 마커의 이름을 처음에 실행했을 때 표시
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (widget.locations.isNotEmpty) {
+            _controller.showMarkerInfoWindow(const MarkerId('location_0'));
+          }
+        });
+      },
       markers: _createMarkers(),
     );
   }
