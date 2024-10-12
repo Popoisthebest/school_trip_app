@@ -142,9 +142,8 @@ class PlaceScreen extends StatelessWidget {
                     height: 180,
                     decoration: BoxDecoration(
                       color: Colors.transparent,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
                       ),
                     ),
                     child: ListView.builder(
@@ -164,7 +163,7 @@ class PlaceScreen extends StatelessWidget {
                                   height: 200,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(45),
                                     border: Border.all(
                                       color: const Color(0xFF4D9E8A),
                                       width: 2,
@@ -176,16 +175,15 @@ class PlaceScreen extends StatelessWidget {
                                 left: 0,
                                 top: 0,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10)
-                                    // topLeft: Radius.circular(10),
-                                    // topRight: Radius.circular(10),
-                                  ),
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      topLeft: Radius.circular(10)),
                                   child: Image.asset(
                                     placeDetails[index].images,
                                     width: 120, // 이미지 넓이 설정
                                     height: 180, // 이미지 높이 설정
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit
+                                        .fill, // 이미지를 부모 컨테이너에 맞춰 왜곡 없이 채움
                                   ),
                                 ),
                               ),
@@ -193,7 +191,7 @@ class PlaceScreen extends StatelessWidget {
                                 left: 129,
                                 top: 27.9,
                                 child: SizedBox(
-                                  width: 145,
+                                  width: 147,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -219,11 +217,15 @@ class PlaceScreen extends StatelessWidget {
                                           // 별 아이콘을 개수만큼 생성
                                           ...List.generate(
                                             placeDetails[index].starCount,
-                                            (starIndex) => SvgPicture.asset(
+                                            (starIndex) => Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 0),
+                                              child: SvgPicture.asset(
                                                 'assets/place_screen_images/star_icon.svg', // SVG 파일 경로
                                                 width: 17, // 별 아이콘의 넓이
                                                 height: 17, // 별 아이콘의 높이
                                               ),
+                                            ),
                                           ),
                                           Text(
                                             '(${placeDetails[index].rating})',
@@ -250,14 +252,29 @@ class PlaceScreen extends StatelessWidget {
                                       bottomRight: Radius.circular(10),
                                     ),
                                   ),
-                                  child: Center(
-                                    child: Text(
-                                      placeDetails[index].navigationText,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center, // 세로 가운데 정렬
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .center, // 가로 가운데 정렬
+                                      children: [
+                                        Transform.rotate(
+                                          angle: 135 * (3.14159 / 180),
+                                          child: Icon(
+                                            Icons
+                                                .call_missed, // 사용하고 싶은 Flutter 아이콘
+                                            size: 24, // 아이콘의 크기
+                                            color: Colors.white, // 아이콘 색상
+                                          ),
+                                        ),
+                                        Text(
+                                          placeDetails[index].navigationText,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Ownglyph okticon',
+                                          ),
+                                        ),
+                                      ]),
                                 ),
                               ),
                             ],
