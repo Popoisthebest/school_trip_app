@@ -40,7 +40,7 @@ Widget BasicInfo(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
-              locationMap,
+              'assets/store_map_images/akihabara_store1_image.png',
               fit: BoxFit.cover,
             ),
           ),

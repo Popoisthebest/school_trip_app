@@ -231,9 +231,13 @@ class DisneyDetailScreen extends StatelessWidget {
                     decoration: const BoxDecoration(color: Color(0xFFE0E0E0)),
                   ),
                   BasicInfo(
-                      '1-1 Maihama, Urayasu, Chiba 279-0031',
-                      'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
-                      'assets/travel_detail_images/disneyland_images/disneyland_basic_map_image.png'),
+                    '1-1 Maihama, Urayasu, Chiba 279-0031',
+                    '',
+                    '',
+                    'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
+                    false,
+                    false,
+                  ),
                   Review(
                     reviewContext:
                         '답사때 디즈니랜드는 생략했는데요. 예전에 가족과 함께 경험한 적이 있었는데, 굉장히 넓은 면적에 다양한 놀이시설이 있어서 시간이 어떻게 갔는지 모를 것입니다. 아침부터 저녁까지 거의 12시간을 보내게 되며 점심과 저녁은 밀쿠폰이 지급됩니다.',
