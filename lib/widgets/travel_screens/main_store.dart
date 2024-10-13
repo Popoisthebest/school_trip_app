@@ -69,10 +69,17 @@ class ImportantStoreCard extends StatelessWidget {
               color: const Color(0xff4D9E8A)),
           child: Column(
             children: [
-              Image.asset(
-                stimagePath,
+              // 이 부분 사진이 Container에 딱 맞게 안 들어가서 수정함.
+              SizedBox(
                 width: 300,
                 height: 150,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    stimagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10,

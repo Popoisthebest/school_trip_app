@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget BasicInfo(String location, howToGo) {
+Widget BasicInfo(String location, howToGo, locationMap) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 10.0),
     child: Column(
@@ -25,7 +25,18 @@ Widget BasicInfo(String location, howToGo) {
         const SizedBox(
           height: 15,
         ),
-        Image.asset('assets/store_map_images/akihabara_store1_image.png'),
+        // 여기 이미지 경로 입력해서 넣을 수 있게 수정함.
+        SizedBox(
+          width: double.infinity,
+          height: 200,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              locationMap,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         const SizedBox(
           height: 15,
         ),

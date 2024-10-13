@@ -88,7 +88,7 @@
 //                   ),
 //                   BasicInfo(
 //                       'Akihabara, Kanda, Chiyoda City, Tokyo, 101-0021, Japan',
-//                       'JR 아키하바라역 전자상가 출구에서 도보 5분'),
+//                       'JR 아키하바라역 전자상가 출구에서 도보 5분', 'assets/store_map_images/akihabara_store1_image.png'), // 여기도 사진 경로 추가함.
 //                   Container(
 //                     height: 30,
 //                     decoration: const BoxDecoration(
