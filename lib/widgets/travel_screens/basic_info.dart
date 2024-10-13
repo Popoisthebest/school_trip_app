@@ -94,7 +94,7 @@ Widget BasicInfo(
                             child: Text(
                               phoneNumber,
                               style: const TextStyle(
-                                color: Color(0xFFC2E4FF),
+                                color: Colors.white,
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
                                 fontWeight: FontWeight.w400,
@@ -122,16 +122,19 @@ Widget BasicInfo(
                               width: 10,
                             ),
                             Flexible(
-                              child: Text(
-                                link,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
-                                  fontFamily: 'Ownglyph okticon',
+                              child: Expanded(
+                                child: Text(
+                                  link,
+                                  style: const TextStyle(
+                                    color: Color(0xFFC2E4FF),
+                                    fontSize: 16,
+                                    fontFamily: 'Ownglyph okticon',
+                                    fontWeight: FontWeight.w400,
+                                    decoration: TextDecoration.underline,
+                                  ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
