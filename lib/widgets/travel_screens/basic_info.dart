@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-Widget BasicInfo(String location, howToGo) {
+Widget BasicInfo(
+  String location,
+  phoneNumber,
+  link,
+  howToGo,
+  bool showPhoneNumber,
+  showLink,
+) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 10.0),
     child: Column(
@@ -30,40 +38,100 @@ Widget BasicInfo(String location, howToGo) {
           height: 15,
         ),
         Container(
-          height: 70,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: const Color(0xff4d9e8a),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 7.0),
-            child: Row(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+            child: Column(
               children: [
-                const SizedBox(
-                  width: 8,
-                ),
-                SvgPicture.asset(
-                    'assets/travel_detail_icons/crosshair_icons.svg'),
-                const SizedBox(
-                  width: 10,
-                ),
-                Flexible(
-                  child: Text(
-                    location,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      fontFamily: 'Ownglyph okticon',
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SvgPicture.asset(
+                        'assets/travel_detail_icons/crosshair_icons.svg'),
+                    const SizedBox(
+                      width: 10,
                     ),
+                    Flexible(
+                      child: Text(
+                        location,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontFamily: 'Ownglyph okticon',
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                if (showPhoneNumber)
+                  Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                              'assets/travel_detail_icons/phone_icon.svg'),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Flexible(
+                            child: Text(
+                              phoneNumber,
+                              style: const TextStyle(
+                                color: Color(0xFFC2E4FF),
+                                fontSize: 16,
+                                fontFamily: 'Ownglyph okticon',
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
-                )
+                if (showLink)
+                  Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      GestureDetector(
+                        onTap: () {
+                          launchUrl(Uri.parse(link));
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                                'assets/travel_detail_icons/link_icon.svg'),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Flexible(
+                              child: Text(
+                                link,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontFamily: 'Ownglyph okticon',
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),
         ),
         const SizedBox(
-          height: 15,
+          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

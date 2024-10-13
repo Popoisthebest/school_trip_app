@@ -54,8 +54,14 @@ class OdaibaDetailScreen extends StatelessWidget {
                       color: Color(0xffe0e0e0),
                     ),
                   ),
-                  BasicInfo('Odaiba, Daiba 1-1, Minato City, Tokyo, Japan',
-                      '린카이 선 도쿄텔레포트 역에서 도보 7분'),
+                  BasicInfo(
+                    'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan',
+                    '+81-4-6083-6541',
+                    'http://www.hakone-kohansou.co.jp/',
+                    '린카이 선 도쿄텔레포트 역에서 도보 7분',
+                    false,
+                    false,
+                  ),
                   Container(
                     height: 30,
                     decoration: const BoxDecoration(
