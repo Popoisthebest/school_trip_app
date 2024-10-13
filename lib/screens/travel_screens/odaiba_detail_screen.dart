@@ -55,12 +55,12 @@ class OdaibaDetailScreen extends StatelessWidget {
                     ),
                   ),
                   BasicInfo(
-                    'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan',
-                    '+81-4-6083-6541',
-                    'http://www.hakone-kohansou.co.jp/',
-                    '린카이 선 도쿄텔레포트 역에서 도보 7분',
-                    false,
-                    false,
+                    'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan', // 위치
+                    '', // 전화번호
+                    '', // 해당 사이트 주소
+                    '린카이 선 도쿄텔레포트 역에서 도보 7분', // 가는 방법
+                    false, // 전화번호 부여주기
+                    false, // 사이트 링크 보여주기
                   ),
                   Container(
                     height: 30,
