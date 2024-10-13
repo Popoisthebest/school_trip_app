@@ -211,12 +211,14 @@ Widget BasicInfo(
         ),
         Row(
           children: [
-            Text(
-              howToGo,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Ownglyph okticon',
+            Flexible(
+              child: Text(
+                howToGo,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Ownglyph okticon',
+                ),
               ),
             )
           ],
