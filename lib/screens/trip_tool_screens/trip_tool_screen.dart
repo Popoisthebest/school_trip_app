@@ -326,7 +326,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                   children: [
                     ConstrainedBox(
                         constraints: const BoxConstraints(
-                          maxHeight: 440, // 최대 높이 설정
+                          maxHeight: 1000, // 최대 높이 설정
                         ),
                         child: const App())
                     // const Row(

@@ -25,7 +25,7 @@ class App extends GetView<CalculatorController> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SizedBox(
-        height: 695,
+        height: 1000,
         child: Column(
           children: [
             Expanded(
