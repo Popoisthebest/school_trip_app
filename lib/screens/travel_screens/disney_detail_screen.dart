@@ -142,7 +142,7 @@ class DisneyDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: EdgeInsets.only(left: 10.0),
                     child: Row(
                       children: [
                         Text(
