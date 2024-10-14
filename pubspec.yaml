@@ -40,6 +40,7 @@ flutter:
     - assets/travel_detail_icons/
     - assets/travel_detail_images/odaiba_images/
     - assets/travel_detail_images/disneyland_images/
+    - assets/travel_detail_images/disney_hundred_images/
 
     - assets/store_map_images/
     - assets/place_screen_images/
