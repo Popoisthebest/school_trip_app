@@ -267,12 +267,9 @@ class _TripToolScreenState extends State<TripToolScreen> {
               color: const Color(0XFF4D9E8A), // 초록색 선
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 26, 0),
+              padding: const EdgeInsets.only(left: 16, right: 25, top: 20),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Row(
                     children: [
                       Text(
@@ -323,19 +320,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                   const SizedBox(
                     height: 24,
                   ),
-                  Column(
-                    children: [
-                      ExchangeRate('korea', 'KRW', '905.56 ₩', '한국 원'),
-                      const SizedBox(
-                        height: 34,
-                      ),
-                      ExchangeRate('japan', 'JPY', '100 ¥', '일본 엔'),
-                      const SizedBox(
-                        height: 34,
-                      ),
-                      ExchangeRate('usa', 'USD', '0.68 \$', '미국 달러'),
-                    ],
-                  ),
+                  const ExchangeRate(),
                   const SizedBox(
                     height: 32,
                   ),
