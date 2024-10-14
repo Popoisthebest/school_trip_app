@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_components/map_component/map_component.dart';
 
 class PlaceDetail {
@@ -8,8 +9,10 @@ class PlaceDetail {
   final String description;
   final String images;
   final int starCount; // 별 개수 정보를 추가
+  final Function onTap;
 
   PlaceDetail({
+    required this.onTap,
     required this.images,
     required this.name,
     required this.description,
@@ -28,6 +31,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
   late GoogleMapController _mapController;
   final List<PlaceDetail> placeDetails = [
     PlaceDetail(
+      onTap: () {},
       name: '디즈니랜드',
       description:
           '디즈니랜드 도쿄는 일본 최초의 디즈니 테마파크로, 다양한 디즈니 캐릭터와 놀이기구, 공연을 즐길 수 있는 인기 관광지입니다.',
@@ -35,6 +39,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 5, // 별 개수 설정
     ),
     PlaceDetail(
+      onTap: () {},
       name: '아키하바라',
       description:
           '연간 수백만 명 이상의 여행객이 방문하는 곳으로 거리 곳곳에 게임관련 매장과 오락실, 코스프레 샵들이 들어서 있어 시간 가는 줄도 모른체 즐길 수 있습니다.',
@@ -42,6 +47,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 5, // 별 개수 설정
     ),
     PlaceDetail(
+      onTap: () {},
       name: '오다이바',
       description:
           '본래 도쿄 내륙 지역을 방어하기 위한 군사 목적으로 조성된 인공섬이었으나, 지금은 즐길 거리가 많은 해안가 관고아 특구로 유명한 곳입니다.',
@@ -49,6 +55,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 3, // 별 개수 설정
     ),
     PlaceDetail(
+      onTap: () {},
       name: '하코네',
       description:
           '온천 시설을 갖춘 숙소가 모인 대표적인 하코네 명소입니다. 역사를 중심으로 특산품과 기념품을 판매하는 상점가가 있어 온천 마을 특유의 분위기를 즐길 수 있습니다.',
@@ -56,6 +63,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 5, // 별 개수 설정
     ),
     PlaceDetail(
+      onTap: () {},
       name: '아사쿠사',
       description:
           '도쿄를 대표하는 사찰 센소지를 중심으로 조성된 번화가로, 우리나라의 인사동처럼 고유한 전통 문화를 많이 간직한 곳이라 관광객들의 발길이 끊이지 않는 곳입니다.',
@@ -130,37 +138,36 @@ class _PlaceScreenState extends State<PlaceScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 7),
           Container(
             width: MediaQuery.of(context).size.width,
             height: 1.0,
             color: Colors.white,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 14.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('음식점'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('공중화장실'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('카페'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('응급진료'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('편의점'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('은행'),
-                  const SizedBox(width: 10),
-                  _buildCategoryButton('가볼만한곳'),
-                  const SizedBox(width: 10),
-                ],
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(vertical: 14.0),
+          //   child: SingleChildScrollView(
+          //     scrollDirection: Axis.horizontal,
+          //     child: Row(
+          //       children: [
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('음식점'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('공중화장실'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('카페'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('응급진료'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('편의점'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('은행'),
+          //         const SizedBox(width: 10),
+          //         _buildCategoryButton('가볼만한곳'),
+          //         const SizedBox(width: 10),
+          //       ],
+          //     ),
+          //   ),
+          // ),
 
           // 중간 빨간색 박스를 GoogleMapComponent로 대체
           Expanded(
@@ -289,28 +296,35 @@ class _PlaceScreenState extends State<PlaceScreen> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 13.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SvgPicture.asset(
-                                          'assets/place_screen_images/way_icon.svg'),
-                                      const SizedBox(height: 4.5),
-                                      const Text(
-                                        '길안내',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontFamily: 'Ownglyph okticon',
-                                          fontWeight: FontWeight.w400,
-                                          height: 0,
+                                GestureDetector(
+                                  onTap: () {
+                                    placeDetails[index].onTap;
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 13.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SvgPicture.asset(
+                                            'assets/place_screen_images/way_icon.svg'),
+                                        const SizedBox(height: 4.5),
+                                        const Text(
+                                          '상세\n페이지',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: 'Ownglyph okticon',
+                                            fontWeight: FontWeight.w400,
+                                            height: 0,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
