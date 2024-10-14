@@ -145,7 +145,6 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                     "신주쿠 역 O-2 출구에서 도보 3분",
                     true,
                     true),
-                const SizedBox(height: 21),
                 Column(
                   children: [
                     Padding(
@@ -436,7 +435,7 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                                   style: commonTextStyle,
                                 ),
                                 SizedBox(
-                                  height: 20,
+                                  height: 30,
                                 )
                               ],
                             ),
@@ -500,7 +499,19 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                       ],
                     ),
                   ),
+                  
                 ),
+                // Container(
+                //   decoration: const BoxDecoration(
+                //     border: Border.symmetric(
+                //       horizontal: BorderSide(
+                //         color: Color(0xFFE0E0E0),
+                //         width: 2,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                SizedBox(height: 30,),
                 Container(
                   height: 30,
                   decoration: const BoxDecoration(
