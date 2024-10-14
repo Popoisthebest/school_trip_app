@@ -7,6 +7,7 @@ import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
+import 'package:school_trip_app/widgets/travel_screens/tip.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<String> placeImageList = [
@@ -206,7 +207,7 @@ class DisneyDetailScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  MainStore(storeList),
+                  MainStore(storeList, true, false),
                   const SizedBox(height: 10),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -232,11 +233,22 @@ class DisneyDetailScreen extends StatelessWidget {
                   ),
                   BasicInfo(
                     '1-1 Maihama, Urayasu, Chiba 279-0031',
-                    '',
-                    '',
+                    '+81-4-5330-5211',
+                    'http://www.tokyodisneyresort.jp/kr/tdl/',
                     'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
-                    false,
-                    false,
+                    true,
+                    true,
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Image.asset(
+                        'assets/travel_detail_images/disneyland_images/disney_map_image.png'),
+                  ),
+                  Tip(),
+                  Container(
+                    height: 30,
+                    decoration: const BoxDecoration(color: Color(0xFFE0E0E0)),
                   ),
                   Review(
                     reviewContext:

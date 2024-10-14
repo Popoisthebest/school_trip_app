@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+Widget StoreInfo(String time, addition) {
+  return Container(
+    decoration: const BoxDecoration(
+      border: Border.symmetric(
+        horizontal: BorderSide(
+          color: Color(0xFFE0E0E0),
+          width: 2,
+        ),
+      ),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.only(
+        left: 22.0,
+        top: 25,
+        bottom: 25,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SvgPicture.asset('assets/travel_detail_icons/time_icon.svg'),
+              const SizedBox(width: 12),
+              Text(
+                time,
+                style: const TextStyle(
+                  color: Color(0xFF1A1A1A),
+                  fontSize: 16,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w400,
+                  height: 0,
+                ),
+              )
+            ],
+          ),
+          const SizedBox(height: 22),
+          Row(
+            children: [
+              SvgPicture.asset('assets/travel_detail_icons/addition_icon.svg'),
+              const SizedBox(width: 12),
+              Text(
+                addition,
+                style: const TextStyle(
+                  color: Color(0xFF1A1A1A),
+                  fontSize: 16,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w400,
+                  decoration: TextDecoration.underline,
+                  height: 0,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
