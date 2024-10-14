@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
@@ -6,6 +7,7 @@ import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
+import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 
 List<String> placeImageList = [
   "assets/travel_detail_images/shinjukuhotel_images/shinjuku0.png",
@@ -433,12 +435,71 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                                   '조식(뷔페) 06:30 ~ 10:00',
                                   style: commonTextStyle,
                                 ),
+                                SizedBox(
+                                  height: 20,
+                                )
                               ],
                             ),
                         ],
                       ),
                     ),
                   ],
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        color: Color(0xFFE0E0E0),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 22.0,
+                      top: 25,
+                      bottom: 25,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.warning_rounded,
+                              size: 20,
+                              color: Color(0xff757575),
+                            ),
+                            const SizedBox(width: 12),
+                            Text(
+                              "알레르기 유발 품목",
+                              style: const TextStyle(
+                                color: Color(0xFF1A1A1A),
+                                fontSize: 16,
+                                fontFamily: 'Ownglyph okticon',
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 32.0, right: 20), // 왼쪽에 32px 여백 추가
+                          child: Text(
+                            "난류, 우유, 땅콩, 대두, 밀, 새우, 돼지고기, 토마토, 호두, 닭고기, 쇠고기, 잣",
+                            style: const TextStyle(
+                              color: Color(0xFF1A1A1A),
+                              fontSize: 12,
+                              fontFamily: 'Ownglyph okticon',
+                              fontWeight: FontWeight.w400,
+                              height: 0,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Container(
                   height: 30,
