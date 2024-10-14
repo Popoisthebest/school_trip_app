@@ -16,6 +16,7 @@ dependencies:
   connectivity_plus: ^3.0.6
   flutter_svg: ^2.0.10+1
   google_maps_flutter: ^2.9.0
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -38,11 +39,19 @@ flutter:
     - assets/travel_background_imgaes/store_images/
     - assets/travel_detail_icons/
     - assets/travel_detail_images/odaiba_images/
+    - assets/travel_detail_images/disneyland_images/
+    - assets/travel_detail_images/hakone_sinsa_images/
 
     - assets/store_map_images/
+    - assets/place_screen_images/
     - assets/main_screen_images/
     - assets/icons/
     - assets/icons/checklist.svg
+
+    - assets/main_screen_images/
+    - assets/icons/
+    - assets/icons/checklist.svg
+    - assets/place_screen_images/
 
   fonts:
     - family: CookieRunOTF

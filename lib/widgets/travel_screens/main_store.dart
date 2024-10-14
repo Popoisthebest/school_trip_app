@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 
-Widget MainStore(List<Map<String, dynamic>> stores) {
+Widget MainStore(List<Map<String, dynamic>> stores, bool isDisney, isMeal) {
   return Column(
     children: [
-      const Row(
+      Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 10.0),
-            child: Text(
-              '주요 매장',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Ownglyph okticon',
-                color: Color(0xFF1A1A1A),
-              ),
-            ),
+            padding: const EdgeInsets.only(left: 10.0),
+            child: isDisney
+                ? const Text(
+                    '구역 소개',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Ownglyph okticon',
+                      color: Color(0xFF1A1A1A),
+                    ),
+                  )
+                : const Text(
+                    '주요 매장',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Ownglyph okticon',
+                      color: Color(0xFF1A1A1A),
+                    ),
+                  ),
           ),
         ],
       ),
@@ -33,6 +43,7 @@ Widget MainStore(List<Map<String, dynamic>> stores) {
                 stname: store['stname'] ?? '',
                 stintroduce: store['stintroduce'] ?? '',
                 onTap: store['onTap'] as VoidCallback?,
+                isDisney: true,
               );
             }).toList(),
           ),
@@ -47,6 +58,7 @@ class ImportantStoreCard extends StatelessWidget {
   final String stname;
   final String stintroduce;
   final VoidCallback? onTap;
+  final bool isDisney;
 
   const ImportantStoreCard({
     super.key,
@@ -54,6 +66,7 @@ class ImportantStoreCard extends StatelessWidget {
     required this.stname,
     required this.stintroduce,
     this.onTap,
+    required this.isDisney,
   });
 
   @override
@@ -69,10 +82,19 @@ class ImportantStoreCard extends StatelessWidget {
               color: const Color(0xff4D9E8A)),
           child: Column(
             children: [
-              Image.asset(
-                stimagePath,
+              // 이 부분 사진이 Container에 딱 맞게 안 들어가서 수정함.
+              SizedBox(
                 width: 300,
                 height: 150,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  child: Image.asset(
+                    stimagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -109,9 +131,6 @@ class ImportantStoreCard extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
                     Row(
                       children: [
                         GestureDetector(
@@ -124,18 +143,17 @@ class ImportantStoreCard extends StatelessWidget {
                                     width: 0.8),
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 9.0),
-                              child: Text(
-                                "장소보기",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'Ownglyph okticon',
-                                  color: Colors.white.withOpacity(0.75),
-                                ),
-                              ),
-                            ),
+                            child: isDisney
+                                ? const SizedBox(height: 11)
+                                : Text(
+                                    "장소보기",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: 'Ownglyph okticon',
+                                      color: Colors.white.withOpacity(0.75),
+                                    ),
+                                  ),
                           ),
                         ),
                       ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
@@ -42,10 +43,11 @@ class OdaibaDetailScreen extends StatelessWidget {
                   PlaceImageSlide(
                       placeName: "오다이바 레인보우 브릿지", imageList: placeImageList),
                   PlaceDiscription(
-                    "바다와 어우러진 야경이 아름다운\n필수 관광지",
+                    "바다와 어우러진 야경이 아름다운/n필수 관광지",
                     "assets/travel_detail_images/odaiba_images/odaiba_night_image.png",
                     "도쿄의 바다 위 엔터테인먼트 섬, 오다이바",
                     "본래 도쿄 내륙 지역을 방어하기 위한 군사 목적으로 조성된 인공섬이었으나, 지금은 즐길 거리가 많은 해안가 관고아 특구로 유명한 곳이다. 대형 쇼핑몰 및 테마 숍과 맛집이 많아 오션뷰를 즐기며 쇼핑과 음식을 즐길 수 있다. 밤에는 재즈 음악이 흐르며, 독특한 디자인의 후지TV 본사 빌딩, 레인보우 브리지, ‘자유의 여신상’ 등이 도쿄의 바다를 빛내고 있어, 아름다운 야경을 보며 여유를 즐기기 좋다.",
+                    false,
                   ),
                   const SizedBox(height: 30),
                   Container(
@@ -54,8 +56,28 @@ class OdaibaDetailScreen extends StatelessWidget {
                       color: Color(0xffe0e0e0),
                     ),
                   ),
-                  BasicInfo('Odaiba, Daiba 1-1, Minato City, Tokyo, Japan',
-                      '린카이 선 도쿄텔레포트 역에서 도보 7분'),
+                  const BasicInfo(
+                    location:
+                        'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan', // 위치
+                    phoneNumber: '', // 전화번호
+                    link: '', // 해당 사이트 주소
+                    howToGo: Text(
+                      '린카이 선 도쿄텔레포트 역에서 도보 7분',
+                      style: TextStyle(
+                        color: Color(0xBF1A1A1A),
+                        fontSize: 14,
+                        fontFamily: 'Ownglyph okticon',
+                        fontWeight: FontWeight.w400,
+                        height: 0.10,
+                      ),
+                    )
+                    // 가는 방법
+                    ,
+                    showPhoneNumber: false, // 전화번호 부여주기
+                    showLink: false, // 사이트 링크 보여주기
+                    centerPosition: LatLng(23, 23),
+                    locationName: '',
+                  ),
                   Container(
                     height: 30,
                     decoration: const BoxDecoration(
