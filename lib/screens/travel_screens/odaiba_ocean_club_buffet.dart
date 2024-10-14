@@ -185,11 +185,8 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(
-                              Icons.warning_rounded,
-                              size: 20,
-                              color: Color(0xff757575),
-                            ),
+                             SvgPicture.asset(
+                                'assets/travel_detail_icons/warning.svg'),
                             const SizedBox(width: 12),
                             Text(
                               "알레르기 유발 품목",
