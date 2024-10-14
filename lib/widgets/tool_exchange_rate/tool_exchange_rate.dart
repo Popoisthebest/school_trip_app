@@ -17,15 +17,27 @@ class _ExchangeRateState extends State<ExchangeRate> {
   void initState() {
     super.initState();
     double initialJapanValue = double.tryParse(japanController.text) ?? 0;
-    updateExchangeRates(initialJapanValue, 11.03, 0.0068);
+    updateExchangeRates(initialJapanValue, 11.03, 0.0068, isFromJapan: true);
   }
 
   void updateExchangeRates(
-      double value, double exchangeRateToKorea, double exchangeRateToUsa) {
+      double value, double exchangeRateToKorea, double exchangeRateToUsa,
+      {bool isFromJapan = false,
+      bool isFromKorea = false,
+      bool isFromUsa = false}) {
     setState(() {
-      koreaController.text = (value * exchangeRateToKorea).toStringAsFixed(2);
-      usaController.text = (value * exchangeRateToUsa).toStringAsFixed(2);
-      japanController.text = value.toStringAsFixed(2);
+      if (isFromJapan) {
+        koreaController.text = (value * exchangeRateToKorea).toStringAsFixed(2);
+        usaController.text = (value * exchangeRateToUsa).toStringAsFixed(2);
+      } else if (isFromKorea) {
+        japanController.text = (value / exchangeRateToKorea).toStringAsFixed(2);
+        usaController.text = (value / exchangeRateToKorea * exchangeRateToUsa)
+            .toStringAsFixed(2);
+      } else if (isFromUsa) {
+        japanController.text = (value / exchangeRateToUsa).toStringAsFixed(2);
+        koreaController.text = (value / exchangeRateToUsa * exchangeRateToKorea)
+            .toStringAsFixed(2);
+      }
     });
   }
 
@@ -41,8 +53,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           koreaController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            japanController.text = (input / 11.03).toStringAsFixed(2);
-            usaController.text = (input / 11.03 * 0.0068).toStringAsFixed(2);
+            updateExchangeRates(input, 11.03, 0.0068, isFromKorea: true);
           },
         ),
         const SizedBox(height: 23),
@@ -54,7 +65,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           japanController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            updateExchangeRates(input, 11.03, 0.0068);
+            updateExchangeRates(input, 11.03, 0.0068, isFromJapan: true);
           },
         ),
         const SizedBox(height: 23),
@@ -66,8 +77,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           usaController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            japanController.text = (input / 0.0068).toStringAsFixed(2);
-            koreaController.text = (input / 0.0068 * 11.03).toStringAsFixed(2);
+            updateExchangeRates(input, 11.03, 0.0068, isFromUsa: true);
           },
         ),
       ],
