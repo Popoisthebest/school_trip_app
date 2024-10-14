@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
@@ -73,6 +74,8 @@ class OdaibaDetailScreen extends StatelessWidget {
                     ,
                     false, // 전화번호 부여주기
                     false, // 사이트 링크 보여주기
+                    const LatLng(23, 23),
+                    '',
                   ),
                   Container(
                     height: 30,

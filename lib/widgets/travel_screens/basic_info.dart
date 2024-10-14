@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/map_component/center_map_component.dart';
 import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,6 +12,8 @@ Widget BasicInfo(
   Widget howToGo,
   bool showPhoneNumber,
   showLink,
+  LatLng centerPosition,
+  String locationName,
 ) {
   return Column(
     children: [
@@ -38,16 +42,14 @@ Widget BasicInfo(
             ),
             // 여기 이미지 경로 입력해서 넣을 수 있게 수정함.
             SizedBox(
-              width: double.infinity,
-              height: 200,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/store_map_images/akihabara_store1_image.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+                width: double.infinity,
+                height: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: CenteredMapComponent(
+                      centerPosition: centerPosition,
+                      locationName: locationName),
+                )),
             const SizedBox(
               height: 15,
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/disney_componets/detail_text.dart';
@@ -86,6 +87,8 @@ class HakoneSinsaDetail extends StatelessWidget {
                     ),
                     true,
                     true,
+                    const LatLng(35.1983, 139.0266),
+                    '',
                   ),
                   StoreInfo(
                     '영업 중 · 매일 08:15 - 17:00',

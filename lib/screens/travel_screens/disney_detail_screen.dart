@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
@@ -246,6 +247,8 @@ class DisneyDetailScreen extends StatelessWidget {
                     ),
                     true,
                     true,
+                    const LatLng(23, 23),
+                    '',
                   ),
                   const SizedBox(height: 20),
                   Padding(
