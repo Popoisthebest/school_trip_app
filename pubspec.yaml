@@ -28,10 +28,17 @@ flutter:
 
   assets:
     - assets/logo/
+
     - assets/app_bar_icons/
-    - assets/background_imgaes/
+    - assets/app_bar_icons/travel_icons/
+
     - assets/bottom_nav_bar_icons/
-    - assets/travel_screen_icons/
+
+    - assets/travel_background_imgaes/
+    - assets/travel_background_imgaes/store_images/
+    - assets/travel_detail_icons/
+    - assets/travel_detail_images/odaiba_images/
+
     - assets/store_map_images/
     - assets/main_screen_images/
     - assets/icons/

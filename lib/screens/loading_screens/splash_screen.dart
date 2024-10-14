@@ -61,6 +61,9 @@ class _SplashScreenState extends State<SplashScreen>
           // 로고 이미지 표시
           Image.asset('assets/logo/mydashintrip_LOGO.png',
               width: 100, height: 100),
+          const SizedBox(
+            height: 14,
+          ),
           const Text(
             'MyDaeShinTrip',
             style: TextStyle(
