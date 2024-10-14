@@ -198,8 +198,9 @@ class _CommonLayoutState extends State<CommonLayout> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
+                      fontFamily: 'CookieRunOTF',
                       fontWeight: FontWeight.w400,
-                      height: 1.2,
+                      height: 0,
                     ),
                   ),
                 ],

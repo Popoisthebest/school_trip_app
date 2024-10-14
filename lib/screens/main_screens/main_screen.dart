@@ -44,7 +44,9 @@ class _MainScreenState extends State<MainScreen> {
             color: const Color(0xff4D9E8A),
             width: double.infinity,
             child: const Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 20, bottom: 20),
+              padding: EdgeInsets.only(
+                left: 20.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
