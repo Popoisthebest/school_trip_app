@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
-import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
-import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';

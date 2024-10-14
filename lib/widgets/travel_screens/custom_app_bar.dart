@@ -3,8 +3,13 @@ import 'package:flutter_svg/svg.dart';
 
 Widget buildCustomAppBar() {
   return SafeArea(
+    bottom: false,
     child: Padding(
-      padding: const EdgeInsets.only(top: 17.0, left: 21, right: 26, bottom: 8),
+      padding: const EdgeInsets.only(
+        left: 21,
+        right: 26,
+        bottom: 8,
+      ),
       child: Container(
         color: Colors.white,
         child: Row(
