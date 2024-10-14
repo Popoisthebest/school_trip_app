@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:school_trip_app/widgets/src/ui/app.dart';
-import 'package:school_trip_app/widgets/tool_calculator/tool_calculator.dart';
 import 'package:school_trip_app/widgets/tool_exchange_rate/tool_exchange_rate.dart';
 import 'package:school_trip_app/widgets/tool_wheather/tool_wheather.dart';
 
@@ -320,84 +318,6 @@ class _TripToolScreenState extends State<TripToolScreen> {
                 height: 30,
               ),
               // 계산기 부분
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Column(
-                  children: [
-                    ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxHeight: 1000, // 최대 높이 설정
-                        ),
-                        child: const App())
-                    // const Row(
-                    //   children: [
-                    //     SizedBox(
-                    //       width: 10,
-                    //     ),
-                    //     Text(
-                    //       '계산기',
-                    //       style: TextStyle(
-                    //         color: Color(0xFF1A1A1A),
-                    //         fontSize: 32,
-                    //         fontFamily: 'Ownglyph okticon',
-                    //         fontWeight: FontWeight.w700,
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
-                    // const Padding(
-                    //   padding: EdgeInsets.only(right: 10.0),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.end,
-                    //     children: [
-                    //       // 여기에 결과값 표시
-                    //       Text(
-                    //         '0',
-                    //         style: TextStyle(
-                    //           color: Colors.black,
-                    //           fontSize: 36,
-                    //           fontFamily: 'Ownglyph okticon',
-                    //           fontWeight: FontWeight.w700,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 4,
-                    // ),
-                    // Container(
-                    //   height: 440,
-                    //   decoration: ShapeDecoration(
-                    //     shape: RoundedRectangleBorder(
-                    //       side: const BorderSide(
-                    //           width: 2, color: Color(0xFF4D9E8A)),
-                    //       borderRadius: BorderRadius.circular(10),
-                    //     ),
-                    //   ),
-                    //   child: const Padding(
-                    //     padding: EdgeInsets.symmetric(
-                    //       vertical: 25,
-                    //       horizontal: 22,
-                    //     ),
-                    //     child: Column(
-                    //       // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    //       children: [
-                    //         // FirstLineCalculator('AC', 'devide'),
-                    //         // SecondLineCalculator('7', '8', '9', 'multiply'),
-                    //         // ThirdLineCalculator('4', '5', '6', 'minus'),
-                    //         // FourthLineCalculator('1', '2', '3', 'plus'),
-                    //         // FifthLineCalculator('0', '.', 'equal'),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 80,
-                    // ),
-                  ],
-                ),
-              )
             ],
           ),
         ),
