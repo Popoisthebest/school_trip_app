@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get: ^4.6.5
 
   cupertino_icons: ^1.0.8
   connectivity_plus: ^3.0.6
@@ -44,6 +45,8 @@ flutter:
 
     - assets/store_map_images/
     - assets/place_screen_images/
+    - assets/tool_screen_icons/
+    - assets/nation_images/
     - assets/main_screen_images/
     - assets/icons/
     - assets/icons/checklist.svg
