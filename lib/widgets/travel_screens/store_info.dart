@@ -74,9 +74,9 @@ Widget StoreInfo(
                     const SizedBox(height: 22),
                     Row(
                       children: [
-                        SvgPicture.asset(
-                            'assets/travel_detail_icons/lightbulb_icon.svg'),
-                        const SizedBox(width: 12),
+                          SvgPicture.asset(
+                              'assets/travel_detail_icons/lightbulb_icon.svg'),
+                          const SizedBox(width: 12),
                         Text(
                           tip,
                           style: const TextStyle(
