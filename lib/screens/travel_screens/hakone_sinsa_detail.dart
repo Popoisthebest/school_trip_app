@@ -71,10 +71,11 @@ class HakoneSinsaDetail extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   BasicInfo(
-                    '80-1 Motohakone, Hakone, Ashigarashimo-gun, Kanagawa 250-0522',
-                    '+81-4-6083-7123',
-                    'http://www.hakonejinja.or.jp',
-                    Padding(
+                    location:
+                        '80-1 Motohakone, Hakone, Ashigarashimo-gun, Kanagawa 250-0522',
+                    phoneNumber: '+81-4-6083-7123',
+                    link: 'http://www.hakonejinja.or.jp',
+                    howToGo: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Column(
                         children: [
@@ -85,10 +86,10 @@ class HakoneSinsaDetail extends StatelessWidget {
                         ],
                       ),
                     ),
-                    true,
-                    true,
-                    const LatLng(35.1983, 139.0266),
-                    '',
+                    showPhoneNumber: true,
+                    showLink: true,
+                    centerPosition: const LatLng(35.1983, 139.0266),
+                    locationName: '',
                   ),
                   StoreInfo(
                     '영업 중 · 매일 08:15 - 17:00',

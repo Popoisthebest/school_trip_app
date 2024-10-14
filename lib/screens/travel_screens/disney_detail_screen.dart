@@ -231,11 +231,11 @@ class DisneyDetailScreen extends StatelessWidget {
                     height: 30,
                     decoration: const BoxDecoration(color: Color(0xFFE0E0E0)),
                   ),
-                  BasicInfo(
-                    '1-1 Maihama, Urayasu, Chiba 279-0031',
-                    '+81-4-5330-5211',
-                    'http://www.tokyodisneyresort.jp/kr/tdl/',
-                    const Text(
+                  const BasicInfo(
+                    location: '1-1 Maihama, Urayasu, Chiba 279-0031',
+                    phoneNumber: '+81-4-5330-5211',
+                    link: 'http://www.tokyodisneyresort.jp/kr/tdl/',
+                    howToGo: Text(
                       'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
                       style: TextStyle(
                         color: Color(0xBF1A1A1A),
@@ -245,10 +245,10 @@ class DisneyDetailScreen extends StatelessWidget {
                         height: 0.10,
                       ),
                     ),
-                    true,
-                    true,
-                    const LatLng(23, 23),
-                    '',
+                    showPhoneNumber: true,
+                    showLink: true,
+                    centerPosition: LatLng(23, 23),
+                    locationName: '',
                   ),
                   const SizedBox(height: 20),
                   Padding(

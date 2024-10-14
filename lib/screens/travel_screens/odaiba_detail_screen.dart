@@ -56,11 +56,12 @@ class OdaibaDetailScreen extends StatelessWidget {
                       color: Color(0xffe0e0e0),
                     ),
                   ),
-                  BasicInfo(
-                    'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan', // 위치
-                    '', // 전화번호
-                    '', // 해당 사이트 주소
-                    const Text(
+                  const BasicInfo(
+                    location:
+                        'Odaiba, Daiba 1-1, Minato City, Tokyo, Japan', // 위치
+                    phoneNumber: '', // 전화번호
+                    link: '', // 해당 사이트 주소
+                    howToGo: Text(
                       '린카이 선 도쿄텔레포트 역에서 도보 7분',
                       style: TextStyle(
                         color: Color(0xBF1A1A1A),
@@ -72,10 +73,10 @@ class OdaibaDetailScreen extends StatelessWidget {
                     )
                     // 가는 방법
                     ,
-                    false, // 전화번호 부여주기
-                    false, // 사이트 링크 보여주기
-                    const LatLng(23, 23),
-                    '',
+                    showPhoneNumber: false, // 전화번호 부여주기
+                    showLink: false, // 사이트 링크 보여주기
+                    centerPosition: LatLng(23, 23),
+                    locationName: '',
                   ),
                   Container(
                     height: 30,
