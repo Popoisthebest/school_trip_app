@@ -80,7 +80,6 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const SearchScreen(),
     const TripSchduleScreen(),
     const NewTripSchdulScreen(),
     const TripToolScreen(),
