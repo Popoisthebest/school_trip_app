@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:school_trip_app/screens/loading_screens/splash_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/shinjukuhotel_detail_screen.dart';
 
 void main() {
   runApp(const SchoolTripApp());
@@ -20,7 +22,7 @@ class _SchoolTripAppState extends State<SchoolTripApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: DisneyDetailScreen(),
+        body: ShinjukuhotelDetailScreen(),
       ),
     );
   }

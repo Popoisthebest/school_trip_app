@@ -72,7 +72,7 @@ class _PlaceScreenState extends State<PlaceScreen> {
       backgroundColor: const Color(0xff4D9E8A),
       body: Column(
         children: [
-          SafeArea(
+          SafeArea( 
             child: Container(
               width: double.infinity,
               color: const Color(0xFF4D9E8A),
