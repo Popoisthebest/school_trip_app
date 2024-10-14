@@ -85,11 +85,14 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                 ),
                 PlaceImageSlide(
                     placeName: "신주쿠 워싱턴 호텔 외관", imageList: placeImageList),
+                SizedBox(height: 30,),
                 PlaceDiscription(
                     "신주쿠 역 지하 광장과 연결된 호텔",
                     "assets/travel_detail_images/shinjukuhotel_images/shinjuku12.png",
                     "위치적 장점이 뛰어난 호텔",
-                    '호텔은 신주쿠 역 지하 중앙 광장과 연결되어 있으며, 공항 리무진 버스 정류장이 바로 앞에 있어 하네다 국제공항까지 편리하게 이동할 수 있다. 무료로 야경을 감상할 수 있는 도쿄 도청사가 도보 4분 거리에 있어 야경을 감상하기에도 좋다'),
+                    '호텔은 신주쿠 역 지하 중앙 광장과 연결되어 있으며, 공항 리무진 버스 정류장이 바로 앞에 있어 하네다 국제공항까지 편리하게 이동할 수 있다. 무료로 야경을 감상할 수 있는 도쿄 도청사가 도보 4분 거리에 있어 야경을 감상하기에도 좋다',
+                    false,
+                    ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
@@ -138,13 +141,7 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                     color: Color(0xffe0e0e0),
                   ),
                 ),
-                BasicInfo(
-                    "(160-0023) Tokyo-to Tokyo 3-2-9 Nishishinjuku Shinjuku-ku",
-                    "+81-3-3343-3111",
-                    "https://shinjuku.washington-hotels.jp/kr/",
-                    "신주쿠 역 O-2 출구에서 도보 3분",
-                    true,
-                    true),
+                BasicInfo("(160-0023) Tokyo-to Tokyo 3-2-9 Nishishinjuku Shinjuku-ku", "+81-3-3343-3111", "https://shinjuku.washington-hotels.jp/kr/", SizedBox.shrink(), true, true),
                 Column(
                   children: [
                     Padding(
@@ -460,6 +457,7 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                       bottom: 25,
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start, 
                       children: [
                         Row(
                           children: [
@@ -482,20 +480,15 @@ class _ShinjukuhotelDetailScreenState extends State<ShinjukuhotelDetailScreen> {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 32.0, right: 20), // 왼쪽에 32px 여백 추가
-                          child: Text(
+                          Text(
                             "난류, 우유, 땅콩, 대두, 밀, 새우, 돼지고기, 토마토, 호두, 닭고기, 쇠고기, 잣",
                             style: const TextStyle(
                               color: Color(0xFF1A1A1A),
                               fontSize: 12,
                               fontFamily: 'Ownglyph okticon',
                               fontWeight: FontWeight.w400,
-                              height: 0,
                             ),
                           ),
-                        )
                       ],
                     ),
                   ),
