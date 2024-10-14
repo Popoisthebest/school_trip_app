@@ -7,7 +7,7 @@ Widget BasicInfo(
   String location,
   phoneNumber,
   link,
-  howToGo,
+  Widget howToGo,
   bool showPhoneNumber,
   showLink,
 ) {
@@ -216,25 +216,13 @@ Widget BasicInfo(
               height: 10,
             ),
 
-            Row(
-              children: [
-                Text(
-                  howToGo,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Ownglyph okticon',
-                  ),
-                )
-              ],
-            ),
+            howToGo,
             const SizedBox(
               height: 30,
             ),
           ],
         ),
       ),
-      StoreInfo('영업 중 · 매일 09:00 - 21:00', '도쿄 디즈니랜드 100배 즐기기'),
     ],
   );
 }

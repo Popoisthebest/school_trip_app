@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget StoreInfo(String time, addition) {
+Widget StoreInfo(
+  String time,
+  price,
+  Widget addition,
+  tip,
+  bool isPrice,
+  isAddition,
+  isTip,
+) {
   return Container(
     decoration: const BoxDecoration(
       border: Border.symmetric(
@@ -35,24 +43,56 @@ Widget StoreInfo(String time, addition) {
               )
             ],
           ),
-          const SizedBox(height: 22),
-          Row(
-            children: [
-              SvgPicture.asset('assets/travel_detail_icons/addition_icon.svg'),
-              const SizedBox(width: 12),
-              Text(
-                addition,
-                style: const TextStyle(
-                  color: Color(0xFF1A1A1A),
-                  fontSize: 16,
-                  fontFamily: 'Ownglyph okticon',
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.underline,
-                  height: 0,
-                ),
-              )
-            ],
-          ),
+          isPrice
+              ? Column(
+                  children: [
+                    const SizedBox(height: 22),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                            'assets/travel_detail_icons/money_icon.svg'),
+                        const SizedBox(width: 12),
+                        Text(
+                          price,
+                          style: const TextStyle(
+                            color: Color(0xFF1A1A1A),
+                            fontSize: 16,
+                            fontFamily: 'Ownglyph okticon',
+                            fontWeight: FontWeight.w400,
+                            height: 0,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                )
+              : const SizedBox(),
+          isAddition ? addition : const SizedBox(),
+          isTip
+              ? Column(
+                  children: [
+                    const SizedBox(height: 22),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                            'assets/travel_detail_icons/lightbulb_icon.svg'),
+                        const SizedBox(width: 12),
+                        Text(
+                          tip,
+                          style: const TextStyle(
+                            color: Color(0xFF1A1A1A),
+                            fontSize: 16,
+                            fontFamily: 'Ownglyph okticon',
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.underline,
+                            height: 0,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                )
+              : const SizedBox(),
         ],
       ),
     ),
