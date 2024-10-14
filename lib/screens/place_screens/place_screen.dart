@@ -35,11 +35,32 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 5, // 별 개수 설정
     ),
     PlaceDetail(
-      name: '아키하바라 전...',
+      name: '아키하바라',
       description:
-          '아키하바라 전자상가는 일본 도쿄에 위치한 전자제품과 애니메이션, 만화 관련 상품의 중심지로, 전 세계 오타쿠 문화의 성지로 불립니다.',
+          '연간 수백만 명 이상의 여행객이 방문하는 곳으로 거리 곳곳에 게임관련 매장과 오락실, 코스프레 샵들이 들어서 있어 시간 가는 줄도 모른체 즐길 수 있습니다.',
       images: 'assets/place_screen_images/akiabara.png',
       starCount: 5, // 별 개수 설정
+    ),
+    PlaceDetail(
+      name: '오다이바',
+      description:
+          '본래 도쿄 내륙 지역을 방어하기 위한 군사 목적으로 조성된 인공섬이었으나, 지금은 즐길 거리가 많은 해안가 관고아 특구로 유명한 곳입니다.',
+      images: 'assets/place_screen_images/odiaba.png',
+      starCount: 3, // 별 개수 설정
+    ),
+    PlaceDetail(
+      name: '하코네',
+      description:
+          '온천 시설을 갖춘 숙소가 모인 대표적인 하코네 명소입니다. 역사를 중심으로 특산품과 기념품을 판매하는 상점가가 있어 온천 마을 특유의 분위기를 즐길 수 있습니다.',
+      images: 'assets/place_screen_images/hakone.png',
+      starCount: 5, // 별 개수 설정
+    ),
+    PlaceDetail(
+      name: '아사쿠사',
+      description:
+          '도쿄를 대표하는 사찰 센소지를 중심으로 조성된 번화가로, 우리나라의 인사동처럼 고유한 전통 문화를 많이 간직한 곳이라 관광객들의 발길이 끊이지 않는 곳입니다.',
+      images: 'assets/place_screen_images/asacosa.png',
+      starCount: 4, // 별 개수 설정
     ),
   ];
 
@@ -47,10 +68,16 @@ class _PlaceScreenState extends State<PlaceScreen> {
   final List<LatLng> locations = [
     const LatLng(35.6329, 139.8804), // 디즈니 랜드
     const LatLng(35.7023, 139.7745), // 아키하바라
+    const LatLng(35.627222, 139.775556), // 오다이바
+    const LatLng(35.480613, 139.045159), // 하코네
+    const LatLng(35.711748, 139.786896), // 아사쿠사
   ];
   final List<String> locationNames = [
     '디즈니랜드',
     '아키하바라',
+    '오다이바',
+    '하코네',
+    '아사쿠사',
   ];
 
   void _onMapCreated(GoogleMapController controller) {
