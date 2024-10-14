@@ -62,26 +62,23 @@ class _NewTripSchdulScreenState extends State<NewTripSchdulScreen> {
             children: [
               Text(
                 '도쿄 여행',
-                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Ownglyph okticon',
                   fontWeight: FontWeight.w700,
-                  height: 0,
+                  height: 1.0,
                 ),
               ),
               Text(
-                "2024.10.22 ~ 10.25",
+                '2024.10.22 ~ 10.25',
                 style: TextStyle(
-                  fontFamily: "Ownglyph okticon",
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
                   color: Colors.white,
-                  height: 16 / 12,
+                  fontSize: 12,
+                  fontFamily: 'Ownglyph okticon',
+                  fontWeight: FontWeight.w400,
                 ),
-                textAlign: TextAlign.left,
-              )
+              ),
             ],
           ),
         ),
