@@ -19,11 +19,11 @@ class SchoolTripApp extends StatefulWidget {
 class _SchoolTripAppState extends State<SchoolTripApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: const Scaffold(
-          body: TripToolScreen(),
-        ),
-        initialBinding: InitBinding());
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: HakoneSinsaDetail(),
+      ),
+    );
   }
 }
