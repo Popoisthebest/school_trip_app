@@ -11,6 +11,8 @@ class TripToolScreen extends StatefulWidget {
 }
 
 class _TripToolScreenState extends State<TripToolScreen> {
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,22 +178,26 @@ class _TripToolScreenState extends State<TripToolScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                        ),
-                        const Positioned(
-                          top: 20,
-                          left: 24,
-                          child: Flexible(
-                            child: Text(
-                              '번역할 내용을 입력해주세요.',
-                              style: TextStyle(
-                                color: Color(0xFFBCBCBC),
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 24),
+                            child: TextField(
+                              cursorHeight: 18,
+                              controller: textEditingController,
+                              maxLines: null, // 여러 줄 입력 가능하도록 설정
+                              decoration: const InputDecoration.collapsed(
+                                hintText: '번역할 내용을 입력해주세요.',
+                                hintStyle: TextStyle(
+                                  color: Color(0xFFBCBCBC),
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(
