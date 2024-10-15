@@ -74,7 +74,9 @@ flutter:
 
     - assets/nation_images/
 
-    - assets/main_screen_images/
+    - assets/nalita_airport_screen_images/
+
+    - assets/place_screen_images/
 
     - assets/icons/
 
