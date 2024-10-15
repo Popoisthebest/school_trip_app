@@ -17,7 +17,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
   void initState() {
     super.initState();
     double initialJapanValue = double.tryParse(japanController.text) ?? 0;
-    updateExchangeRates(initialJapanValue, 11.03, 0.0068, isFromJapan: true);
+    updateExchangeRates(initialJapanValue, 9.1128, 0.0067, isFromJapan: true);
   }
 
   void updateExchangeRates(
@@ -53,7 +53,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           koreaController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            updateExchangeRates(input, 11.03, 0.0068, isFromKorea: true);
+            updateExchangeRates(input, 9.11, 0.0067, isFromKorea: true);
           },
         ),
         const SizedBox(height: 23),
@@ -65,7 +65,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           japanController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            updateExchangeRates(input, 11.03, 0.0068, isFromJapan: true);
+            updateExchangeRates(input, 9.11, 0.0067, isFromJapan: true);
           },
         ),
         const SizedBox(height: 23),
@@ -77,7 +77,7 @@ class _ExchangeRateState extends State<ExchangeRate> {
           usaController,
           (value) {
             double input = double.tryParse(value) ?? 0;
-            updateExchangeRates(input, 11.03, 0.0068, isFromUsa: true);
+            updateExchangeRates(input, 9.11, 0.0067, isFromUsa: true);
           },
         ),
       ],

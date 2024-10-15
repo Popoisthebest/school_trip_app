@@ -69,32 +69,47 @@ class _TripToolScreenState extends State<TripToolScreen> {
                   const SizedBox(
                     height: 46,
                   ),
-                  const Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text.rich(
-                        TextSpan(
-                          children: [
+                      const Row(
+                        children: [
+                          Text.rich(
                             TextSpan(
-                              text: '수학여행 중\n도쿄 ',
-                              style: TextStyle(
-                                color: Color(0xFF1A1A1A),
-                                fontSize: 32,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                              ),
+                              children: [
+                                TextSpan(
+                                  text: '수학여행 중\n도쿄 ',
+                                  style: TextStyle(
+                                    color: Color(0xFF1A1A1A),
+                                    fontSize: 32,
+                                    fontFamily: 'Ownglyph okticon',
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: '날씨',
+                                  style: TextStyle(
+                                    color: Color(0xFF4F9AD4),
+                                    fontSize: 32,
+                                    fontFamily: 'Ownglyph okticon',
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
                             ),
-                            TextSpan(
-                              text: '날씨',
-                              style: TextStyle(
-                                color: Color(0xFF4F9AD4),
-                                fontSize: 32,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                              ),
-                            ),
-                          ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        '2024. 10. 15 21:33 기준',
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(0.5),
+                          fontSize: 12,
+                          fontFamily: 'Ownglyph okticon',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
                         ),
                       ),
                     ],
@@ -143,52 +158,50 @@ class _TripToolScreenState extends State<TripToolScreen> {
                     height: 15,
                   ),
                   Container(
-                    height: 60,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                            width: 2, color: Color(0xFF4D9E8A)),
-                        borderRadius: BorderRadius.circular(10),
+                      height: 60,
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 2, color: Color(0xFF4D9E8A)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
-                      children: [
-                        const Positioned(
-                          left: 45,
-                          child: Text(
-                            '언어 감지',
-                            style: TextStyle(
-                              color: Color(0xFF1A1A1A),
-                              fontSize: 16,
-                              fontFamily: 'Ownglyph okticon',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 45.0),
+                            child: Text(
+                              '언어 감지',
+                              style: TextStyle(
+                                color: Color(0xFF1A1A1A),
+                                fontSize: 16,
+                                fontFamily: 'Ownglyph okticon',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          left: 168,
-                          child: SvgPicture.asset(
-                              'assets/tool_screen_icons/arrows_leftright_icon.svg'),
-                        ),
-                        Positioned(
-                          right: 45,
-                          child: LanguageDropDownMenu(
-                            initialValue: selectedLanguage2,
-                            onLanguageSelected: (String language) {
-                              setState(
-                                () {
-                                  selectedLanguage2 = language;
-                                  updateSelectedLanguageInPaPaGo();
-                                },
-                              );
-                            },
+                          SvgPicture.asset(
+                            'assets/tool_screen_icons/arrows_leftright_icon.svg',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 45.0),
+                            child: LanguageDropDownMenu(
+                              initialValue: selectedLanguage2,
+                              onLanguageSelected: (String language) {
+                                setState(
+                                  () {
+                                    selectedLanguage2 = language;
+                                    updateSelectedLanguageInPaPaGo();
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      )),
                   const SizedBox(
                     height: 10,
                   ),
@@ -273,7 +286,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                   Row(
                     children: [
                       Text(
-                        '2024. 10. 02 23:50 기준',
+                        '2024. 10. 15 21:33 기준',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 12,
@@ -281,7 +294,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                           fontWeight: FontWeight.w400,
                           height: 0,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -303,7 +316,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                               ),
                             ),
                             TextSpan(
-                              text: '905.56원',
+                              text: '911.28원',
                               style: TextStyle(
                                 color: Color(0xFF4F9AD4),
                                 fontSize: 30,
