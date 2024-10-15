@@ -177,6 +177,7 @@ class _CommonLayoutState extends State<CommonLayout> {
     if (_selectedIndex == 0) {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
+        scrolledUnderElevation: 0.0,
         backgroundColor: const Color(0xFF4D9E8A),
         flexibleSpace: SafeArea(
           child: Padding(

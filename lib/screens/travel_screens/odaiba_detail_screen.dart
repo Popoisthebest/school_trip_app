@@ -29,7 +29,7 @@ class OdaibaDetailScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(context),
+          buildCustomAppBar(context, ''),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
