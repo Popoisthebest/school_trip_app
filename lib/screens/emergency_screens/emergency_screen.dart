@@ -40,218 +40,200 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 40,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFDBECE8),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(width: 1),
-                              borderRadius: BorderRadius.circular(79),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 8, 0, 8),
-                            child: Row(
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      // 팝업창
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    // 팝업창
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Image.asset(
-                                                      'assets/emergency_screen_icons/list_icon.png'),
-                                                  const SizedBox(width: 8),
-                                                  const Text(
-                                                    '긴급사항',
-                                                    style: TextStyle(
-                                                      color: Color(0xFF1A1A1A),
-                                                      fontSize: 20,
-                                                      fontFamily:
-                                                          'Ownglyph okticon',
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: SvgPicture.asset(
-                                                        'assets/emergency_screen_icons/x_list.svg'),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                          content: SizedBox(
-                                            height: 320,
-                                            child: Column(
-                                              children: [
-                                                const SizedBox(height: 15),
-                                                Row(
-                                                  children: [
-                                                    Flexible(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              emergency); // 위급 상황로 이동
-                                                        },
-                                                        child: const Text(
-                                                          '1. 위급 상황 발생 또는 일행과 \n떨어졌을 경우',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 15),
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .pop(); // 팝업 닫기
-                                                        scrollToSection(
-                                                            phone_number);
-                                                      },
-                                                      child: const Text(
-                                                        '2. 전화이용안내',
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'Ownglyph okticon',
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 15),
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .pop(); // 팝업 닫기
-                                                        scrollToSection(
-                                                            descending_stage);
-                                                      },
-                                                      child: const Text(
-                                                        '3. 완강기 사용법',
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'Ownglyph okticon',
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 15),
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .pop(); // 팝업 닫기
-                                                        scrollToSection(
-                                                            aed_method);
-                                                      },
-                                                      child: const Text(
-                                                        '4. 자동제세동기(AED) 사용법',
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'Ownglyph okticon',
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                const SizedBox(height: 15),
-                                                Row(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .pop(); // 팝업 닫기
-                                                        scrollToSection(
-                                                            cpr_method);
-                                                      },
-                                                      child: const Text(
-                                                        '5. 심폐소생술 방법',
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'Ownglyph okticon',
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                        'assets/emergency_screen_icons/list_icon.png'),
+                                    const SizedBox(width: 8),
+                                    const Text(
+                                      '긴급사항',
+                                      style: TextStyle(
+                                        color: Color(0xFF1A1A1A),
+                                        fontSize: 20,
+                                        fontFamily: 'Ownglyph okticon',
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
                                       },
-                                    );
-                                  },
-                                  child: Image.asset(
-                                      'assets/emergency_screen_icons/list_icon.png'),
-                                ),
-                                const SizedBox(width: 9),
-                                const Text(
-                                  '긴급사항 안내',
-                                  style: TextStyle(
-                                    color: Color(0xFF1A1A1A),
-                                    fontSize: 16,
-                                    fontFamily: 'Ownglyph okticon',
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
+                                      child: SvgPicture.asset(
+                                          'assets/emergency_screen_icons/x_list.svg'),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
+                            content: SizedBox(
+                              height: 320,
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      Flexible(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context)
+                                                .pop(); // 팝업 닫기
+                                            scrollToSection(
+                                                emergency); // 위급 상황로 이동
+                                          },
+                                          child: const Text(
+                                            '1. 위급 상황 발생 또는 일행과 떨어졌을 경우',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontFamily: 'Ownglyph okticon',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).pop(); // 팝업 닫기
+                                          scrollToSection(phone_number);
+                                        },
+                                        child: const Text(
+                                          '2. 전화이용안내',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontFamily: 'Ownglyph okticon',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).pop(); // 팝업 닫기
+                                          scrollToSection(descending_stage);
+                                        },
+                                        child: const Text(
+                                          '3. 완강기 사용법',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontFamily: 'Ownglyph okticon',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      Flexible(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context)
+                                                .pop(); // 팝업 닫기
+                                            scrollToSection(aed_method);
+                                          },
+                                          child: const Text(
+                                            '4. 자동제세동기(AED) 사용법',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontFamily: 'Ownglyph okticon',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).pop(); // 팝업 닫기
+                                          scrollToSection(cpr_method);
+                                        },
+                                        child: const Text(
+                                          '5. 심폐소생술 방법',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontFamily: 'Ownglyph okticon',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 40,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xFFDBECE8),
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(width: 1),
+                                borderRadius: BorderRadius.circular(79),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(15, 8, 0, 8),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                      'assets/emergency_screen_icons/list_icon.png'),
+                                  const SizedBox(width: 9),
+                                  const Text(
+                                    '긴급사항 안내',
+                                    style: TextStyle(
+                                      color: Color(0xFF1A1A1A),
+                                      fontSize: 16,
+                                      fontFamily: 'Ownglyph okticon',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 22),
-                      ],
+                          const SizedBox(height: 22),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
