@@ -103,7 +103,7 @@ class _TripToolScreenState extends State<TripToolScreen> {
                         ],
                       ),
                       Text(
-                        '2024. 10. 15 21:33 기준',
+                        '2024. 10. 16 1:25 기준',
                         style: TextStyle(
                           color: Colors.black.withOpacity(0.5),
                           fontSize: 12,
@@ -130,10 +130,10 @@ class _TripToolScreenState extends State<TripToolScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          ToolWheather('10.22', '14°22°', 'cloudsun'),
-                          ToolWheather('10.23', '13°21°', 'cloudsun'),
-                          ToolWheather('10.24', '15°22°', 'cloudsun'),
-                          ToolWheather('10.24', '14°22°', 'sun'),
+                          ToolWheather('10.22', '23°17°', 'rain'),
+                          ToolWheather('10.23', '21°17°', 'cloudsun'),
+                          ToolWheather('10.24', '21°13°', 'rain'),
+                          ToolWheather('10.24', '21°14°', 'cloudsun'),
                         ],
                       ),
                     ),
