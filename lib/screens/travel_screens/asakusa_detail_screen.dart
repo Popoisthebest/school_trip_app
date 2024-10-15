@@ -8,7 +8,6 @@ import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
 import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
-import 'package:school_trip_app/widgets/travel_screens/tip.dart';
 
 List<String> placeImageList = [
   'assets/travel_detail_images/asakusa_images/141a0073ef55ef21c3b78b0e3d4345f9.png',
@@ -149,7 +148,7 @@ class AsakusaDetailScreen extends StatelessWidget {
                     centerPosition: LatLng(35.711748, 139.786896),
                     locationName: '아사쿠사',
                   ),
-                  StoreInfo('', '', const SizedBox(), '배틀트립 촬영 장소', false,
+                  StoreInfo('24시간', '', const SizedBox(), '배틀트립 촬영 장소', false,
                       false, true)
                 ],
               ),

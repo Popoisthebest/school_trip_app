@@ -11,8 +11,6 @@ class EmergencyScreen extends StatefulWidget {
 }
 
 class _EmergencyScreenState extends State<EmergencyScreen> {
-  final ScrollController _scrollController = ScrollController();
-
   //각 목차별 글로벌 키
   GlobalKey emergency = GlobalKey();
 

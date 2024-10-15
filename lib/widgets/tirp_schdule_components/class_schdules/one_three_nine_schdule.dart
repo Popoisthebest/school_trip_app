@@ -7,6 +7,7 @@ import 'package:school_trip_app/screens/travel_screens/odaiba_ocean_club_buffet.
 import 'package:school_trip_app/screens/travel_screens/shabuyo_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/shinjukuhotel_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/ui/hakone_pirate_ship.dart';
+import 'package:school_trip_app/screens/travel_screens/ui/naritasan_shinshoji.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
 class OneThreeNineSchdule extends StatelessWidget {
@@ -200,7 +201,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '신승사',
         description: '가족 건강 기원 · 사찰 · 관광 명소',
         distance: '5km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const NaritasanShinshoji(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '나리타국제공항',

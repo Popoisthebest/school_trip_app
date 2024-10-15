@@ -8,7 +8,6 @@ import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
-import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 
 List<String> imageList = [
   "assets/travel_detail_images/odaiba_ocean_buffet_images/odaiba1.png",

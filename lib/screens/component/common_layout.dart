@@ -20,6 +20,51 @@ class CommonLayout extends StatefulWidget {
 }
 
 class _CommonLayoutState extends State<CommonLayout> {
+  int _tapCount = 0; // 탭 횟수를 저장할 변수
+
+  void _showPopup() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SizedBox(
+            height: 390,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '고승한',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontFamily: 'Ownglyph okticon',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SvgPicture.asset('assets/icons/heart.svg'),
+                const SizedBox(height: 30),
+                const Text(
+                  '이현재',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontFamily: 'Ownglyph okticon',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   bool isToggle = true; // 초기 토글 상태 (true: 온라인 모드, false: 오프라인 모드)
   bool isManualOffline = false; // 수동 오프라인 모드 상태
   late int _selectedIndex;
@@ -175,7 +220,6 @@ class _CommonLayoutState extends State<CommonLayout> {
   // AppBar를 특정 페이지에서만 적용
   PreferredSizeWidget? _buildAppBar() {
     if (_selectedIndex == 0) {
-      // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         scrolledUnderElevation: 0.0,
         backgroundColor: const Color(0xFF4D9E8A),
@@ -189,7 +233,18 @@ class _CommonLayoutState extends State<CommonLayout> {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
                     children: [
-                      Image.asset('assets/logo/dashin_LOGO.png'),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _tapCount++;
+                            if (_tapCount == 10) {
+                              _showPopup(); // 팝업을 띄움
+                              _tapCount = 0; // 팝업을 띄운 후 탭 카운트 초기화
+                            }
+                          });
+                        },
+                        child: Image.asset('assets/logo/dashin_LOGO.png'),
+                      ),
                       const SizedBox(width: 8),
                       const Text(
                         'MyDaeShinTrip',
@@ -212,18 +267,6 @@ class _CommonLayoutState extends State<CommonLayout> {
                       SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
                       const SizedBox(width: 13),
                       SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                      // const SizedBox(width: 3),
-                      // IconButton(
-                      //   padding: EdgeInsets.zero,
-                      //   constraints: const BoxConstraints(),
-                      //   highlightColor: Colors.transparent,
-                      //   onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                      //   icon: Image.asset(
-                      //     isToggle
-                      //         ? 'assets/app_bar_icons/toggle_on_icon.png'
-                      //         : 'assets/app_bar_icons/toggle_off_icon.png',
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),

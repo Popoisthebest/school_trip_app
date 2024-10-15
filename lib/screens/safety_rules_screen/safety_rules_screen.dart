@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/disney_componets/detail_text.dart';
 
 class SafetyRulesScreen extends StatefulWidget {
@@ -10,8 +11,6 @@ class SafetyRulesScreen extends StatefulWidget {
 }
 
 class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
-  final ScrollController _scrollController = ScrollController();
-
   //각 목차별 글로벌 키
   GlobalKey section1 = GlobalKey();
 
@@ -40,35 +39,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SafeArea(
-            bottom: false,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 21,
-                right: 26,
-                bottom: 8,
-              ),
-              child: Container(
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                        'assets/app_bar_icons/travel_icons/leftcare_icon.svg'),
-                    const SizedBox(width: 9),
-                    const Text(
-                      '안전수칙',
-                      style: TextStyle(
-                        color: Color(0xFF1A1A1A),
-                        fontSize: 20,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          buildCustomAppBar(context, '안전수칙'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -77,358 +48,332 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
                       children: [
-                        Container(
-                          height: 40,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFDBECE8),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(width: 1),
-                              borderRadius: BorderRadius.circular(79),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 8, 0, 8),
-                            child: Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    // 팝업창
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          title: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                        GestureDetector(
+                          onTap: () {
+                            // 팝업창
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                              'assets/safety_rules_screen_icons/list_icon.svg'),
+                                          const SizedBox(width: 8),
+                                          const Text(
+                                            '안전수칙',
+                                            style: TextStyle(
+                                              color: Color(0xFF1A1A1A),
+                                              fontSize: 20,
+                                              fontFamily: 'Ownglyph okticon',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: SvgPicture.asset(
+                                                'assets/safety_rules_screen_icons/x_icon.svg'),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                  content: SizedBox(
+                                    height: 320,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(height: 15),
+                                          Row(
                                             children: [
-                                              Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                      'assets/safety_rules_screen_icons/list_icon.svg'),
-                                                  const SizedBox(width: 8),
-                                                  const Text(
-                                                    '안전수칙',
+                                              Flexible(
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.of(context)
+                                                        .pop(); // 팝업 닫기
+                                                    scrollToSection(
+                                                        section1); // 위급 상황로 이동
+                                                  },
+                                                  child: const Text(
+                                                    '1. 출발 시 주의 사항',
                                                     style: TextStyle(
-                                                      color: Color(0xFF1A1A1A),
+                                                      color: Colors.black,
                                                       fontSize: 20,
                                                       fontFamily:
                                                           'Ownglyph okticon',
                                                       fontWeight:
-                                                          FontWeight.w700,
+                                                          FontWeight.w400,
                                                     ),
                                                   ),
-                                                ],
+                                                ),
                                               ),
-                                              Row(
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: SvgPicture.asset(
-                                                        'assets/safety_rules_screen_icons/x_icon.svg'),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section2);
+                                                },
+                                                child: const Text(
+                                                  '2. 승차 시 주의 사항',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
                                                   ),
-                                                ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section3);
+                                                },
+                                                child: const Text(
+                                                  '3. 숙소 투숙 시 주의 사항',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
                                               )
                                             ],
                                           ),
-                                          content: SizedBox(
-                                            height: 320,
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                children: [
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      Flexible(
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            Navigator.of(
-                                                                    context)
-                                                                .pop(); // 팝업 닫기
-                                                            scrollToSection(
-                                                                section1); // 위급 상황로 이동
-                                                          },
-                                                          child: const Text(
-                                                            '1. 출발 시 주의 사항',
-                                                            style: TextStyle(
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 20,
-                                                              fontFamily:
-                                                                  'Ownglyph okticon',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section4);
+                                                },
+                                                child: const Text(
+                                                  '4. 식사 시 주의 사항',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
                                                   ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section2);
-                                                        },
-                                                        child: const Text(
-                                                          '2. 승차 시 주의 사항',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section3);
-                                                        },
-                                                        child: const Text(
-                                                          '3. 숙소 투숙 시 주의 사항',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section4);
-                                                        },
-                                                        child: const Text(
-                                                          '4. 식사 시 주의 사항',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section5);
-                                                        },
-                                                        child: const Text(
-                                                          '5. 문화재 관람 시 주의 사항',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section6);
-                                                        },
-                                                        child: const Text(
-                                                          '6. 교통안전',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section7);
-                                                        },
-                                                        child: const Text(
-                                                          '7. 음식 안전',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section8);
-                                                        },
-                                                        child: const Text(
-                                                          '8. 숙소 안전',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section9);
-                                                        },
-                                                        child: const Text(
-                                                          '9. 기타 안전',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section10);
-                                                        },
-                                                        child: const Text(
-                                                          '10. 성폭력(성희롱, 성추행 등) \n   예방 교육',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  Row(
-                                                    children: [
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          Navigator.of(context)
-                                                              .pop(); // 팝업 닫기
-                                                          scrollToSection(
-                                                              section11);
-                                                        },
-                                                        child: const Text(
-                                                          '11. 감염병 예방수칙 및 거리두기 \n   지침',
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'Ownglyph okticon',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                                                ),
+                                              )
+                                            ],
                                           ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: SvgPicture.asset(
-                                      'assets/safety_rules_screen_icons/list_icon.svg'),
-                                ),
-                                const SizedBox(width: 9),
-                                const Text(
-                                  '안전수칙 안내',
-                                  style: TextStyle(
-                                    color: Color(0xFF1A1A1A),
-                                    fontSize: 16,
-                                    fontFamily: 'Ownglyph okticon',
-                                    fontWeight: FontWeight.w400,
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section5);
+                                                },
+                                                child: const Text(
+                                                  '5. 문화재 관람 시 주의 사항',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section6);
+                                                },
+                                                child: const Text(
+                                                  '6. 교통안전',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section7);
+                                                },
+                                                child: const Text(
+                                                  '7. 음식 안전',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section8);
+                                                },
+                                                child: const Text(
+                                                  '8. 숙소 안전',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section9);
+                                                },
+                                                child: const Text(
+                                                  '9. 기타 안전',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section10);
+                                                },
+                                                child: const Text(
+                                                  '10. 성폭력(성희롱, 성추행 등)    예방 교육',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 15),
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // 팝업 닫기
+                                                  scrollToSection(section11);
+                                                },
+                                                child: const Text(
+                                                  '11. 감염병 예방수칙 및 거리두기    지침',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20,
+                                                    fontFamily:
+                                                        'Ownglyph okticon',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            height: 40,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xFFDBECE8),
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(width: 1),
+                                borderRadius: BorderRadius.circular(79),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(15, 8, 0, 8),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/safety_rules_screen_icons/list_icon.svg'),
+                                  const SizedBox(width: 9),
+                                  const Text(
+                                    '안전수칙 안내',
+                                    style: TextStyle(
+                                      color: Color(0xFF1A1A1A),
+                                      fontSize: 16,
+                                      fontFamily: 'Ownglyph okticon',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -470,14 +415,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 버스 출발은 각 조(반)별 개별 출발을 원칙으로 한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 버스 출발은 각 조(반)별 개별 출발을 원칙으로 한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -498,28 +445,32 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  4. 복장은 단정한 사복으로 하며, 두발은 단정하고 \n      깔끔하게 한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  4. 복장은 단정한 사복으로 하며, 두발은 단정하고  깔끔하게 한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  5. 학교 생활점퍼를 지참하여, 혼잡한 곳에서 길을 잃지 \n      않도록 한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  5. 학교 생활점퍼를 지참하여, 혼잡한 곳에서 길을 잃지  않도록 한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -570,14 +521,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 차량 출발 전에 승차하고 임의로 버스를 바꿔 타는 일이 \n      없도록 한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 차량 출발 전에 승차하고 임의로 버스를 바꿔 타는 일이  없도록 한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -612,14 +565,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  5. 승차 전이나 하차 후에는 꼭 집합하여 질서 있게 \n      이동한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  5. 승차 전이나 하차 후에는 꼭 집합하여 질서 있게  이동한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -670,56 +625,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 각 실 방장 및 조장은 수시로 인원을 점검하여 \n      인솔 선생님께 보고한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Row(
-                          children: [
-                            Text(
-                              '  3. 소지품 관리를 철저히 한다.\n     (현금 및 귀중품은 자신이 책임진다.)',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Row(
-                          children: [
-                            Text(
-                              '  4. 침구류, 화장실 등 시설물을 파손 없이 깨끗하게 \n      사용한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Row(
-                          children: [
-                            Text(
-                              '  5. 흡연, 음주, 도박 등 불건전한 행위는 절대 금하며, \n      적발 시 교칙에 의거 처벌한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 각 실 방장 및 조장은 수시로 인원을 점검하여  인솔 선생님께 보고한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -728,7 +643,55 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                           children: [
                             Flexible(
                               child: Text(
-                                '  6. 취침 전과 기상 후에 침실 정리 정돈 및 인원 파악을 \n      철저히 한다.',
+                                '  3. 소지품 관리를 철저히 한다.(현금 및 귀중품은 자신이 책임진다.)',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                '  4. 침구류, 화장실 등 시설물을 파손 없이 깨끗하게  사용한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                '  5. 흡연, 음주, 도박 등 불건전한 행위는 절대 금하며,  적발 시 교칙에 의거 처벌한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                '  6. 취침 전과 기상 후에 침실 정리 정돈 및 인원 파악을  철저히 한다.',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
@@ -785,14 +748,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 식사는 자유 배식하며 음식은 자기 양만큼 덜어먹고 \n      버리는 일이 없도록 한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 식사는 자유 배식하며 음식은 자기 양만큼 덜어먹고  버리는 일이 없도록 한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -814,28 +779,32 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  1. 출입이 금지된 곳 및 위험한 곳에 들어가지 말고, \n      특히 미끄러움에 주의한다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  1. 출입이 금지된 곳 및 위험한 곳에 들어가지 말고,  특히 미끄러움에 주의한다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 낙석에 주의하며 벽이나 문화재에 낙서 또는 \n      파손하지 않는다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 낙석에 주의하며 벽이나 문화재에 낙서 또는  파손하지 않는다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -856,14 +825,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  4. 대전대신고등학교 학생의 긍지를 갖고 환경보호를 \n      실천한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  4. 대전대신고등학교 학생의 긍지를 갖고 환경보호를  실천한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -899,42 +870,48 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 차량 내 개문 가능한 창문에서 쓰레기 투기 금지, \n      손 내밀지 않기, 창문을 열고 장난하지 않는다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 차량 내 개문 가능한 창문에서 쓰레기 투기 금지,  손 내밀지 않기, 창문을 열고 장난하지 않는다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  3. 차량사고시 버스 창문에 걸려 있는 비상 망치를 이용하여 \n      신속히 창문을 깨고 탈출한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  3. 차량사고시 버스 창문에 걸려 있는 비상 망치를 이용하여  신속히 창문을 깨고 탈출한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  4. 하차 전 휴게소 출발 시간을 확인한 후 휴게소에서는 \n      반드시 좌우를 살피고 보행로를 이용하여 \n      이동하며 특히 이동차량 및 후진차량에 주의한다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  4. 하차 전 휴게소 출발 시간을 확인한 후 휴게소에서는  반드시 좌우를 살피고 보행로를 이용하여  이동하며 특히 이동차량 및 후진차량에 주의한다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -984,28 +961,32 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 특정 식품 알레르기가 있는 학생은 사전에 담임 선생님\n      이나 안전요원에게 전달한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 특정 식품 알레르기가 있는 학생은 사전에 담임 선생님 이나 안전요원에게 전달한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  3. 복통ㆍ설사 환자 발생 시 신속히 담임 선생님이나 \n      안전요원에게 보고한다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  3. 복통ㆍ설사 환자 발생 시 신속히 담임 선생님이나  안전요원에게 보고한다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -1027,84 +1008,96 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  1. 베란다 등 위험한 곳이나 ‘위험’이라는 표지가 있거나 \n     위험요소가 있는 곳은 접근을 금지한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  1. 베란다 등 위험한 곳이나 ‘위험’이라는 표지가 있거나 위험요소가 있는 곳은 접근을 금지한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 숙소 내에서 친구 간 지나친 장난을 삼가며, 위험하거나 \n      고가의 물건은 휴대하지 않는다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 숙소 내에서 친구 간 지나친 장난을 삼가며, 위험하거나  고가의 물건은 휴대하지 않는다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  3. 사고자 발생 시 인솔선생님이나 안전요원에게 즉시 \n      보고한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  3. 사고자 발생 시 인솔선생님이나 안전요원에게 즉시  보고한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  4. 화재 발생 시 젖은 수건을 이용하여 낮은 자세로 고개를 \n      숙이고, 인솔교사나 안전요원의 지시에 따라 대피 경로로 \n      신속히 이동한다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  4. 화재 발생 시 젖은 수건을 이용하여 낮은 자세로 고개를  숙이고, 인솔교사나 안전요원의 지시에 따라 대피 경로로  신속히 이동한다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  5. 화재발생으로 인한 대피 시 엘리베이터는 절대 이용하지 \n      않으며 아래층으로 대피할 수 없을 경우에는 옥상으로 \n      대피하여 바람이 불어오는 쪽에서 구조를 기다린다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  5. 화재발생으로 인한 대피 시 엘리베이터는 절대 이용하지  않으며 아래층으로 대피할 수 없을 경우에는 옥상으로  대피하여 바람이 불어오는 쪽에서 구조를 기다린다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  6. 화재 예방을 위해 숙소 내에서 흡연 및 전열기구 사용을 \n      절대 금지한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  6. 화재 예방을 위해 숙소 내에서 흡연 및 전열기구 사용을  절대 금지한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -1140,70 +1133,80 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 이동시 대열을 이탈했을 경우 당황하지 않고 현재 위치에\n      서 기다린다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 이동시 대열을 이탈했을 경우 당황하지 않고 현재 위치에 서 기다린다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  3. 단체 이동시 행렬에 맞추어 걷고 뛰거나 하지 않으며 \n      손에는 가급적 불필요한 물건을 소지하지 않는다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  3. 단체 이동시 행렬에 맞추어 걷고 뛰거나 하지 않으며  손에는 가급적 불필요한 물건을 소지하지 않는다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  4. 단체 이동시 정해진 길로 다니고 길이 아닌 곳으로의 \n      이동을 금지한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  4. 단체 이동시 정해진 길로 다니고 길이 아닌 곳으로의  이동을 금지한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  5. 단체 관람 시 뛰거나 큰 소리로 소리를 지르지 않으며 \n      정해진 행렬이나 장소에서 관람한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  5. 단체 관람 시 뛰거나 큰 소리로 소리를 지르지 않으며  정해진 행렬이나 장소에서 관람한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  6. 우발상황 발생 시 즉시 인솔교사 및 안전담당자에게 \n      알린다. ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  6. 우발상황 발생 시 즉시 인솔교사 및 안전담당자에게  알린다. ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -1225,28 +1228,32 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  1. 교육대상 : 학생(3.31.금) 교육 완료, 교원(4.12.수) 교육 \n      완료, 안전담당자, 운전기사',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  1. 교육대상 : 학생(3.31.금) 교육 완료, 교원(4.12.수) 교육  완료, 안전담당자, 운전기사',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  2. 성폭력이란 상대가 원하지 않는 상황에서 일방적으로 \n      성 욕구를 충족하기 위한 강제적 행동으로 강간뿐만 아\n      니라, 성추행, 성희롱, 성기 노출, 음란물 간행 및 배포 등\n      을 매개로 인간에게 가하는 신체적, 정신적, 언어적 괴롭힘\n      을 포함한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  2. 성폭력이란 상대가 원하지 않는 상황에서 일방적으로 성 욕구를 충족하기 위한 강제적 행동으로 강간뿐만 아 니라, 성추행, 성희롱, 성기 노출, 음란물 간행 및 배포 등 을 매개로 인간에게 가하는 신체적, 정신적, 언어적 괴롭힘 을 포함한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -1307,7 +1314,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'i. 성폭력은 젊은 여자에게만 일어나며 폭력배들에 의\n   해 우발적으로 일어난다. 여자들의 야한 옷차림이\n   나 행동이 성폭력을 유발하며 여자가 끝까지 저항하면 강간은 불가능하다.',
+                                      'i. 성폭력은 젊은 여자에게만 일어나며 폭력배들에 의   해 우발적으로 일어난다. 여자들의 야한 옷차림이   나 행동이 성폭력을 유발하며 여자가 끝까지 저항하면 강간은 불가능하다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1323,7 +1330,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'ii. 강간은 정신이상자들에 의해서 일어나며 성폭력은 \n   억제할 수 없는 남성의 성충동에 의해 일어난다.',
+                                      'ii. 강간은 정신이상자들에 의해서 일어나며 성폭력은    억제할 수 없는 남성의 성충동에 의해 일어난다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1339,7 +1346,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'iii. 여성들이 스스로 조심하는 것이 성폭력을 방지하는 \n    최선의 방법이다.',
+                                      'iii. 여성들이 스스로 조심하는 것이 성폭력을 방지하는최선의 방법이다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1370,7 +1377,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'i. 성폭력은 모든 사람들에게 일어날 수 있는 인권침해\n   의 잔인한 범죄 행위이다.',
+                                      'i. 성폭력은 모든 사람들에게 일어날 수 있는 인권침해   의 잔인한 범죄 행위이다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1386,7 +1393,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'ii. 성폭력은 아는 사람에 의해 일어나는 경우가 많으\n   며(근친, 애인, 선후배, 직장상사, 동료, 이웃사람 등) \n   남자도 성폭력의 피해자가 될 수 있다.',
+                                      'ii. 성폭력은 아는 사람에 의해 일어나는 경우가 많으   며(근친, 애인, 선후배, 직장상사, 동료, 이웃사람 등)    남자도 성폭력의 피해자가 될 수 있다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1402,7 +1409,7 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'iii. 성폭력은 한밤중뿐만이 아니라 대낮에 피해자 혹\n    은 가해자의 집, 학교, 학원주변, 화장실, 직장, 공\n    원, 만화방, 비디오방, 약수터 등에서 발생할 수 있\n    다.',
+                                      'iii. 성폭력은 한밤중뿐만이 아니라 대낮에 피해자 혹    은 가해자의 집, 학교, 학원주변, 화장실, 직장, 공    원, 만화방, 비디오방, 약수터 등에서 발생할 수 있    다.',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 14,
@@ -1548,14 +1555,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  1. 의무 방역지침 외 모든 행동 수칙은 ‘권고’를 전제한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  1. 의무 방역지침 외 모든 행동 수칙은 ‘권고’를 전제한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],
@@ -1675,14 +1684,16 @@ class _SafetyRulesScreenState extends State<SafetyRulesScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '  5. 흡연, 음주, 도박 등 불건전한 행위는 절대 금하며, \n      적발 시 교칙에 의거 처벌한다.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '  5. 흡연, 음주, 도박 등 불건전한 행위는 절대 금하며, 적발 시 교칙에 의거 처벌한다.',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],

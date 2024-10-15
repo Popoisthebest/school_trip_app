@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
@@ -8,7 +7,6 @@ import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
-import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 
 List<String> placeImageList = [
   "assets/travel_detail_images/shinjukuhotel_images/shinjuku0.png",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 
 class WarningDetail extends StatelessWidget {
   const WarningDetail({super.key});
@@ -17,39 +18,21 @@ class WarningDetail extends StatelessWidget {
         home: Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
-            padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(children: [
-                  Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 14,
-                  ),
-                  SizedBox(
-                    width: 9,
-                  ),
-                  Text(
-                    "유의사항",
-                    style: const TextStyle(
-                      fontFamily: "Ownglyph okticon",
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xff1a1a1a),
-                      height: 26 / 20,
-                    ),
-                    textAlign: TextAlign.left,
-                  )
-                ]),
-                SizedBox(height: 40,),
+                buildCustomAppBar(context, '유의사항'),
+                const SizedBox(
+                  height: 40,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "현장체험학습지도 주의사항",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
@@ -61,9 +44,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 25,
                       ),
-                      Text(
+                      const Text(
                         "출발 전",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -72,19 +55,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text: '1. 출발당일에는 시간을 엄수하여 집합한다.\n',
                               style: TextStyle(
@@ -132,9 +115,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "여행 준비",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -143,19 +126,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text: '1. 여권 만료기간 및 단수 또는 복수여권인지 꼭 확인한다.\n',
                             ),
@@ -181,9 +164,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "버스에서",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -192,19 +175,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text: '1. 버스 내의 지정된 좌석에 앉고, 안전띠를 반드시 착용한다.\n',
                               style: TextStyle(
@@ -227,9 +210,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "공항에서",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -238,19 +221,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text: '1. 공항에서는 인원이 많고 복잡한 관계로 개인행동은 삼가한다. \n',
                               style: TextStyle(
@@ -280,9 +263,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "견학 시",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -291,19 +274,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text:
                                   '1. 안내인의 주의사항을 잘 듣고 행동하며 전시물에 손을 대지 않는다. \n',
@@ -355,9 +338,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "숙소에서",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -366,19 +349,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text:
                                   '1. 실내에서는 정숙을 유지하고 과격한 행동을 하지 않는다. (고성방가, 큰소리의 음악 절대 금지)\n',
@@ -418,9 +401,9 @@ class WarningDetail extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      Text(
+                      const Text(
                         "종료 후",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: "Ownglyph okticon",
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
@@ -429,19 +412,19 @@ class WarningDetail extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       RichText(
-                        text: TextSpan(
-                          style: const TextStyle(
+                        text: const TextSpan(
+                          style: TextStyle(
                             fontFamily: "Ownglyph okticon",
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff000000),
                             height: 1.7, // 텍스트 간 간격을 약간 줄임
                           ),
-                          children: const [
+                          children: [
                             TextSpan(
                               text:
                                   '1. 참가 학생 전원이 감상문(기행문) 또는 보고서를 쓰도록 지도하고 우수작은 표창한다.\n',
@@ -456,46 +439,55 @@ class WarningDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
-                  "식단에 포함되는\n알레르기 유발 식품 19가지",
-                  style: const TextStyle(
-                    fontFamily: "Ownglyph okticon",
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xff000000),
-                    height: 31 / 24,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width, // 화면의 전체 너비 사용
-                  height: 90, // 화면의 30% 높이 사용
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFF6DAF9F),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0), // 텍스트에 패딩 추가
-                    child: Text(
-                      "난류, 우유, 메밀, 땅콩, 대두, 밀, 고등어, 게, 새우, 돼지고기, 복숭아, 토마토, 아황산염, 호두, 닭고기, 쇠고기, 오징어, 조개류(굴, 전복, 홉합 포함), 잣",
-                      style: const TextStyle(
-                        fontFamily: "Ownglyph okticon",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        height: 1.5, // 텍스트 간 간격 설정
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "식단에 포함되는\n알레르기 유발 식품 19가지",
+                        style: TextStyle(
+                          fontFamily: "Ownglyph okticon",
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff000000),
+                          height: 31 / 24,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
-                    ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        width:
+                            MediaQuery.of(context).size.width, // 화면의 전체 너비 사용
+                        height: 90, // 화면의 30% 높이 사용
+                        decoration: ShapeDecoration(
+                          color: const Color(0xFF6DAF9F),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(16.0), // 텍스트에 패딩 추가
+                          child: Text(
+                            "난류, 우유, 메밀, 땅콩, 대두, 밀, 고등어, 게, 새우, 돼지고기, 복숭아, 토마토, 아황산염, 호두, 닭고기, 쇠고기, 오징어, 조개류(굴, 전복, 홉합 포함), 잣",
+                            style: TextStyle(
+                              fontFamily: "Ownglyph okticon",
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              height: 1.5, // 텍스트 간 간격 설정
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SingleChildScrollView(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Table(
                     border: TableBorder.all(color: Colors.grey),
                     columnWidths: const {
@@ -506,10 +498,10 @@ class WarningDetail extends StatelessWidget {
                     },
                     children: [
                       // 헤더
-                      TableRow(
-                        decoration: const BoxDecoration(
+                      const TableRow(
+                        decoration: BoxDecoration(
                             color: Color(0xFF5EA795)), // #5EA795 초록색
-                        children: const [
+                        children: [
                           Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(

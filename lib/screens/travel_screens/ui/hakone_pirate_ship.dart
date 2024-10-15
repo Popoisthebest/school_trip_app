@@ -5,8 +5,6 @@ import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/disney_componets/detail_text.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
-import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
-import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 
 class HakonePirateShip extends StatelessWidget {
   const HakonePirateShip({super.key});

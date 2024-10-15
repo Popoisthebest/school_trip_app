@@ -569,7 +569,7 @@ class EmergencyContacts extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: const Text(
-                          "오세철 선생님에게 전화하기",
+                          "010-6312-7813",
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
@@ -615,7 +615,7 @@ class EmergencyContacts extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: const Text(
-                          "문가람 선생님에게 전화하기",
+                          "010-3833-6156",
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w400,
