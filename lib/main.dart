@@ -19,7 +19,7 @@ class SchoolTripApp extends StatefulWidget {
 class _SchoolTripAppState extends State<SchoolTripApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: EmergencyScreen(),
