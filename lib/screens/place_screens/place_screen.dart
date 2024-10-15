@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
@@ -94,7 +95,14 @@ class _PlaceScreenState extends State<PlaceScreen> {
       starCount: 5, // 별 개수 설정
     ),
     PlaceDetail(
-      onTap: () {},
+      onTap: (context) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const AsakusaDetailScreen(),
+          ),
+        );
+      },
       name: '아사쿠사',
       description:
           '도쿄를 대표하는 사찰 센소지를 중심으로 조성된 번화가로, 우리나라의 인사동처럼 고유한 전통 문화를 많이 간직한 곳이라 관광객들의 발길이 끊이지 않는 곳입니다.',

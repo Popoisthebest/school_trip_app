@@ -6,6 +6,7 @@ import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart'
 import 'package:school_trip_app/screens/travel_screens/odaiba_ocean_club_buffet.dart';
 import 'package:school_trip_app/screens/travel_screens/shabuyo_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/shinjukuhotel_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/ui/hakone_pirate_ship.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
 class OneThreeNineSchdule extends StatelessWidget {
@@ -141,7 +142,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '하코네 아시 호수 유람선',
         description: '유람선 투어 · 후지산 전망 · 호수',
         distance: '1km',
-        onTap: () => print('두 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const HakonePirateShip(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '하코네 코한소',
@@ -169,7 +175,12 @@ class OneThreeNineSchdule extends StatelessWidget {
       ScheduleItem(
         title: '신주쿠 워싱턴 호텔',
         description: '도심 호텔 · 공항 접근성 · 시티 뷰',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const ShinjukuhotelDetailScreen(),
+          ),
+        ),
       ),
     ];
 
@@ -178,7 +189,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '신주쿠 워싱턴 호텔',
         description: '도심 호텔 · 공항 접근성 · 시티 뷰',
         distance: '70km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const ShinjukuhotelDetailScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '신승사',
