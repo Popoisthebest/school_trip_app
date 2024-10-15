@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:school_trip_app/screens/checklist/checklist.dart';
 import 'package:school_trip_app/screens/emergency_screens/emergency_screen.dart';
 import 'package:school_trip_app/screens/safety_rules_screen/safety_rules_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
@@ -240,10 +241,20 @@ class _MainScreenState extends State<MainScreen> {
                             details: ['수학여행관련 유의사항을 알아보세요!'],
                           ),
                         ),
-                        const InfoTemplate(
-                          title: '체크리스트',
-                          icon: 'assets/icons/hotel.svg',
-                          details: ['수학여행갈때 꼭 가져가야 하는것들을 확인해 보세요!'],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) => const Checklist(),
+                              ),
+                            );
+                          },
+                          child: const InfoTemplate(
+                            title: '체크리스트',
+                            icon: 'assets/icons/hotel.svg',
+                            details: ['수학여행갈때 꼭 가져가야 하는것들을 확인해 보세요!'],
+                          ),
                         ),
                       ],
                     ),

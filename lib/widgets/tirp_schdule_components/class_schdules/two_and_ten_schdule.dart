@@ -3,6 +3,7 @@ import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.d
 import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart';
+import 'package:school_trip_app/screens/travel_screens/incheon_airport.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_ocean_club_buffet.dart';
 import 'package:school_trip_app/screens/travel_screens/shabuyo_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/shinjukuhotel_detail_screen.dart';
@@ -22,7 +23,12 @@ class TwoAndTenSchdule extends StatelessWidget {
         title: '인천국제공항',
         description: '세계적 공항 · 첨단 시설 · 쇼핑 명소',
         distance: '1250km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const IncheonAirport(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '나리타국제공항',
