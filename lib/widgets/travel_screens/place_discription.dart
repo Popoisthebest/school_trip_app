@@ -12,14 +12,16 @@ Widget PlaceDiscription(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Row(
                   children: [
-                    Text(
-                      mainDis,
-                      style: const TextStyle(
-                        color: Color(0xBF1A1A1A),
-                        fontSize: 20,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
+                    Flexible(
+                      child: Text(
+                        mainDis,
+                        style: const TextStyle(
+                          color: Color(0xBF1A1A1A),
+                          fontSize: 20,
+                          fontFamily: 'Ownglyph okticon',
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
                       ),
                     ),
                   ],

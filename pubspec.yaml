@@ -43,6 +43,8 @@ flutter:
     - assets/travel_background_imgaes/store_images/
     - assets/travel_detail_icons/
 
+    - assets/travel_detail_images/incheon_airport_images/
+
     - assets/travel_detail_images/odaiba_images/
 
     - assets/travel_detail_images/disneyland_images/
