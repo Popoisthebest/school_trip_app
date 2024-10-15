@@ -53,6 +53,8 @@ flutter:
     - assets/travel_detail_images/akihabara_images/
     - assets/travel_detail_images/akihabara_images/review_images/
 
+    - assets/travel_detail_images/asakusa_images/
+
     - assets/store_map_images/
 
     - assets/place_screen_images/

@@ -72,22 +72,47 @@ Widget StoreInfo(
               ? Column(
                   children: [
                     const SizedBox(height: 22),
-                    Row(
+                    Column(
                       children: [
-                        SvgPicture.asset(
-                            'assets/travel_detail_icons/lightbulb_icon.svg'),
-                        const SizedBox(width: 12),
-                        Text(
-                          tip,
-                          style: const TextStyle(
-                            color: Color(0xFF1A1A1A),
-                            fontSize: 16,
-                            fontFamily: 'Ownglyph okticon',
-                            fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.underline,
-                            height: 0,
-                          ),
-                        )
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                                'assets/travel_detail_icons/lightbulb_icon.svg'),
+                            const SizedBox(width: 12),
+                            const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '이용팁',
+                                  style: TextStyle(
+                                    color: Color(0xFF1A1A1A),
+                                    fontSize: 16,
+                                    fontFamily: 'Ownglyph okticon',
+                                    fontWeight: FontWeight.w400,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 36,
+                            ),
+                            Text(
+                              tip,
+                              style: const TextStyle(
+                                color: Color(0xFF1A1A1A),
+                                fontSize: 14,
+                                fontFamily: 'Ownglyph okticon',
+                                fontWeight: FontWeight.w400,
+                                height: 0,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],

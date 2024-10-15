@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:school_trip_app/screens/emergency_screens/emergency_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -163,7 +164,7 @@ class _MainScreenState extends State<MainScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (builder) =>
-                                    const DisneyDetailScreen(),
+                                    const AsakusaDetailScreen(),
                               ),
                             );
                           },
@@ -218,9 +219,9 @@ class _MainScreenState extends State<MainScreen> {
                           details: ['수학여행관련 유의사항을 알아보세요!'],
                         ),
                         const InfoTemplate(
-                          title: '숙소',
+                          title: '체크리스트',
                           icon: 'assets/icons/hotel.svg',
-                          details: ['반별로 배정된 룸메이트와 비상대피로를 확인해보세요!'],
+                          details: ['수학여행갈때 꼭 가져가야 하는것들을 확인해 보세요!'],
                         ),
                       ],
                     ),
