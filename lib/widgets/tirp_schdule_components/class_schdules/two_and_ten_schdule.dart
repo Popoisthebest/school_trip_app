@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_trip_app/screens/nalita_airport_screens/nalita_airport_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
@@ -34,7 +35,12 @@ class TwoAndTenSchdule extends StatelessWidget {
         title: '나리타국제공항',
         description: '일본 공항 · 항공 허브 · 쇼핑 명소',
         distance: '70km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => NalitaAirportScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '오다이바 오션뷔페',
@@ -218,13 +224,23 @@ class TwoAndTenSchdule extends StatelessWidget {
         title: '나리타국제공항',
         description: '일본 공항 · 항공 허브 · 쇼핑 명소',
         distance: '1250km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => NalitaAirportScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '인천국제공항',
         description: '세계적 공항 · 첨단 시설 · 쇼핑 명소',
         distance: '2km',
-        onTap: () => print('두 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const IncheonAirport(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '마시란식당',
