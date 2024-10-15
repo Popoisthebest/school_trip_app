@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
@@ -33,7 +34,7 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(),
+          buildCustomAppBar(context, ''),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
@@ -63,22 +64,31 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                     color: Color(0xffe0e0e0),
                   ),
                 ),
-                BasicInfo(
-                    "Japan, 〒135-0091 Tokyo, Minato City, Daiba, 1−6−1 デックス東京ビーチ 5F",
-                    "+81-3-3599-6655",
-                    "https://www.odaiba-decks.com/shop/detail/15060000?tenant_cd=15060000",
-                    const Text(
-                      '오다이바카이힌코엔 역에서 도보 5분, 덱스 도쿄 비치 5층',
-                      style: TextStyle(
-                        color: Color(0xBF1A1A1A),
-                        fontSize: 14,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w400,
-                        height: 0.10,
+                const BasicInfo(
+                  location:
+                      'Japan, 〒135-0091 Tokyo, Minato City, Daiba, 1−6−1 デックス東京ビーチ 5F',
+                  phoneNumber: '+81-3-3599-6655',
+                  link:
+                      'https://www.odaiba-decks.com/shop/detail/15060000?tenant_cd=15060000',
+                  howToGo: Row(
+                    children: [
+                      Text(
+                        '오다이바카이힌코엔 역에서 도보 5분, 덱스 도쿄 비치 5층',
+                        style: TextStyle(
+                          color: Color(0xBF1A1A1A),
+                          fontSize: 14,
+                          fontFamily: 'Ownglyph okticon',
+                          fontWeight: FontWeight.w400,
+                          height: 0.10,
+                        ),
                       ),
-                    ),
-                    true,
-                    true),
+                    ],
+                  ),
+                  showPhoneNumber: true,
+                  showLink: true,
+                  centerPosition: LatLng(35.625844, 139.775222),
+                  locationName: '오다이바 오션 클럽 뷔페',
+                ),
                 Container(
                   decoration: const BoxDecoration(
                     border: Border.symmetric(
@@ -101,9 +111,9 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/time_icon.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "영업 중 · 매일 11:00 - 22:00",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -113,15 +123,17 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                             )
                           ],
                         ),
-                        const SizedBox(height: 22,),
+                        const SizedBox(
+                          height: 22,
+                        ),
                         Row(
                           children: [
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/checklist.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "라스트오더 : 20:30",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -158,9 +170,9 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/lightbulb_icon.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "이용팁",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -171,9 +183,9 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        Text(
+                        const Text(
                           "    • 만 3세 미만 무료\n    • 주말 이용요금 상이\n    • 예약 가능(전화)",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Color(0xFF1A1A1A),
                             fontSize: 12,
                             fontFamily: 'Ownglyph okticon',
@@ -183,17 +195,17 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                         const SizedBox(
                           height: 28,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.warning_rounded,
                               size: 20,
                               color: Color(0xff757575),
                             ),
-                            const SizedBox(width: 12),
+                            SizedBox(width: 12),
                             Text(
                               "알레르기 유발 품목",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -204,11 +216,11 @@ class OdaibaOceanClubBuffet extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(right: 20, left: 32),
                           child: Text(
                             "난류, 우유, 땅콩, 대두, 밀, 새우, 돼지고기, 토마토, 호두, 닭고기, 쇠고기, 잣",
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Color(0xFF1A1A1A),
                               fontSize: 12,
                               fontFamily: 'Ownglyph okticon',

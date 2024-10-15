@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
+import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart';
+import 'package:school_trip_app/screens/travel_screens/odaiba_ocean_club_buffet.dart';
 import 'package:school_trip_app/widgets/tirp_schdule_components/tirp_schdule_list.dart';
 
 class OneThreeNineSchdule extends StatelessWidget {
@@ -25,13 +30,23 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '오다이바 오션뷔페',
         description: '바다 전망 · 해산물 뷔페 · 테라스',
         distance: '15km',
-        onTap: () => print('네 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const OdaibaOceanClubBuffet(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '아키하바라',
         description: '관광 명소 · 오타쿠 문화 · 만화',
         distance: '6km',
-        onTap: () => print('세 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const AkihabaraDetailScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '사브요 신주쿠점',
@@ -57,7 +72,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '디즈니 랜드',
         description: '놀이공원 · 어트랙션 · 퍼레이드',
         distance: '20km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const DisneyDetailScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '신주쿠 워싱턴 호텔',
@@ -77,7 +97,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '하코네 신사',
         description: '삼나무 숲 · 붉은 신사 · 순산 기원',
         distance: '1km',
-        onTap: () => print('첫 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const HakoneSinsaDetail(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '오와쿠다니 계곡',
@@ -101,7 +126,12 @@ class OneThreeNineSchdule extends StatelessWidget {
         title: '아사쿠사 센소지 & 나카미세',
         description: '전통 사원 · 기념품 쇼핑 · 먹거리',
         distance: '80km',
-        onTap: () => print('두 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const AsakusaDetailScreen(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '가스토 함바 스테이크',
