@@ -31,7 +31,7 @@ class ShabuyoDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(),
+          buildCustomAppBar(context, ''),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
@@ -101,9 +101,9 @@ class ShabuyoDetail extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Text(
+                          const Text(
                             "고탄다점",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: "Ownglyph okticon",
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
@@ -134,10 +134,10 @@ class ShabuyoDetail extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Flexible(
+                                      const Flexible(
                                         child: Text(
                                           "3 Chome-7-2 Ebara, Shinagawa City, Tokyo 142-0063, Japan",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.white,
@@ -157,10 +157,10 @@ class ShabuyoDetail extends StatelessWidget {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          Flexible(
+                                          const Flexible(
                                             child: Text(
                                               "+81-3-5750-0431",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16,
                                                 fontFamily: 'Ownglyph okticon',
@@ -188,10 +188,10 @@ class ShabuyoDetail extends StatelessWidget {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Flexible(
+                                            const Flexible(
                                               child: Text(
                                                 "https://www.skylark.co.jp/syabuyo/menu/index.html?utm_source=ss&utm_medium=gmb&utm_campaign=menu-Tokyo",
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Color(0xFFC2E4FF),
                                                   fontSize: 16,
                                                   fontFamily:
@@ -267,9 +267,9 @@ class ShabuyoDetail extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Text(
+                          const Text(
                             "요츠야점",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: "Ownglyph okticon",
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
@@ -300,10 +300,10 @@ class ShabuyoDetail extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Flexible(
+                                      const Flexible(
                                         child: Text(
                                           "Japan 〒160-0004 Tokyo, Shinjuku City, Yotsuya, 2 Chome−１−3 ２１３ビル ２Ｆ",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.white,
@@ -323,10 +323,10 @@ class ShabuyoDetail extends StatelessWidget {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          Flexible(
+                                          const Flexible(
                                             child: Text(
                                               "+81-3-5369-6016",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16,
                                                 fontFamily: 'Ownglyph okticon',
@@ -354,10 +354,10 @@ class ShabuyoDetail extends StatelessWidget {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Flexible(
+                                            const Flexible(
                                               child: Text(
                                                 "https://www.skylark.co.jp/syabuyo/menu/index.html?utm_source=ss&utm_medium=gmb&utm_campaign=menu-Tokyo",
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Color(0xFFC2E4FF),
                                                   fontSize: 16,
                                                   fontFamily:
@@ -433,9 +433,9 @@ class ShabuyoDetail extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Text(
+                          const Text(
                             "신주쿠점",
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: "Ownglyph okticon",
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
@@ -466,10 +466,10 @@ class ShabuyoDetail extends StatelessWidget {
                                       const SizedBox(
                                         width: 10,
                                       ),
-                                      Flexible(
+                                      const Flexible(
                                         child: Text(
                                           "1 Chome-33-14 Takadanobaba, Shinjuku City, Tokyo 169-0075, Japan",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.white,
@@ -489,10 +489,10 @@ class ShabuyoDetail extends StatelessWidget {
                                           const SizedBox(
                                             width: 10,
                                           ),
-                                          Flexible(
+                                          const Flexible(
                                             child: Text(
                                               "+81-3-5286-7250",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 16,
                                                 fontFamily: 'Ownglyph okticon',
@@ -520,10 +520,10 @@ class ShabuyoDetail extends StatelessWidget {
                                             const SizedBox(
                                               width: 10,
                                             ),
-                                            Flexible(
+                                            const Flexible(
                                               child: Text(
                                                 "https://www.skylark.co.jp/syabuyo/menu/index.html?utm_source=ss&utm_medium=gmb&utm_campaign=menu-Tokyo",
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Color(0xFFC2E4FF),
                                                   fontSize: 16,
                                                   fontFamily:
@@ -626,9 +626,9 @@ class ShabuyoDetail extends StatelessWidget {
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/time_icon.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "영업 중 · 매일 11:00 - 23:00",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -646,9 +646,9 @@ class ShabuyoDetail extends StatelessWidget {
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/checklist.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "라스트오더 : 21:30",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -685,9 +685,9 @@ class ShabuyoDetail extends StatelessWidget {
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/lightbulb_icon.svg'),
                             const SizedBox(width: 12),
-                            Text(
+                            const Text(
                               "이용팁",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -698,9 +698,9 @@ class ShabuyoDetail extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        Text(
+                        const Text(
                           "    • 육수 선택 가능\n     * 한 냄비에 4가지 맛 선택 시 440엔 추가*\n    • 런치 뷔페 이용 제한 시간 없음.\n    • 디너 뷔페 이용 제한 시간 100분\n    • 테이크 아웃 가능",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Color(0xFF1A1A1A),
                             fontSize: 12,
                             fontFamily: 'Ownglyph okticon',
@@ -710,17 +710,17 @@ class ShabuyoDetail extends StatelessWidget {
                         const SizedBox(
                           height: 28,
                         ),
-                        Row(
+                        const Row(
                           children: [
                             Icon(
                               Icons.warning_rounded,
                               size: 20,
                               color: Color(0xff757575),
                             ),
-                            const SizedBox(width: 12),
+                            SizedBox(width: 12),
                             Text(
                               "알레르기 유발 품목",
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Color(0xFF1A1A1A),
                                 fontSize: 16,
                                 fontFamily: 'Ownglyph okticon',
@@ -731,11 +731,11 @@ class ShabuyoDetail extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 4),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(right: 20, left: 32),
                           child: Text(
                             "난류, 우유, 땅콩, 대두, 밀, 새우, 돼지고기, 토마토, 호두, 닭고기, 쇠고기, 잣",
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Color(0xFF1A1A1A),
                               fontSize: 12,
                               fontFamily: 'Ownglyph okticon',
