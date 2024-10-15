@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
@@ -21,7 +22,7 @@ class NaritasanShinshoji extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(),
+          buildCustomAppBar(context, ''),
           Expanded(
               child: SingleChildScrollView(
             child: Column(
@@ -56,8 +57,16 @@ class NaritasanShinshoji extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                BasicInfo("1 Narita, Chiba 286-0023", "+81-4-76222-2111", "",
-                    SizedBox.shrink(), true, false),
+                const BasicInfo(
+                  location: "1 Narita, Chiba 286-0023",
+                  phoneNumber: "+81-4-76222-2111",
+                  link: "",
+                  howToGo: SizedBox.shrink(),
+                  showPhoneNumber: true,
+                  showLink: false,
+                  centerPosition: LatLng(35.774021, 140.392529),
+                  locationName: '나리타산 신쇼지',
+                ),
                 const SizedBox(height: 20),
                 Container(
                   height: 30,
