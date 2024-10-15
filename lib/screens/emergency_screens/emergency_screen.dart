@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/disney_componets/detail_text.dart';
 
 class EmergencyScreen extends StatefulWidget {
@@ -34,35 +35,7 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SafeArea(
-            bottom: false,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 21,
-                right: 26,
-                bottom: 8,
-              ),
-              child: Container(
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    SvgPicture.asset(
-                        'assets/app_bar_icons/travel_icons/leftcare_icon.svg'),
-                    const SizedBox(width: 9),
-                    const Text(
-                      '긴급사항',
-                      style: TextStyle(
-                        color: Color(0xFF1A1A1A),
-                        fontSize: 20,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          buildCustomAppBar(context, '긴급사항'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -747,28 +720,32 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '(1) 일본에서 한국으로 걸 때 : 001-82(국가번호)-지역번호\n    (0을 빼고)-전화번호 \n    예) 일본에서 학교로 걸 때 : ☎ 001-82-42-585-5901',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '(1) 일본에서 한국으로 걸 때 : 001-82(국가번호)-지역번호(0을 빼고)-전화번호 예) 일본에서 학교로 걸 때 : ☎ 001-82-42-585-5901',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             )
                           ],
                         ),
                         const Row(
                           children: [
-                            Text(
-                              '(2) 영사콜센터 : 해외에서 사건 · 사고를 당하거나 긴급\n     한 상황에 처할 경우 영사콜센터로 전화하면 24시간\n     연중무휴 상담서비스 제공',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontFamily: 'Ownglyph okticon',
-                                fontWeight: FontWeight.w400,
-                                height: 0,
+                            Flexible(
+                              child: Text(
+                                '(2) 영사콜센터 : 해외에서 사건 · 사고를 당하거나 긴급한 상황에 처할 경우 영사콜센터로 전화하면 24시간 연중무휴 상담서비스 제공',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Ownglyph okticon',
+                                  fontWeight: FontWeight.w400,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ],

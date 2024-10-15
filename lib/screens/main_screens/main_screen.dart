@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:school_trip_app/screens/emergency_screens/emergency_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
@@ -13,12 +14,86 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  String getDDayText() {
+    final DateTime today = DateTime.now();
+    final DateTime tripStartDate = DateTime(today.year, 10, 22);
+
+    if (today.isBefore(tripStartDate)) {
+      final int daysLeft = tripStartDate.difference(today).inDays;
+      return 'D-$daysLeft';
+    } else {
+      return 'D-DAY!';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFDBECE8), // 배경 색상 설정
       body: Column(
         children: [
+          Container(
+            color: const Color(0xff4D9E8A),
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "도쿄여행",
+                    style: TextStyle(
+                      fontFamily: "Ownglyph okticon",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      height: 18 / 14,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    "대전대신고 52회, 수학여행 ${getDDayText()}",
+                    style: const TextStyle(
+                      fontFamily: "Ownglyph okticon",
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      height: 26 / 20,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  const SizedBox(height: 5),
+                  Container(
+                    width: 116,
+                    height: 22,
+                    decoration: ShapeDecoration(
+                      color: const Color(0x4C004B3D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        '2024.10.22 ~ 10.25',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontFamily: 'Ownglyph okticon',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           // 스크롤 가능 영역
           Expanded(
             child: SingleChildScrollView(
@@ -116,23 +191,33 @@ class _MainScreenState extends State<MainScreen> {
                       mainAxisSpacing: 5,
                       childAspectRatio: 1.4,
                       physics: const NeverScrollableScrollPhysics(),
-                      children: const [
-                        InfoTemplate(
-                          title: '긴급사항',
-                          icon: 'assets/icons/warning.svg',
-                          details: ['수학여행관련 긴급사항을 확인해보세요!'],
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) => const EmergencyScreen(),
+                              ),
+                            );
+                          },
+                          child: const InfoTemplate(
+                            title: '긴급사항',
+                            icon: 'assets/icons/warning.svg',
+                            details: ['수학여행관련 긴급사항을 확인해보세요!'],
+                          ),
                         ),
-                        InfoTemplate(
+                        const InfoTemplate(
                           title: '안전수칙',
                           icon: 'assets/icons/security.svg',
                           details: ['수학여행관련 안전수칙을 알아보세요!'],
                         ),
-                        InfoTemplate(
+                        const InfoTemplate(
                           title: '유의사항',
                           icon: 'assets/icons/info.svg',
                           details: ['수학여행관련 유의사항을 알아보세요!'],
                         ),
-                        InfoTemplate(
+                        const InfoTemplate(
                           title: '숙소',
                           icon: 'assets/icons/hotel.svg',
                           details: ['반별로 배정된 룸메이트와 비상대피로를 확인해보세요!'],
