@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
-import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
-import 'package:school_trip_app/screens/search_screens/search_screen.dart';
-import 'package:school_trip_app/screens/trip_schdule_screens/trip_schdule_screen.dart';
+import 'package:school_trip_app/screens/trip_schdule_screens/new_trip_schdul_screen.dart';
+import 'package:school_trip_app/screens/place_screens/place_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
 
 class CommonLayout extends StatefulWidget {
@@ -80,9 +79,8 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const SearchScreen(),
-    const TripSchduleScreen(),
     const NewTripSchdulScreen(),
+    const PlaceScreen(),
     const TripToolScreen(),
   ];
 
@@ -94,30 +92,28 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 70,
-      child: SafeArea(
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              Container(
-                height: 1,
-                color: const Color(0xff4D9E8A),
+      height: 90,
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: 1,
+              color: const Color(0xff4D9E8A),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  _buildBottomNavigationItems('홈', 'home', 0),
+                  _buildBottomNavigationItems('여행일정', 'map', 1),
+                  _buildBottomNavigationItems('여행장소', 'place', 2),
+                  _buildBottomNavigationItems('여행도구', 'tool', 3),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    _buildBottomNavigationItems('홈', 'home', 0),
-                    _buildBottomNavigationItems('여행일정', 'map', 1),
-                    _buildBottomNavigationItems('여행장소', 'place', 2),
-                    _buildBottomNavigationItems('여행도구', 'tool', 3),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -182,51 +178,57 @@ class _CommonLayoutState extends State<CommonLayout> {
       // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),
-        flexibleSpace: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Row(
-                children: [
-                  Image.asset('assets/logo/dashin_LOGO.png'),
-                  const SizedBox(width: 8),
-                  const Text(
-                    'MyDaeShinTrip',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                      height: 1.2,
-                    ),
+        flexibleSpace: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: [
+                      Image.asset('assets/logo/dashin_LOGO.png'),
+                      const SizedBox(width: 8),
+                      const Text(
+                        'MyDaeShinTrip',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'CookieRunOTF',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 9.0),
-              child: Row(
-                children: [
-                  SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
-                  const SizedBox(width: 13),
-                  SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                  const SizedBox(width: 3),
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    highlightColor: Colors.transparent,
-                    onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                    icon: Image.asset(
-                      isToggle
-                          ? 'assets/app_bar_icons/toggle_on_icon.png'
-                          : 'assets/app_bar_icons/toggle_off_icon.png',
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 9.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
+                      const SizedBox(width: 13),
+                      SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
+                      // const SizedBox(width: 3),
+                      // IconButton(
+                      //   padding: EdgeInsets.zero,
+                      //   constraints: const BoxConstraints(),
+                      //   highlightColor: Colors.transparent,
+                      //   onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
+                      //   icon: Image.asset(
+                      //     isToggle
+                      //         ? 'assets/app_bar_icons/toggle_on_icon.png'
+                      //         : 'assets/app_bar_icons/toggle_off_icon.png',
+                      //   ),
+                      // ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       );
     }
@@ -235,12 +237,10 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildAppBar(), // AppBar를 조건부로 적용
-        bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
-        body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
-      ),
+    return Scaffold(
+      appBar: _buildAppBar(), // AppBar를 조건부로 적용
+      bottomNavigationBar: _buildBottomNavigationBar(), // 모든 페이지에 공통 적용
+      body: _screens[_selectedIndex], // 선택된 탭에 해당하는 화면만 갱신
     );
   }
 }

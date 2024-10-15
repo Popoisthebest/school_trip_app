@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/screens/travel_screens/disney_hundred.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
 import 'package:school_trip_app/widgets/travel_screens/review.dart';
 import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
+import 'package:school_trip_app/widgets/travel_screens/store_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/tip.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -49,7 +51,7 @@ class DisneyDetailScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(),
+          buildCustomAppBar(context),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -209,21 +211,31 @@ class DisneyDetailScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   MainStore(storeList, true, false),
                   const SizedBox(height: 10),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          '도쿄 디즈니랜드 100배 즐기기',
-                          style: TextStyle(
-                            color: Color(0xFF4F9AD4),
-                            fontSize: 15,
-                            fontFamily: 'Ownglyph okticon',
-                            fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.underline,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) => const DisneyHundred(),
                           ),
-                        )
-                      ],
+                        );
+                      },
+                      child: const Row(
+                        children: [
+                          Text(
+                            '도쿄 디즈니랜드 100배 즐기기',
+                            style: TextStyle(
+                              color: Color(0xFF4F9AD4),
+                              fontSize: 15,
+                              fontFamily: 'Ownglyph okticon',
+                              fontWeight: FontWeight.w400,
+                              decoration: TextDecoration.underline,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -235,20 +247,32 @@ class DisneyDetailScreen extends StatelessWidget {
                     location: '1-1 Maihama, Urayasu, Chiba 279-0031',
                     phoneNumber: '+81-4-5330-5211',
                     link: 'http://www.tokyodisneyresort.jp/kr/tdl/',
-                    howToGo: Text(
-                      'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
-                      style: TextStyle(
-                        color: Color(0xBF1A1A1A),
-                        fontSize: 14,
-                        fontFamily: 'Ownglyph okticon',
-                        fontWeight: FontWeight.w400,
-                        height: 0.10,
-                      ),
+                    howToGo: Row(
+                      children: [
+                        Text(
+                          'JR Maihama 역 남쪽 출구에서 도쿄 디즈니 랜드 입구까지\n도보 7분',
+                          style: TextStyle(
+                            color: Color(0xBF1A1A1A),
+                            fontSize: 14,
+                            fontFamily: 'Ownglyph okticon',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                     showPhoneNumber: true,
                     showLink: true,
-                    centerPosition: LatLng(23, 23),
-                    locationName: '',
+                    centerPosition: LatLng(35.632190, 139.880404),
+                    locationName: '도쿄 디즈니랜드',
+                  ),
+                  StoreInfo(
+                    '영업 중 · 매일 09:00 - 21:00',
+                    '',
+                    const SizedBox(),
+                    '도쿄 디즈니랜드 100배 즐기기',
+                    false,
+                    false,
+                    true,
                   ),
                   const SizedBox(height: 20),
                   Padding(
@@ -256,6 +280,7 @@ class DisneyDetailScreen extends StatelessWidget {
                     child: Image.asset(
                         'assets/travel_detail_images/disneyland_images/disney_map_image.png'),
                   ),
+                  const SizedBox(height: 30),
                   Tip(),
                   Container(
                     height: 30,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Widget buildCustomAppBar() {
+Widget buildCustomAppBar(BuildContext context) {
   return SafeArea(
     bottom: false,
     child: Padding(
@@ -15,8 +15,13 @@ Widget buildCustomAppBar() {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-                'assets/app_bar_icons/travel_icons/leftcare_icon.svg'),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: SvgPicture.asset(
+                  'assets/app_bar_icons/travel_icons/leftcare_icon.svg'),
+            ),
             SvgPicture.asset('assets/app_bar_icons/travel_icons/map_icon.svg'),
           ],
         ),
