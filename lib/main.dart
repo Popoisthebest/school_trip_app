@@ -18,6 +18,7 @@ class _SchoolTripAppState extends State<SchoolTripApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Checklist(),
