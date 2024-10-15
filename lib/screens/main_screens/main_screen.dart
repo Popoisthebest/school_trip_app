@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:school_trip_app/screens/emergency_screens/emergency_screen.dart';
+import 'package:school_trip_app/screens/safety_rules_screen/safety_rules_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
+import 'package:school_trip_app/screens/warning_screen/warning_detail.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MainScreen extends StatefulWidget {
@@ -208,15 +210,35 @@ class _MainScreenState extends State<MainScreen> {
                             details: ['수학여행관련 긴급사항을 확인해보세요!'],
                           ),
                         ),
-                        const InfoTemplate(
-                          title: '안전수칙',
-                          icon: 'assets/icons/security.svg',
-                          details: ['수학여행관련 안전수칙을 알아보세요!'],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) => const SafetyRulesScreen(),
+                              ),
+                            );
+                          },
+                          child: const InfoTemplate(
+                            title: '안전수칙',
+                            icon: 'assets/icons/security.svg',
+                            details: ['수학여행관련 안전수칙을 알아보세요!'],
+                          ),
                         ),
-                        const InfoTemplate(
-                          title: '유의사항',
-                          icon: 'assets/icons/info.svg',
-                          details: ['수학여행관련 유의사항을 알아보세요!'],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) => const WarningDetail(),
+                              ),
+                            );
+                          },
+                          child: const InfoTemplate(
+                            title: '유의사항',
+                            icon: 'assets/icons/info.svg',
+                            details: ['수학여행관련 유의사항을 알아보세요!'],
+                          ),
                         ),
                         const InfoTemplate(
                           title: '체크리스트',

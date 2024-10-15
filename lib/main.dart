@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:school_trip_app/screens/emergency_screens/emergency_screen.dart';
 
 import 'package:school_trip_app/screens/loading_screens/splash_screen.dart';
 
