@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:school_trip_app/screens/loading_screens/splash_screen.dart';
-import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
-import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart';
 
 void main() {
   runApp(const SchoolTripApp());
