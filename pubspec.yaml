@@ -35,6 +35,8 @@ flutter:
 
     - assets/bottom_nav_bar_icons/
 
+    - assets/safety_rules_screen_icons/
+
     - assets/travel_background_imgaes/
     - assets/travel_background_imgaes/store_images/
     - assets/travel_detail_icons/
