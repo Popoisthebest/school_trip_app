@@ -61,6 +61,7 @@ class _ChecklistState extends State<Checklist> {
                 },
                 border: TableBorder.all(
                   color: Colors.grey.shade400,
+                  width: 1.5, // 테두리 두께 조정
                 ),
                 children: _buildTableRows(),
               ),
@@ -83,7 +84,7 @@ class _ChecklistState extends State<Checklist> {
         ),
         children: const [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(12.0), // 패딩 추가
             child: Text(
               '구분',
               style: TextStyle(
@@ -95,7 +96,7 @@ class _ChecklistState extends State<Checklist> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(12.0), // 패딩 추가
             child: Text(
               '체크항목',
               style: TextStyle(
@@ -107,7 +108,7 @@ class _ChecklistState extends State<Checklist> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(12.0), // 패딩 추가
             child: Text(
               '체크',
               style: TextStyle(
@@ -144,15 +145,18 @@ class _ChecklistState extends State<Checklist> {
             // 구분 (카테고리) - 같은 카테고리인 항목에 대해 하나의 셀로 처리
             showCategory
                 ? Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Container(
                       color: const Color(0xFF5EA795),
-                      child: Text(
-                        currentCategory!,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Ownglyph okticon',
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          currentCategory!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Ownglyph okticon',
+                          ),
                         ),
                       ),
                     ),
@@ -160,7 +164,7 @@ class _ChecklistState extends State<Checklist> {
                 : const SizedBox.shrink(), // 같은 구분이면 빈칸 처리
             // 체크 항목명
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Text(
                 item['item'],
                 style: TextStyle(
@@ -168,6 +172,7 @@ class _ChecklistState extends State<Checklist> {
                   decoration: item['checked']
                       ? TextDecoration.lineThrough
                       : TextDecoration.none, // 체크 시 중간선
+                  fontWeight: FontWeight.w400, // 텍스트 두께 추가
                 ),
               ),
             ),
