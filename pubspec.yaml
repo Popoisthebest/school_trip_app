@@ -36,6 +36,8 @@ flutter:
 
     - assets/bottom_nav_bar_icons/
 
+    - assets/safety_rules_screen_icons/
+
     - assets/emergency_screen_icons/
     - assets/emergency_screen_images/
 
