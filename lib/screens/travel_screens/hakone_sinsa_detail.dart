@@ -81,15 +81,16 @@ class HakoneSinsaDetail extends StatelessWidget {
                         children: [
                           DetailText('하코네 등산 선 하코네유모토 역에서 차로 28분', false),
                           DetailText(
-                              'Hakone lake hotel mae 정류장에서 오다큐 하코네 고속버스 이용, Hakoneodakyuyamano Hotel 정류장 하차 후 도보 10분',
-                              false),
+                            'Hakone lake hotel mae 정류장에서 오다큐 하코네 고속버스 이용, Hakoneodakyuyamano Hotel 정류장 하차 후 도보 10분',
+                            false,
+                          ),
                         ],
                       ),
                     ),
                     showPhoneNumber: true,
                     showLink: true,
                     centerPosition: const LatLng(35.1983, 139.0266),
-                    locationName: '',
+                    locationName: '하코네 신사',
                   ),
                   StoreInfo(
                     '영업 중 · 매일 08:15 - 17:00',

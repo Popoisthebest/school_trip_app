@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
-import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
-import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
-import 'package:school_trip_app/widgets/travel_screens/place_name.dart';
-import 'package:school_trip_app/widgets/travel_screens/review.dart';
-import 'package:school_trip_app/widgets/travel_screens/star_and_heart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<String> placeImageList = [
@@ -31,7 +24,7 @@ class DisneyHundred extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          buildCustomAppBar(),
+          buildCustomAppBar(context),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -324,6 +317,7 @@ class DisneyHundred extends StatelessWidget {
                     'assets/travel_detail_images/disney_hundred_images/disney_hundred5_image.png',
                     '퀸 오브 하트 뱅큇 홀',
                     '<이상한 나라의 앨리스> 테마의 양식 레스토랑. 독특한 인테리어는 물론 메뉴의 플레이팅이나 맛도 좋은 편이다. 특히 어린이 메뉴가 인기.',
+                    false,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),

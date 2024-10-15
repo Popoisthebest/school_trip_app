@@ -69,6 +69,8 @@ flutter:
     - assets/icons/checklist.svg
     - assets/place_screen_images/
 
+    - assets/trip_schdule_icons/
+
   fonts:
     - family: CookieRunOTF
       fonts:

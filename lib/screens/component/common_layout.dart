@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
-import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
+import 'package:school_trip_app/screens/trip_schdule_screens/new_trip_schdul_screen.dart';
 import 'package:school_trip_app/screens/place_screens/place_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
 
@@ -179,51 +179,55 @@ class _CommonLayoutState extends State<CommonLayout> {
       return AppBar(
         backgroundColor: const Color(0xFF4D9E8A),
         flexibleSpace: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Image.asset('assets/logo/dashin_LOGO.png'),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'MyDaeShinTrip',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: [
+                      Image.asset('assets/logo/dashin_LOGO.png'),
+                      const SizedBox(width: 8),
+                      const Text(
+                        'MyDaeShinTrip',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'CookieRunOTF',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 9.0),
-                child: Row(
-                  children: [
-                    SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
-                    const SizedBox(width: 13),
-                    SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                    const SizedBox(width: 3),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      highlightColor: Colors.transparent,
-                      onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                      icon: Image.asset(
-                        isToggle
-                            ? 'assets/app_bar_icons/toggle_on_icon.png'
-                            : 'assets/app_bar_icons/toggle_off_icon.png',
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 9.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
+                      const SizedBox(width: 13),
+                      SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
+                      // const SizedBox(width: 3),
+                      // IconButton(
+                      //   padding: EdgeInsets.zero,
+                      //   constraints: const BoxConstraints(),
+                      //   highlightColor: Colors.transparent,
+                      //   onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
+                      //   icon: Image.asset(
+                      //     isToggle
+                      //         ? 'assets/app_bar_icons/toggle_on_icon.png'
+                      //         : 'assets/app_bar_icons/toggle_off_icon.png',
+                      //   ),
+                      // ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/screens/travel_screens/disney_hundred.dart';
 import 'package:school_trip_app/widgets/travel_screens/basic_info.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/main_store.dart';
@@ -210,21 +211,31 @@ class DisneyDetailScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   MainStore(storeList, true, false),
                   const SizedBox(height: 10),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          '도쿄 디즈니랜드 100배 즐기기',
-                          style: TextStyle(
-                            color: Color(0xFF4F9AD4),
-                            fontSize: 15,
-                            fontFamily: 'Ownglyph okticon',
-                            fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.underline,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) => const DisneyHundred(),
                           ),
-                        )
-                      ],
+                        );
+                      },
+                      child: const Row(
+                        children: [
+                          Text(
+                            '도쿄 디즈니랜드 100배 즐기기',
+                            style: TextStyle(
+                              color: Color(0xFF4F9AD4),
+                              fontSize: 15,
+                              fontFamily: 'Ownglyph okticon',
+                              fontWeight: FontWeight.w400,
+                              decoration: TextDecoration.underline,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

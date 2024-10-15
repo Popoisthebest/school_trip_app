@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:school_trip_app/screens/travel_screens/akihabara_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -81,10 +82,21 @@ class _MainScreenState extends State<MainScreen> {
                             image: "assets/main_screen_images/disneyland.png",
                           ),
                         ),
-                        const PlaceBox(
-                          title: "아사쿠사",
-                          description: "일본의 전통이 담긴, 전통이 살아숨쉬는 곳!",
-                          image: "assets/main_screen_images/asakusa.png",
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) =>
+                                    const DisneyDetailScreen(),
+                              ),
+                            );
+                          },
+                          child: const PlaceBox(
+                            title: "아사쿠사",
+                            description: "일본의 전통이 담긴, 전통이 살아숨쉬는 곳!",
+                            image: "assets/main_screen_images/asakusa.png",
+                          ),
                         ),
                       ],
                     ),
@@ -131,60 +143,93 @@ class _MainScreenState extends State<MainScreen> {
 
                   // 세철T가 뽑은 TOP3 섹션 추가
                   const SizedBox(height: 20), // 간격 추가
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
                       children: [
-                        TopSection(title: '세철T가 뽑은 TOP3'),
-                        SizedBox(height: 16),
+                        const TopSection(title: '세철T가 뽑은 TOP3'),
+                        const SizedBox(height: 16),
 
                         // Top3Card 항목들
-                        Top3Card(
-                          title: "다양한 애니메이션 관련 제품을\n만날 수 있는 아키하바라!",
-                          description:
-                              "우리 학생들이 눈 돌아갈 만한 요소가 많이 있습니다\n주머니를 많이 털리지 않을까 걱정도 되는 장소입니다~",
-                          location: "아키하바라 / 도쿄 /",
-                          rating: 5, // 별 5개
-                          tags: [
-                            "#많이 찾는 장소",
-                            "#도쿄 아키하바라",
-                            "#Akihabara",
-                            "#피규어쇼핑",
-                            "#오타쿠성지"
-                          ],
-                          image: 'assets/main_screen_images/akihabara.png',
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) =>
+                                    const AkihabaraDetailScreen(),
+                              ),
+                            );
+                          },
+                          child: const Top3Card(
+                            title: "다양한 애니메이션 관련 제품을 만날 수 있는 아키하바라!",
+                            description:
+                                "우리 학생들이 눈 돌아갈 만한 요소가 많이 있습니다 주머니를 많이 털리지 않을까 걱정도 되는 장소입니다~",
+                            location: "아키하바라 / 도쿄 /",
+                            rating: 5, // 별 5개
+                            tags: [
+                              "#많이 찾는 장소",
+                              "#도쿄 아키하바라",
+                              "#Akihabara",
+                              "#피규어쇼핑",
+                              "#오타쿠성지"
+                            ],
+                            image: 'assets/main_screen_images/akihabara.png',
+                          ),
                         ),
-                        SizedBox(height: 16),
-                        Top3Card(
-                          title: "월트 디즈니가 창조한\n동화 속 세상 디즈니랜드!",
-                          description:
-                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
-                          location: "디즈니랜드 / 도쿄 /",
-                          rating: 4, // 별 4개
-                          tags: [
-                            "#디즈니",
-                            "#도쿄 디즈니랜드",
-                            "#TokyoDisneyland",
-                            "#디즈니 캐릭터",
-                            "#대규모 테마파크"
-                          ],
-                          image: 'assets/main_screen_images/disneyland.png',
+                        const SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) =>
+                                    const DisneyDetailScreen(),
+                              ),
+                            );
+                          },
+                          child: const Top3Card(
+                            title: "월트 디즈니가 창조한 동화 속 세상 디즈니랜드!",
+                            description:
+                                "노을지는 도쿄의 밤은 정말로 아름답습니다! 한 번 구경해보시는걸 추천해요!",
+                            location: "디즈니랜드 / 도쿄 /",
+                            rating: 4, // 별 4개
+                            tags: [
+                              "#디즈니",
+                              "#도쿄 디즈니랜드",
+                              "#TokyoDisneyland",
+                              "#디즈니 캐릭터",
+                              "#대규모 테마파크"
+                            ],
+                            image: 'assets/main_screen_images/disneyland.png',
+                          ),
                         ),
-                        SizedBox(height: 16),
-                        Top3Card(
-                          title: "일본 전통 문화가 살아 숨쉬는\n아사쿠사 센소시!",
-                          description:
-                              "노을지는 도쿄의 밤은 정말로 아름답습니다!\n한 번 구경해보시는걸 추천해요!",
-                          location: "아사쿠사 센소시 / 도쿄 /",
-                          rating: 4, // 별 4개
-                          tags: [
-                            "#많이 찾는 장소",
-                            "#아사쿠사",
-                            "#Asakusa",
-                            "#가장 오래된 사찰",
-                            "#일본전통사찰"
-                          ],
-                          image: 'assets/main_screen_images/asakusa.png',
+                        const SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (builder) =>
+                                    const AkihabaraDetailScreen(),
+                              ),
+                            );
+                          },
+                          child: const Top3Card(
+                            title: "일본 전통 문화가 살아 숨쉬는 아사쿠사 센소시!",
+                            description:
+                                "노을지는 도쿄의 밤은 정말로 아름답습니다! 한 번 구경해보시는걸 추천해요!",
+                            location: "아사쿠사 센소시 / 도쿄 /",
+                            rating: 4, // 별 4개
+                            tags: [
+                              "#많이 찾는 장소",
+                              "#아사쿠사",
+                              "#Asakusa",
+                              "#가장 오래된 사찰",
+                              "#일본전통사찰"
+                            ],
+                            image: 'assets/main_screen_images/asakusa.png',
+                          ),
                         ),
                       ],
                     ),
@@ -387,7 +432,7 @@ class EmergencyContacts extends StatelessWidget {
                 Row(
                   children: [
                     const SizedBox(width: 13),
-                    const Icon(Icons.phone, color: Colors.white),
+                    SvgPicture.asset('assets/main_screen_images/Phone.svg'),
                     const SizedBox(width: 10),
                     const Text(
                       "오세철 선생님(1학년 부장)",
@@ -400,8 +445,13 @@ class EmergencyContacts extends StatelessWidget {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {
-                        // 오세철T에게 전화 기능 (추후 구현)
+                      onTap: () async {
+                        const url = "tel:01063127813";
+                        if (await canLaunchUrlString(url)) {
+                          await launchUrlString(url);
+                        } else {
+                          print("전화 걸기 URL을 열 수 없습니다: $url");
+                        }
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -428,7 +478,7 @@ class EmergencyContacts extends StatelessWidget {
                 Row(
                   children: [
                     const SizedBox(width: 12),
-                    const Icon(Icons.phone, color: Colors.white),
+                    SvgPicture.asset('assets/main_screen_images/Phone.svg'),
                     const SizedBox(width: 10),
                     const Text(
                       "문가람 선생님(1학년 총무)",
@@ -441,8 +491,13 @@ class EmergencyContacts extends StatelessWidget {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {
-                        // 문가람T에게 전화 기능 (추후 구현)
+                      onTap: () async {
+                        const url = "tel:01038336156";
+                        if (await canLaunchUrlString(url)) {
+                          await launchUrlString(url);
+                        } else {
+                          print("전화 걸기 URL을 열 수 없습니다: $url");
+                        }
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
