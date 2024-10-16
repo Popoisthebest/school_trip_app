@@ -11,11 +11,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get: ^4.6.5
 
   cupertino_icons: ^1.0.8
   connectivity_plus: ^3.0.6
   flutter_svg: ^2.0.10+1
   google_maps_flutter: ^2.9.0
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
@@ -34,13 +36,61 @@ flutter:
 
     - assets/bottom_nav_bar_icons/
 
+    - assets/safety_rules_screen_icons/
+
+    - assets/emergency_screen_icons/
+    - assets/emergency_screen_images/
+
     - assets/travel_background_imgaes/
     - assets/travel_background_imgaes/store_images/
     - assets/travel_detail_icons/
+
+    - assets/travel_detail_images/incheon_airport_images/
+
     - assets/travel_detail_images/odaiba_images/
 
+    - assets/travel_detail_images/disneyland_images/
+    - assets/travel_detail_images/disney_hundred_images/
+
+    - assets/travel_detail_images/hakone_sinsa_images/
+    - assets/travel_detail_images/hakone_pirate_ship_images/
+    - assets/travel_detail_images/shinjukuhotel_images/
+    - assets/travel_detail_images/shabuyo_images/
+    - assets/travel_detail_images/odaiba_ocean_buffet_images/
+
+    - assets/travel_detail_images/akihabara_images/
+    - assets/travel_detail_images/akihabara_images/review_images/
+
+    - assets/travel_detail_images/asakusa_images/
+
+    - assets/travel_detail_images/odaiba_ocean_buffet_images/
+    - assets/travel_detail_images/narita_shinshoji_images/
+
+    - assets/travel_detail_images/incheon_airport_images/
+    - assets/nalita_airport_screen_images/
+
     - assets/store_map_images/
+
     - assets/place_screen_images/
+
+    - assets/tool_screen_icons/
+
+    - assets/nation_images/
+
+    - assets/nalita_airport_screen_images/
+
+    - assets/place_screen_images/
+
+    - assets/icons/
+
+    - assets/icons/checklist.svg
+
+    - assets/main_screen_images/
+    - assets/icons/
+    - assets/icons/checklist.svg
+    - assets/place_screen_images/
+
+    - assets/trip_schdule_icons/
 
   fonts:
     - family: CookieRunOTF

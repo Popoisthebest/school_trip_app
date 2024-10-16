@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:school_trip_app/screens/main_screens/main_screen.dart';
-import 'package:school_trip_app/screens/new_trip_schdul_screen.dart';
+import 'package:school_trip_app/screens/trip_schdule_screens/new_trip_schdul_screen.dart';
 import 'package:school_trip_app/screens/place_screens/place_screen.dart';
-import 'package:school_trip_app/screens/search_screens/search_screen.dart';
-import 'package:school_trip_app/screens/trip_schdule_screens/trip_schdule_screen.dart';
 import 'package:school_trip_app/screens/trip_tool_screens/trip_tool_screen.dart';
 
 class CommonLayout extends StatefulWidget {
@@ -22,6 +20,51 @@ class CommonLayout extends StatefulWidget {
 }
 
 class _CommonLayoutState extends State<CommonLayout> {
+  int _tapCount = 0; // 탭 횟수를 저장할 변수
+
+  void _showPopup() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SizedBox(
+            height: 390,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '고승한',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontFamily: 'Ownglyph okticon',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SvgPicture.asset('assets/icons/heart.svg'),
+                const SizedBox(height: 30),
+                const Text(
+                  '이현재',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontFamily: 'Ownglyph okticon',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   bool isToggle = true; // 초기 토글 상태 (true: 온라인 모드, false: 오프라인 모드)
   bool isManualOffline = false; // 수동 오프라인 모드 상태
   late int _selectedIndex;
@@ -81,8 +124,8 @@ class _CommonLayoutState extends State<CommonLayout> {
   // 각 탭에 해당하는 화면 리스트
   final List<Widget> _screens = [
     const MainScreen(),
-    const PlaceScreen(),
     const NewTripSchdulScreen(),
+    const PlaceScreen(),
     const TripToolScreen(),
   ];
 
@@ -177,55 +220,58 @@ class _CommonLayoutState extends State<CommonLayout> {
   // AppBar를 특정 페이지에서만 적용
   PreferredSizeWidget? _buildAppBar() {
     if (_selectedIndex == 0) {
-      // 홈 또는 검사 또는 여행 도구 페이지에서만 AppBar 적용
       return AppBar(
+        scrolledUnderElevation: 0.0,
         backgroundColor: const Color(0xFF4D9E8A),
         flexibleSpace: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Image.asset('assets/logo/dashin_LOGO.png'),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'MyDaeShinTrip',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _tapCount++;
+                            if (_tapCount == 10) {
+                              _showPopup(); // 팝업을 띄움
+                              _tapCount = 0; // 팝업을 띄운 후 탭 카운트 초기화
+                            }
+                          });
+                        },
+                        child: Image.asset('assets/logo/dashin_LOGO.png'),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 9.0),
-                child: Row(
-                  children: [
-                    SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
-                    const SizedBox(width: 13),
-                    SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
-                    const SizedBox(width: 3),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      highlightColor: Colors.transparent,
-                      onPressed: _toggleManualMode, // 수동 모드 전환 기능 호출
-                      icon: Image.asset(
-                        isToggle
-                            ? 'assets/app_bar_icons/toggle_on_icon.png'
-                            : 'assets/app_bar_icons/toggle_off_icon.png',
+                      const SizedBox(width: 8),
+                      const Text(
+                        'MyDaeShinTrip',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'CookieRunOTF',
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 9.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/app_bar_icons/phone_icon.svg'),
+                      const SizedBox(width: 13),
+                      SvgPicture.asset('assets/app_bar_icons/map_icon.svg'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
