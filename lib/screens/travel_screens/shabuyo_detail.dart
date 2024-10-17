@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:school_trip_app/widgets/tirp_schdule_components/map_component/center_map_component.dart';
 import 'package:school_trip_app/widgets/travel_screens/custom_app_bar.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_discription.dart';
 import 'package:school_trip_app/widgets/travel_screens/place_image_slide.dart';
@@ -90,12 +92,11 @@ class ShabuyoDetail extends StatelessWidget {
                             width: double.infinity,
                             height: 200,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                'assets/store_map_images/akihabara_store1_image.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                borderRadius: BorderRadius.circular(10),
+                                child: const CenteredMapComponent(
+                                    centerPosition:
+                                        LatLng(35.711103, 139.703592),
+                                    locationName: '사브요')),
                           ),
                           const SizedBox(
                             height: 15,
@@ -709,12 +710,12 @@ class ShabuyoDetail extends StatelessWidget {
                         const SizedBox(
                           height: 28,
                         ),
-                        const Row(
+                        Row(
                           children: [
                             SvgPicture.asset(
                                 'assets/travel_detail_icons/warning.svg'),
-                            SizedBox(width: 12),
-                            Text(
+                            const SizedBox(width: 12),
+                            const Text(
                               "알레르기 유발 품목",
                               style: TextStyle(
                                 color: Color(0xFF1A1A1A),

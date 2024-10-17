@@ -6,6 +6,7 @@ import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart
 import 'package:school_trip_app/screens/travel_screens/hakone_sinsa_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/incheon_airport.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_ocean_club_buffet.dart';
+import 'package:school_trip_app/screens/travel_screens/shabuyo_detail.dart';
 import 'package:school_trip_app/screens/travel_screens/shinjukuhotel_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/ui/hakone_pirate_ship.dart';
 import 'package:school_trip_app/screens/travel_screens/ui/naritasan_shinshoji.dart';
@@ -45,7 +46,12 @@ class FourSixSchdule extends StatelessWidget {
         title: '돈테이 나리타점',
         description: '샤부샤부 뷔페 · 고기 무한리필',
         distance: '15km',
-        onTap: () => print('네 번째 일정 클릭됨'),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (builder) => const ShabuyoDetail(),
+          ),
+        ),
       ),
       ScheduleItem(
         title: '아키하바라',

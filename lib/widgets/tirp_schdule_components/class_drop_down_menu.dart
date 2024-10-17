@@ -77,25 +77,25 @@ class _ClassDropDownMenuState extends State<ClassDropDownMenu> {
   }
 
   Widget _buildDropdownItem(String value) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedValue = value;
-          widget.onClassSelected(value); // 선택된 반 값을 콜백으로 전달
-          _isDropdownOpen = false; // 드롭다운 상태를 바로 변경
-        });
-        _removeOverlay(); // 드롭다운 닫기
-      },
-      child: Padding(
-        padding: value == "1반"
-            ? const EdgeInsets.only(top: 7.5, left: 13)
-            : value == "10반"
-                ? const EdgeInsets.only(bottom: 7.5, left: 13, top: 7)
-                : const EdgeInsets.only(top: 7, left: 13),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
+    return Padding(
+      padding: value == "1반"
+          ? const EdgeInsets.only(top: 7.5, left: 13)
+          : value == "10반"
+              ? const EdgeInsets.only(bottom: 7.5, left: 13, top: 7)
+              : const EdgeInsets.only(top: 7, left: 13),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedValue = value;
+                widget.onClassSelected(value); // 선택된 반 값을 콜백으로 전달
+                _isDropdownOpen = false; // 드롭다운 상태를 바로 변경
+              });
+              _removeOverlay(); // 드롭다운 닫기
+            },
+            child: Text(
               value,
               textAlign: TextAlign.center,
               style: const TextStyle(
@@ -106,16 +106,21 @@ class _ClassDropDownMenuState extends State<ClassDropDownMenu> {
                 height: 0,
               ),
             ),
-            value == "1반"
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+          ),
+          value == "1반"
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      _removeOverlay(); // 드롭다운 닫기
+                    },
                     child: SvgPicture.asset(
                       'assets/trip_schdule_icons/arrow_drop_up.svg',
                     ),
-                  )
-                : Container(),
-          ],
-        ),
+                  ),
+                )
+              : Container(),
+        ],
       ),
     );
   }
