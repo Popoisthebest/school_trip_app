@@ -8,6 +8,7 @@ import 'package:school_trip_app/screens/travel_screens/asakusa_detail_screen.dar
 import 'package:school_trip_app/screens/travel_screens/disney_detail_screen.dart';
 import 'package:school_trip_app/screens/travel_screens/odaiba_detail_screen.dart';
 import 'package:school_trip_app/screens/warning_screen/warning_detail.dart';
+import 'package:school_trip_app/widgets/main_screen/sos_context.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MainScreen extends StatefulWidget {
@@ -456,8 +457,15 @@ class PlaceBox extends StatelessWidget {
 }
 
 // 긴급 연락처 위젯
-class EmergencyContacts extends StatelessWidget {
+class EmergencyContacts extends StatefulWidget {
   const EmergencyContacts({super.key});
+
+  @override
+  State<EmergencyContacts> createState() => _EmergencyContactsState();
+}
+
+class _EmergencyContactsState extends State<EmergencyContacts> {
+  bool _isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -517,139 +525,82 @@ class EmergencyContacts extends StatelessWidget {
                           ),
                         ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          // 오픈채팅방 바로가기 기능 (추후 구현)
-                        },
-                        child: Row(
-                          children: [
-                            const Text(
-                              "오픈채팅방 바로가기",
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Ownglyph okticon',
-                                color: Color(0xFFDBECE8),
-                              ),
+                      Row(
+                        children: [
+                          const Text(
+                            "오픈채팅방 바로가기",
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Ownglyph okticon',
+                              color: Color(0xFFDBECE8),
                             ),
-                            const SizedBox(width: 5),
-                            const Icon(Icons.arrow_forward,
-                                color: Color(0xFFDBECE8)),
-                            const SizedBox(width: 5),
-                            Image.asset(
+                          ),
+                          const SizedBox(width: 5),
+                          const Icon(Icons.arrow_forward,
+                              color: Color(0xFFDBECE8)),
+                          const SizedBox(width: 5),
+                          GestureDetector(
+                            onTap: () {
+                              launchUrlString('https://pf.kakao.com/_nmxcXG');
+                            },
+                            child: Image.asset(
                               'assets/main_screen_images/kakaotalk.png',
                               height: 30,
                               width: 30,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 12),
-                Row(
+                Column(
                   children: [
-                    const SizedBox(width: 13),
-                    SvgPicture.asset('assets/main_screen_images/Phone.svg'),
-                    const SizedBox(width: 10),
-                    const Text(
-                      "오세철 선생님(1학년 부장)",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Ownglyph okticon',
-                        color: Color(0xFFDBECE8),
-                      ),
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () async {
-                        const url = "tel:01063127813";
-                        if (await canLaunchUrlString(url)) {
-                          await launchUrlString(url);
-                        } else {
-                          print("전화 걸기 URL을 열 수 없습니다: $url");
-                        }
-                      },
+                    SosContext('오세철 선생님(1학년 부장)', '010-6312-7813', 01063127813),
+                    const SizedBox(height: 8),
+                    SosContext('문가람 선생님(1학년 총무)', '010-3833-6156', 01038336156),
+                    const SizedBox(height: 8),
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      height: _isExpanded ? 101 : 0, // 펼쳐졌을 때 높이를 조절
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 4.0, horizontal: 7.0),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFF5F5F),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: const Text(
-                          "010-6312-7813",
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Ownglyph okticon',
-                            color: Colors.white,
+                        color: const Color(0xFF4D9E8A),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              SosContext(
+                                '대전대신고등학교',
+                                '042-585-5901~4',
+                                0425855901,
+                              ),
+                              const SizedBox(height: 8),
+                              SosContext(
+                                '수학여행 담당자 김소진',
+                                '010-3266-8497',
+                                01032668497,
+                              ),
+                              const SizedBox(height: 8),
+                              SosContext('신주쿠 워싱턴 호텔', '+81-03-3343-3111',
+                                  810333433111)
+                            ],
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 6),
                   ],
                 ),
-                const SizedBox(height: 7),
-                Row(
-                  children: [
-                    const SizedBox(width: 12),
-                    SvgPicture.asset('assets/main_screen_images/Phone.svg'),
-                    const SizedBox(width: 10),
-                    const Text(
-                      "문가람 선생님(1학년 총무)",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Ownglyph okticon',
-                        color: Color(0xFFDBECE8),
-                      ),
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () async {
-                        const url = "tel:01038336156";
-                        if (await canLaunchUrlString(url)) {
-                          await launchUrlString(url);
-                        } else {
-                          print("전화 걸기 URL을 열 수 없습니다: $url");
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 4.0, horizontal: 7.0),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFF5F5F),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: const Text(
-                          "010-3833-6156",
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Ownglyph okticon',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                  ],
-                ),
-                const SizedBox(height: 17),
               ],
             ),
           ),
           GestureDetector(
             onTap: () {
-              // 더보기 기능 (추후 구현)
+              setState(() {
+                _isExpanded = !_isExpanded; // 펼치거나 접는 상태 전환
+              });
             },
             child: Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
               decoration: const BoxDecoration(
                 color: Color(0xFF71B1A1),
                 borderRadius: BorderRadius.only(
@@ -657,23 +608,30 @@ class EmergencyContacts extends StatelessWidget {
                   bottomRight: Radius.circular(10),
                 ),
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "더보기",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontFamily: 'Ownglyph okticon',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _isExpanded ? "접기" : "더보기",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontFamily: 'Ownglyph okticon',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 4),
-                  Icon(Icons.keyboard_arrow_down, color: Colors.white),
-                ],
+                    const SizedBox(width: 4),
+                    Icon(
+                        _isExpanded
+                            ? Icons.keyboard_arrow_up
+                            : Icons.keyboard_arrow_down,
+                        color: Colors.white),
+                  ],
+                ),
               ),
             ),
           ),

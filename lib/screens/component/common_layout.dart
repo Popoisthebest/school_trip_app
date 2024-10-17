@@ -137,7 +137,7 @@ class _CommonLayoutState extends State<CommonLayout> {
 
   Widget _buildBottomNavigationBar() {
     return SizedBox(
-      height: 90,
+      height: 70,
       child: Container(
         color: Colors.white,
         child: Column(
@@ -176,10 +176,10 @@ class _CommonLayoutState extends State<CommonLayout> {
         },
         icon: Column(
           children: [
-            Image.asset(
+            SvgPicture.asset(
               _selectedIndex == selectedIndex
-                  ? 'assets/bottom_nav_bar_icons/${assetName}_active_icon.png'
-                  : 'assets/bottom_nav_bar_icons/${assetName}_icon.png',
+                  ? 'assets/bottom_nav_bar_icons/${assetName}_active_icon.svg'
+                  : 'assets/bottom_nav_bar_icons/${assetName}_icon.svg',
               height: 20,
               width: 20,
             ),
@@ -234,17 +234,24 @@ class _CommonLayoutState extends State<CommonLayout> {
                   child: Row(
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _tapCount++;
-                            if (_tapCount == 10) {
-                              _showPopup(); // 팝업을 띄움
-                              _tapCount = 0; // 팝업을 띄운 후 탭 카운트 초기화
-                            }
-                          });
-                        },
-                        child: Image.asset('assets/logo/dashin_LOGO.png'),
-                      ),
+                          onTap: () {
+                            setState(() {
+                              _tapCount++;
+                              if (_tapCount == 10) {
+                                _showPopup(); // 팝업을 띄움
+                                _tapCount = 0; // 팝업을 띄운 후 탭 카운트 초기화
+                              }
+                            });
+                          },
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: Colors.white, shape: BoxShape.circle),
+                            child: Image.asset(
+                              'assets/logo/dashin_LOGO.png',
+                              width: 36,
+                              height: 36,
+                            ),
+                          )),
                       const SizedBox(width: 8),
                       const Text(
                         'MyDaeShinTrip',
